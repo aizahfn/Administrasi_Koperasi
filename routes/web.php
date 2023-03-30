@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\KoperasiController;
+use App\Http\Controllers\LowonganController;
   
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,4 @@ use App\Http\Controllers\KoperasiController;
 */
     
 Route::resource('koperasis', KoperasiController::class);
+Route::resource('datalowongan', LowonganController::class);
