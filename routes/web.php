@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LowonganController;
-
+use App\Http\Controllers\BerkasController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +14,9 @@ use App\Http\Controllers\LowonganController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::resource('datalowongan', LowonganController::class);
+Route::resource('berkas', BerkasController::class);
+// Route::get('berkas', [BerkasController::class, 'create']);
+Route::resource('/user', UserController::class);
+// Route::get('/', function () {
+//     return view('welcome');
+// });
