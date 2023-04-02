@@ -31,58 +31,58 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>No Dokumen:</strong>
-                <input type="integer" name="no_dokumen" class="form-control" placeholder="No Dokumen">
+                <input type="integer" name="no_dokumen" class="form-control" placeholder="No Dokumen", value="{{ $post->no_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Nama Dokumen:</strong>
-                <input type="string" name="nama_dokumen" class="form-control" placeholder="Nama Dokumen">
+                <input type="string" name="nama_dokumen" class="form-control" placeholder="Nama Dokumen", value="{{ $post->nama_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Kategori Dokumen:</strong>
-                <input type="string" name="kategori_dokumen" class="form-control" placeholder="Kategori Dokumen">
+                <input type="string" name="kategori_dokumen" class="form-control" placeholder="Kategori Dokumen", value="{{ $post->kategori_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Tanggal Dokumen:</strong>
-                <input type="date" name="tanggal_dokumen" class="form-control" placeholder="Tanggal Dokumen">
+                <input type="date" name="tanggal_dokumen" class="form-control" placeholder="Tanggal Dokumen", value="{{ $post->tanggal_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Isi Dokumen:</strong>
-                <input type="string" name="isi_dokumen" class="form-control" placeholder="Isi Dokumen">
+                <input type="string" name="isi_dokumen" class="form-control" placeholder="Isi Dokumen", value="{{ $post->isi_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Sumber Dokumen:</strong>
-                <input type="string" name="sumber_dokumen" class="form-control" placeholder="Sumber Dokumen">
+                <input type="string" name="sumber_dokumen" class="form-control" placeholder="Sumber Dokumen", value="{{ $post->sumber_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Penerima Dokumen:</strong>
-                <input type="string" name="penerima_dokumen" class="form-control" placeholder="Penerima Dokumen">
+                <input type="string" name="penerima_dokumen" class="form-control" placeholder="Penerima Dokumen", value="{{ $post->penerima_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Status Dokumen:</strong>
-                <input type="string" name="status_dokumen" class="form-control" placeholder="Status Dokumen">
+                <input type="string" name="status_dokumen" class="form-control" placeholder="Status Dokumen", value="{{ $post->status_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Aksesibilitas Dokumen:</strong>
-                <input type="string" name="aksesibilitas_dokumen" class="form-control" placeholder="Aksesibilitas Dokumen">
+                <input type="string" name="aksesibilitas_dokumen" class="form-control" placeholder="Aksesibilitas Dokumen", value="{{ $post->aksesibilitas_dokumen }}">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+        <div class="col-xs-12 col-sm-12 mt-3 mb-3 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
