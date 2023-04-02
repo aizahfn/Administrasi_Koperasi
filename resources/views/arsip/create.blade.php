@@ -1,4 +1,4 @@
-@extends('arsips.layout')
+@extends('arsip.layout')
   
 @section('content')
 <div class="row">
@@ -7,14 +7,14 @@
             <h2>Add New Arsip</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('arsips.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('arsip.index') }}"> Back</a>
         </div>
     </div>
 </div>
      
 @if ($errors->any())
     <div class="alert alert-danger">
-        <strong>Maaf!</strong> Ada Kesalahan Pada Data Yang Dimasukkan.<br><br>
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -23,62 +23,62 @@
     </div>
 @endif
      
-<form action="{{ route('arsips.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('arsip.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>No Dokumen:</strong>
-                <input type="int" name="no_dokumen" class="form-control" placeholder="No Registrasi">
+                <input type="integer" name="no_dokumen" class="form-control" placeholder="No Dokumen (Isi dengan Angka)">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Nama :</strong>
-                <input type="date" name="tanggal_lowongan" class="form-control" placeholder="Batas Tanggal Akhir Lowongan">
+                <strong>Nama Dokumen:</strong>
+                <input type="string" name="nama_dokumen" class="form-control" placeholder="Nama Dokumen">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Kategori:</strong>
-                <input type="number" name="jumlah_lowongan" min="1" max="50" class="form-control" placeholder="Jumlah Lowongan Yang Tersedia">
+                <strong>Kategori Dokumen:</strong>
+                <input type="string" name="kategori_dokumen" class="form-control" placeholder="Kategori Dokumen">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Tanggal:</strong>
-                <textarea class="form-control" style="height:150px" name="deskripsi_lowongan" placeholder="Deskripsi"></textarea>
+                <strong>Tanggal Dokumen:</strong>
+                <input type="date" name="tanggal_dokumen" class="form-control" placeholder="Tanggal Dokumen">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Isi Dokumen:</strong>
-                <input type="file" name="image" class="form-control" placeholder="Gambar">
+                <input type="string" name="isi_dokumen" class="form-control" placeholder="Isi Dokumen">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Sumber:</strong>
-                <input type="file" name="image" class="form-control" placeholder="Gambar">
+                <strong>Sumber Dokumen:</strong>
+                <input type="string" name="sumber_dokumen" class="form-control" placeholder="Sumber Dokumen">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Penerima:</strong>
-                <input type="file" name="image" class="form-control" placeholder="Gambar">
+                <strong>Penerima Dokumen:</strong>
+                <input type="String" name="penerima_dokumen" class="form-control" placeholder="Penerima Dokumen">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Status:</strong>
-                <input type="file" name="image" class="form-control" placeholder="Gambar">
+                <strong>Status Dokumen:</strong>
+                <input type="String" name="status_dokumen" class="form-control" placeholder="Status Dokumen">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Aksesibilitas:</strong>
-                <input type="file" name="image" class="form-control" placeholder="Gambar">
+                <strong>Aksesibilitas Dokumen:</strong>
+                <input type="String" name="aksesibilitas_dokumen" class="form-control" placeholder="Aksesibilitas Dokumen">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
