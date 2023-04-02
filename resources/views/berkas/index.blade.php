@@ -24,6 +24,7 @@
                         <table class="table table-bordered">
                             <thead>
                               <tr>
+                                <th scope="col">ID Berkas</th>
                                 <th scope="col">KTP</th>
                                 <th scope="col">KTM</th>
                                 <th scope="col">Surat Pernyataan</th>
@@ -33,6 +34,7 @@
                             <tbody>
                               @forelse ($berkas as $list_berkas)
                                 <tr>
+                                    <td>{{ $list_berkas->id }}</td>
                                     <td class="text-center">
                                         <img src="{{ asset('/storage/uploadan/'.$list_berkas->ktp) }}" class="rounded" style="width: 150px">
                                     </td>
@@ -78,11 +80,11 @@
         //message with toastr
         @if(session()->has('success'))
 
-            toastr.success('{{ session('success') }}', 'BERHASIL!');
+            toastr.success('{{ session('success')}}', 'BERHASIL!');
 
         @elseif(session()->has('error'))
 
-            toastr.error('{{ session('error') }}', 'GAGAL!');
+            toastr.error('{{ session('error')}}', 'GAGAL!');
 
         @endif
     </script>

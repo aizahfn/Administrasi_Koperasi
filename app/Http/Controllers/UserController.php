@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-
+use App\Models\Berkas;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -18,7 +18,9 @@ class UserController extends Controller
     }
     public function create(): View
     {
-        return view('user.create');
+
+        $berkas = Berkas::all();
+        return view('user.create', compact('berkas'));
     }
 
     public function store(Request $request): RedirectResponse
@@ -27,6 +29,7 @@ class UserController extends Controller
         $this->validate($request, [
             // 'image'     => 'required|image|mimes:jpeg,jpg,png|max:2048',
 
+            'id_berkas'     => 'required',
             'role'          => 'required',
             'nama_lengkap'  => 'required',
             'no_telp'       => 'required',
@@ -36,6 +39,7 @@ class UserController extends Controller
             'alamat'        => 'required',
             'jenis_kelamin' => 'required',
             'tanggal_lahir' => 'required',
+
             // 'title'     => 'required',
             // 'content'   => 'required|min:10'
         ]);
@@ -46,7 +50,7 @@ class UserController extends Controller
 
         //create post
         User::create([
-            'id_berkas'     => 1,
+            'id_berkas'     => $request->id_berkas,
             'role'          => $request->role,
             'nama_lengkap'  => $request->nama_lengkap,
             'no_telp'       => $request->no_telp,
@@ -55,7 +59,7 @@ class UserController extends Controller
             'password'      => $request->password,
             'alamat'        => $request->alamat,
             'jenis_kelamin' => $request->jenis_kelamin,
-            'tanggal_lahir' => $request->tanggal_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir
             // 'image'     => $image->hashName(),
             // 'title'     => $request->title,
             // 'content'   => $request->content
@@ -81,5 +85,54 @@ class UserController extends Controller
 
         //redirect to index
         return redirect()->route('user.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
+
+    public function update(Request $request, $id): RedirectResponse
+    {
+        //validate form
+        $this->validate($request, [
+            // 'image'     => 'image|mimes:jpeg,jpg,png|max:2048',
+            'id_berkas'     => 'required',
+            'role'          => 'required',
+            'nama_lengkap'  => 'required',
+            'no_telp'       => 'required',
+            'jabatan'       => 'required',
+            'email'         => 'required',
+            'password'      => 'required',
+            'alamat'        => 'required',
+            'jenis_kelamin' => 'required',
+            'tanggal_lahir' => 'required',
+            // 'title'     => 'required',
+            // 'content'   => 'required|min:10'
+        ]);
+
+        //get post by ID
+        $user = User::findOrFail($id);
+
+        $user->update([
+            'id_berkas'     => $request->id_berkas,
+            'role'          => $request->role,
+            'nama_lengkap'  => $request->nama_lengkap,
+            'no_telp'       => $request->no_telp,
+            'jabatan'       => $request->jabatan,
+            'email'         => $request->email,
+            'password'      => $request->password,
+            'alamat'        => $request->alamat,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'tanggal_lahir' => $request->tanggal_lahir
+            // 'image'     => $image->hashName(),
+            // 'title'     => $request->title,
+            // 'content'   => $request->content
+        ]);
+        //redirect to index
+        return redirect()->route('user.index')->with(['success' => 'Data Berhasil Diubah!']);
+    }
+    public function edit($id): View
+    {
+        //get post by ID
+        $user = User::findOrFail($id);
+        $berkas = Berkas::all();
+
+        return view('user.edit', compact(['user', 'berkas']));
     }
 }

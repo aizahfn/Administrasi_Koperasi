@@ -12,7 +12,7 @@ class LowonganController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * 
+     *
      * @return response()
      */
     public function index(): View
@@ -43,18 +43,18 @@ class LowonganController extends Controller
             'jumlah_lowongan' => 'required',
             'deskripsi_lowongan' => 'required'
         ]);
-    
+
         $input = $request->all();
-    
+
         if ($image = $request->file('image')) {
             $destinationPath = 'images/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['image'] = "$profileImage";
         }
-      
+
         Lowongan::create($input);
-       
+
         return redirect()->route('datalowongan.index')
                         ->with('success','Lowongan created successfully.');
     }
@@ -87,9 +87,9 @@ class LowonganController extends Controller
             'jumlah_lowongan' => 'required',
             'deskripsi_lowongan' => 'required'
         ]);
-    
+
         $input = $request->all();
-    
+
         if ($image = $request->file('image')) {
             $destinationPath = 'images/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -98,9 +98,9 @@ class LowonganController extends Controller
         }else{
             unset($input['image']);
         }
-            
+
         $lowongan->update($input);
-      
+
         return redirect()->route('datalowongan.index')
                         ->with('success','Lowongan updated successfully');
     }

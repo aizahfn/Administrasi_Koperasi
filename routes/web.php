@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\KoperasiController;
 use App\Http\Controllers\LowonganController;
-  
+use App\Http\Controllers\BerkasController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +17,8 @@ use App\Http\Controllers\LowonganController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-    
+
 Route::resource('koperasis', KoperasiController::class);
 Route::resource('datalowongan', LowonganController::class);
+Route::resource('berkas', BerkasController::class);
+Route::resource('user', UserController::class);
