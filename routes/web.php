@@ -18,7 +18,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::resource('koperasis', KoperasiController::class);
+Route::resource('koperasi', KoperasiController::class);
 Route::resource('datalowongan', LowonganController::class);
 Route::resource('berkas', BerkasController::class);
 Route::resource('user', UserController::class);
