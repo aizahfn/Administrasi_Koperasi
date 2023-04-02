@@ -16,5 +16,5 @@ use App\Http\Controllers\LowonganController;
 |
 */
     
-Route::resource('koperasis', KoperasiController::class);
+Route::resource('koperasi', KoperasiController::class);
 Route::resource('datalowongan', LowonganController::class);
