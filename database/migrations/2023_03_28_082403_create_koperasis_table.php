@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer("no_registrasi");
             $table->string("nama_koperasi");
             $table->string("alamat_koperasi");
-            $table->string("notelepon_koperasi");
+            $table->integer("notelepon_koperasi");
             $table->string("email_koperasi");
             $table->string("jenis_produk");
             $table->integer("jumlah_anggota");

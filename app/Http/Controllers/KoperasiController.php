@@ -11,27 +11,25 @@ use Illuminate\View\View;
 
 class KoperasiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return response()
-     */
+    // /**
+    //  * Display a listing of the resource.
+    //  *
+    //  * @return response()
+    //  */
     public function index(): View
     {
         //get koperasis
         $koperasis = Koperasi::latest()->paginate(5);
 
         //render view with koperasis
-        return view('koperasi\index', compact('koperasis'))
+        return view('koperasi.index', compact('koperasis'))
         ->with('i', (request()->input('page', 1) - 1) * 5);;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Show the form for creating a new resource.
     public function create(): View
     {
-        return view('koperasis.create');
+        return view('koperasi.create');
     }
 
     /**
@@ -53,7 +51,7 @@ class KoperasiController extends Controller
 
         Koperasi::create($input);
        
-        return redirect()->route('koperasi\index')
+        return redirect()->route('koperasi.index')
                         ->with('success','koperasi created successfully.');
     }
 
@@ -62,7 +60,7 @@ class KoperasiController extends Controller
      */
     public function show(Koperasi $koperasi): View
     {
-        return view('koperasis.show',compact('koperasi'));
+        return view('koperasi.show',compact('koperasi'));
     }
 
     /**
@@ -70,7 +68,7 @@ class KoperasiController extends Controller
      */
     public function edit(Koperasi $koperasi): View
     {
-        return view('koperasis.edit',compact('koperasi'));
+        return view('koperasi.edit',compact('koperasi'));
     }
 
     /**
@@ -90,20 +88,20 @@ class KoperasiController extends Controller
 
         $input = $request->all();
             
-        $lowongan->update($input);
+        $koperasi->update($input);
       
-        return redirect()->route('koperasi\index')
+        return redirect()->route('koperasi.index')
                         ->with('success','Koperasi updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Koperasi $koperasi): RedirectResponse
+    public function destroy(koperasi $koperasi): RedirectResponse
     {
-        $Koperasi->delete();
+        $koperasi->delete();
 
-        return redirect()->route('koperasi\index')
+        return redirect()->route('koperasi.index')
                         ->with('success','Koperasi deleted successfully');
     }
     
