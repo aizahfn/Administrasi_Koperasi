@@ -1,13 +1,13 @@
-@extends('koperasi\layout')
+@extends('koperasi.layout')
   
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Koperasi</h2>
+            <h2>Edit Koperasi</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('koperasi\index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('koperasi.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -23,8 +23,9 @@
     </div>
 @endif
      
-<form action="{{ route('koperasis.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf
+<form action="{{ route('koperasi.update',$koperasi->id) }}" method="POST" enctype="multipart/form-data"> 
+        @csrf
+        @method('PUT')
     
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">

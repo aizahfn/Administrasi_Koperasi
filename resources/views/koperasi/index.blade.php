@@ -1,4 +1,4 @@
-@extends('koperasi\layout')
+@extends('koperasi.layout')
 
 @section('content')
     <div class="row">
@@ -7,7 +7,7 @@
                 <h2>Koperasi</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('koperasis.create') }}"> Create New koperasi</a>
+                <a class="btn btn-success" href="{{ route('koperasi.create') }}"> Create New koperasi</a>
             </div>
         </div>
     </div>
@@ -27,12 +27,9 @@
             <th>Email</th>
             <th>Jenis Produk</th>
             <th>Jumlah Anggota</th>
-            <th width="280px">Action</th>
         </tr>
         @foreach ($koperasis as $koperasi)
         <tr>
-            <td>{{ ++$i }}</td>
-            <td><img src="/images/{{ $koperasi->image }}" width="100px"></td>
             <td>{{ $koperasi->no_registrasi }}</td>
             <td>{{ $koperasi->nama_koperasi }}</td>
             <td>{{ $koperasi->alamat_koperasi }}</td>
@@ -41,11 +38,11 @@
             <td>{{ $koperasi->jenis_produk }}</td>
             <td>{{ $koperasi->jumlah_anggota }}</td>
             <td>
-                <form action="{{ route('koperasis.destroy',$koperasi->id) }}" method="POST">
+                <form action="{{ route('koperasi.destroy',$koperasi->id) }}" method="POST">
      
-                    <a class="btn btn-info" href="{{ route('koperasis.show',$koperasi->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('koperasi.show',$koperasi->id) }}">Show</a>
       
-                    <a class="btn btn-primary" href="{{ route('koperasis.edit',$koperasi->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('koperasi.edit',$koperasi->id) }}">Edit</a>
      
                     @csrf
                     @method('DELETE')

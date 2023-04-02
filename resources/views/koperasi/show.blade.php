@@ -1,4 +1,4 @@
-@extends('koperasi\layout')
+@extends('koperasi.layout')
    
 @section('content')
     <div class="row">
@@ -7,7 +7,7 @@
                 <h2> Show Koperasi</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('koperasi\index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('koperasi.index') }}"> Back</a>
             </div>
         </div>
     </div>
