@@ -31,55 +31,55 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>No Dokumen:</strong>
-                <input type="integer" name="no_dokumen" class="form-control" placeholder="No Dokumen", value="{{ $post->no_dokumen }}">
+                <input type="integer" name="no_dokumen" class="form-control" placeholder="No Dokumen", value="{{ $arsip->no_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Nama Dokumen:</strong>
-                <input type="string" name="nama_dokumen" class="form-control" placeholder="Nama Dokumen", value="{{ $post->nama_dokumen }}">
+                <input type="string" name="nama_dokumen" class="form-control" placeholder="Nama Dokumen", value="{{ $arsip->nama_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Kategori Dokumen:</strong>
-                <input type="string" name="kategori_dokumen" class="form-control" placeholder="Kategori Dokumen", value="{{ $post->kategori_dokumen }}">
+                <input type="string" name="kategori_dokumen" class="form-control" placeholder="Kategori Dokumen", value="{{ $arsip->kategori_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Tanggal Dokumen:</strong>
-                <input type="date" name="tanggal_dokumen" class="form-control" placeholder="Tanggal Dokumen", value="{{ $post->tanggal_dokumen }}">
+                <input type="date" name="tanggal_dokumen" class="form-control" placeholder="Tanggal Dokumen", value="{{ $arsip->tanggal_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Isi Dokumen:</strong>
-                <input type="string" name="isi_dokumen" class="form-control" placeholder="Isi Dokumen", value="{{ $post->isi_dokumen }}">
+                <input type="string" name="isi_dokumen" class="form-control" placeholder="Isi Dokumen", value="{{ $arsip->isi_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Sumber Dokumen:</strong>
-                <input type="string" name="sumber_dokumen" class="form-control" placeholder="Sumber Dokumen", value="{{ $post->sumber_dokumen }}">
+                <input type="string" name="sumber_dokumen" class="form-control" placeholder="Sumber Dokumen", value="{{ $arsip->sumber_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Penerima Dokumen:</strong>
-                <input type="string" name="penerima_dokumen" class="form-control" placeholder="Penerima Dokumen", value="{{ $post->penerima_dokumen }}">
+                <input type="string" name="penerima_dokumen" class="form-control" placeholder="Penerima Dokumen", value="{{ $arsip->penerima_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Status Dokumen:</strong>
-                <input type="string" name="status_dokumen" class="form-control" placeholder="Status Dokumen", value="{{ $post->status_dokumen }}">
+                <input type="string" name="status_dokumen" class="form-control" placeholder="Status Dokumen", value="{{ $arsip->status_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Aksesibilitas Dokumen:</strong>
-                <input type="string" name="aksesibilitas_dokumen" class="form-control" placeholder="Aksesibilitas Dokumen", value="{{ $post->aksesibilitas_dokumen }}">
+                <input type="string" name="aksesibilitas_dokumen" class="form-control" placeholder="Aksesibilitas Dokumen", value="{{ $arsip->aksesibilitas_dokumen }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 mt-3 mb-3 col-md-12 text-center">
