@@ -16,11 +16,11 @@ class UserController extends Controller
 
         return view('user.index', compact('user'));
     }
+    
     public function create(): View
     {
-
-        $berkas = Berkas::all();
-        return view('user.create', compact('berkas'));
+        // $berkas = Berkas::all();
+    return view('pages.user.create'/*, compact('berkas')*/);
     }
 
     public function store(Request $request): RedirectResponse
@@ -29,8 +29,7 @@ class UserController extends Controller
         $this->validate($request, [
             // 'image'     => 'required|image|mimes:jpeg,jpg,png|max:2048',
 
-            'id_berkas'     => 'required',
-            'role'          => 'required',
+            // 'role'          => 'required',
             'nama_lengkap'  => 'required',
             'no_telp'       => 'required',
             'jabatan'       => 'required',
@@ -50,8 +49,8 @@ class UserController extends Controller
 
         //create post
         User::create([
-            'id_berkas'     => $request->id_berkas,
-            'role'          => $request->role,
+            // 'id_berkas'     => $request->id_berkas,
+            // 'role'          => $request->role,
             'nama_lengkap'  => $request->nama_lengkap,
             'no_telp'       => $request->no_telp,
             'jabatan'       => $request->jabatan,
@@ -92,8 +91,8 @@ class UserController extends Controller
         //validate form
         $this->validate($request, [
             // 'image'     => 'image|mimes:jpeg,jpg,png|max:2048',
-            'id_berkas'     => 'required',
-            'role'          => 'required',
+            // 'id_berkas'     => 'required',
+            // 'role'          => 'required',
             'nama_lengkap'  => 'required',
             'no_telp'       => 'required',
             'jabatan'       => 'required',
@@ -110,8 +109,8 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $user->update([
-            'id_berkas'     => $request->id_berkas,
-            'role'          => $request->role,
+            // 'id_berkas'     => $request->id_berkas,
+            // 'role'          => $request->role,
             'nama_lengkap'  => $request->nama_lengkap,
             'no_telp'       => $request->no_telp,
             'jabatan'       => $request->jabatan,
