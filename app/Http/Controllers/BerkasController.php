@@ -26,6 +26,7 @@ class BerkasController extends Controller
     {
         //validate form
         $this->validate($request, [
+            'id_user'        => 'required',
             'ktp'            => 'required|image|mimes:jpeg,jpg,png|max:10000',
             'ktm'            => 'required|image|mimes:jpeg,jpg,png|max:10000',
             's_pernyataan'   => 'required|image|mimes:jpeg,jpg,png|max:10000'
@@ -33,6 +34,7 @@ class BerkasController extends Controller
         ]);
 
         //get req image
+        $id_user        = $request->id_user;
         $ktp            = $request->file('ktp');
         $ktm            = $request->file('ktm');
         $s_pernyataan   = $request->file('s_pernyataan');
@@ -45,6 +47,7 @@ class BerkasController extends Controller
         //create post
         Berkas::create([
             // 'image'     => $image->hashName(),
+            'id_user'       => $id_user,
             'ktp'           => $ktp->hashName(),
             'ktm'           => $ktm->hashName(),
             's_pernyataan'  => $s_pernyataan->hashName()
