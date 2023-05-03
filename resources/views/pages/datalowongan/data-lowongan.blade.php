@@ -11,35 +11,6 @@
                             <div class="card-header pb-0 px-3">
                                 <h2 class="text-center mb-0 ">DAFTAR LOWONGAN</h2>
                             </div>
-                            {{-- <div class="card-body pt-4 p-3">
-                                <ul class="list-group">
-                                    @forelse ($datalowongan as $data_lowongan)
-                                        <li class="list-group-item border-3 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <img src="{{ asset('assets/'.$data_lowongan->image) }}" class="avatar avatar-sm me-3 border-radius-lg" alt="{{ $data_lowongan->nama_lowongan }}">
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <h4 class="mb-3 text-dark font-weight-bold">{{ $data_lowongan->nama_lowongan }}</h4>
-                                                <span class="mb-2 text-dark">Jumlah Lowongan : <span
-                                                        class="mb-2 text-sm">{{ $data_lowongan->jumlah_lowongan }}</span></span>
-                                                <span class="mb-2 text-sm">{{ $data_lowongan->deskripsi_lowongan }}</span>
-                                            </div>
-                                            <div class="ms-auto text-end">
-                                                <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                    href="javascript:;"><i
-                                                        class="material-icons text-sm me-2">delete</i>Delete</a>
-                                                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                        class="material-icons text-sm me-2">edit</i>Edit</a>
-                                            </div>
-                                        </li>
-                                    @empty
-                                        <div class="alert alert-danger" role="alert">
-                                            <strong>Tidak Ada Lowongan</strong>
-                                        </div>
-                                    @endforelse
-                                </ul>
-                            </div> --}}
-
                             <div class="card-body pt-4 p-3">
                                 <ul class="list-group">
                                     @forelse ($datalowongan as $data_lowongan)
