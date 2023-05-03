@@ -16,11 +16,6 @@ class UserController extends Controller
 
         return view('user.index', compact('user'));
     }
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 4d56dc791a5a919e3c0705cf0adf5aad46aa1eb7
     public function create(): View
     {
         // $berkas = Berkas::all();
