@@ -9926,6 +9926,7 @@
 #47 C:\\laragon\\www\\Administrasi_Koperasi\\public\\index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #48 {main}
 "} 
+<<<<<<< HEAD
 [2023-05-02 15:15:42] local.ERROR: View [pages.data-lowongan] not found. {"exception":"[object] (InvalidArgumentException(code: 0): View [pages.data-lowongan] not found. at C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\FileViewFinder.php:137)
 [stacktrace]
 #0 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\FileViewFinder.php(79): Illuminate\\View\\FileViewFinder->findInPaths('pages.data-lowo...', Array)
@@ -10552,3 +10553,5 @@
 #49 C:\\laragon\\www\\Administrasi_Koperasi\\public\\index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #50 {main}
 "} 
+=======
+>>>>>>> 4d56dc791a5a919e3c0705cf0adf5aad46aa1eb7

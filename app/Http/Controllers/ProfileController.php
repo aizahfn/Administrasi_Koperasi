@@ -13,6 +13,7 @@ class ProfileController extends Controller
 
     public function update()
     {
+<<<<<<< HEAD
 
         $user = request()->user();
         $attributes = request()->validate([
@@ -25,6 +26,11 @@ class ProfileController extends Controller
             'tanggal_lahir' => 'required',
 
 
+=======
+            
+        $user = request()->user();
+        $attributes = request()->validate([
+>>>>>>> 4d56dc791a5a919e3c0705cf0adf5aad46aa1eb7
             'email' => 'required|email|unique:users,email,'.$user->id,
             'name' => 'required',
             'phone' => 'required|max:10',
@@ -34,6 +40,10 @@ class ProfileController extends Controller
 
         auth()->user()->update($attributes);
         return back()->withStatus('Profile successfully updated.');
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 4d56dc791a5a919e3c0705cf0adf5aad46aa1eb7
 }
 }
