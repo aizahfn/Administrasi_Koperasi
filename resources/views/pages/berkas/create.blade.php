@@ -89,77 +89,47 @@
                         @endif
                         <form method='POST' action='{{ route('berkas.store') }}' enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label">KTP</label>
-                                    <input type="file" name="ktp" class="form-control border-2 p-2 @error('ktp') is-invalid @enderror">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Kartu Tanda Penduduk</label>
+                                    <input type="file" class="form-control border border-2 p-2 @error('ktp') is-invalid @enderror" name="ktp">
+
+                                    <!-- error message untuk title -->
                                     @error('ktp')
-                                <p class='text-danger inputerror'>{{ $message }} </p>
-                                @enderror
-                                </div>
-
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label">Nama Lengkap</label>
-                                    <input type="text" name="nama_lengkap" class="form-control border border-2 p-2" value='{{ old('nama_lengkap') }}'>
-                                    @error('nama_lengkap')
-                                <p class='text-danger inputerror'>{{ $message }} </p>
-                                @enderror
-                                </div>
-
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label">No. Telepon</label>
-                                    <input type="number" name="no_telp" class="form-control border border-2 p-2" value='{{ old('no_telp') }}'>
-                                    @error('no_telp')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
 
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label">Jabatan</label>
-                                    <input type="number" name="jabatan" class="form-control border border-2 p-2" value='{{ old('jabatan') }}'>
-                                    @error('jabatan')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Kartu Tanda Mahasiswa</label>
+                                    <input type="file" class="form-control border border-2 p-2 @error('ktm') is-invalid @enderror" name="ktm">
+
+                                    <!-- error message untuk title -->
+                                    @error('ktm')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
 
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label">Password</label>
-                                    <input type="password" name="password" class="form-control border border-2 p-2" value='{{ old('password') }}'>
-                                    @error('password')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Surat Peryataan</label>
+                                    <input type="file" class="form-control border border-2 p-2 @error('s_pernyataan') is-invalid @enderror" name="s_pernyataan">
+
+                                    <!-- error message untuk title -->
+                                    @error('s_pernyataan')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
-
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label">Jenis Kelamin</label><br>
-                                    <select class="form-control border border-3 p-2" name="jenis_kelamin">
-                                        <option value="pria">Pria</option>
-                                        <option value="wanita">Wanita</option>
-                                      </select>
-                                    @error('jenis_kelamin')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label">Tanggal Lahir</label>
-                                    <input type="date" name="tanggal_lahir" class="form-control border border-2 p-2" value='{{ old('tanggal_lahir') }}'>
-                                    @error('tanggal_lahir')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-3 col-md-12">
-                                    <label for="floatingTextarea2">Alamat</label>
-                                    <textarea class="form-control border border-2 p-2"
-                                        placeholder=" Say something about your alamat" id="floatingTextarea2" name="alamat"
-                                        rows="4" cols="50">{{ old('alamat') }}</textarea>
-                                        @error('alamat')
-                                        <p class='text-danger inputerror'>{{ $message }} </p>
-                                        @enderror
                                 </div>
                             </div>
-                            <button type="submit" class="btn bg-gradient-dark">Submit</button>
+                            <div class="btn-group btn-group-lg d-flex justify-content-center" role="group" aria-label="Navigation">
+                                <button type="button" class="btn bg-gradient-dark mx-auto d-block">Kembali</button>
+                                <button type="button" class="btn bg-gradient-dark mx-auto d-block">Lanjut</button>
+                            </div>
                         </form>
 
                     </div>

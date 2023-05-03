@@ -59,8 +59,8 @@
                 <div class="card card-plain h-100">
                     <div class="card-header pb-0 p-3">
                         <div class="row">
-                            <div class="col-md-8 d-flex text-center align-items-center">
-                                <h3 class="mb-3">ISI BIODATA</h3>
+                            <div class="col-md-8 d-flex align-items-center">
+                                <h3 class="mb-3 ">ISI BIODATA</h3>
                             </div>
                         </div>
                     </div>
@@ -117,11 +117,18 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Jabatan</label>
-                                    <input type="number" name="jabatan" class="form-control border border-2 p-2" value='{{ old('jabatan') }}'>
+                                    <select class="form-control border border-3 p-2" name="jabatan">
+                                        @forelse (App\Models\Lowongan::all() as $lowongan)
+                                            <option value="{{ $lowongan->id }}">{{ $lowongan->nama_lowongan }}</option>
+                                        @empty
+                                            <option value="">Tidak ada lowongan</option>
+                                        @endforelse
+                                    </select>
                                     @error('jabatan')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                        <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
                                 </div>
+
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Password</label>
@@ -136,7 +143,7 @@
                                     <select class="form-control border border-3 p-2" name="jenis_kelamin">
                                         <option value="pria">Pria</option>
                                         <option value="wanita">Wanita</option>
-                                      </select>
+                                    </select>
                                     @error('jenis_kelamin')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -160,7 +167,10 @@
                                         @enderror
                                 </div>
                             </div>
-                            <button type="submit" class="btn bg-gradient-dark">Submit</button>
+                            <div class="btn-group btn-group-lg d-flex justify-content-center" role="group" aria-label="Navigation">
+                                <button type="button" class="btn bg-gradient-dark">Kembali</button>
+                                <button type="button" class="btn bg-gradient-dark">Lanjut</button>
+                            </div>
                         </form>
 
                     </div>

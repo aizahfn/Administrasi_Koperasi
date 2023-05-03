@@ -29,6 +29,15 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function berkas()
+    {
+        return $this->hasOne(Berkas::class);
+    }
+
+    public function lowongan()
+    {
+        return $this->belongsTo(Lowongan::class, 'id');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

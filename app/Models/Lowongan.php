@@ -13,4 +13,9 @@ class Lowongan extends Model
     protected $fillable = [
         'nama_lowongan', 'image', 'tanggal_lowongan', 'jumlah_lowongan', 'deskripsi_lowongan'
     ];
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 }

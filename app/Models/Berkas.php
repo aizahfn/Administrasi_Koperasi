@@ -10,9 +10,14 @@ class Berkas extends Model
     use HasFactory;
     protected $table ='berkas';
     protected $fillable = [
-        
+
         'ktp',
         'ktm',
         's_pernyataan'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_berkas');
+    }
 }
