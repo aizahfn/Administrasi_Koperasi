@@ -59,8 +59,8 @@
                 <div class="card card-plain h-100">
                     <div class="card-header pb-0 p-3">
                         <div class="row">
-                            <div class="col-md-8 d-flex align-items-center">
-                                <h6 class="mb-3">BIODATA</h6>
+                            <div class="col-md-8 d-flex text-center align-items-center">
+                                <h3 class="mb-3">ISI BIODATA</h3>
                             </div>
                         </div>
                     </div>

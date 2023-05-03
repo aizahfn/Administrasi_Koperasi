@@ -16,7 +16,7 @@ class UserController extends Controller
 
         return view('user.index', compact('user'));
     }
-    
+
     public function create(): View
     {
         // $berkas = Berkas::all();
@@ -68,7 +68,7 @@ class UserController extends Controller
         // return redirect()->route('user.index', ['success' => 'Data Berhasil Disimpan!']);
         // return redirect('/user')->with('status', 'Profile updated!');
         // return redirect('/user');
-        return redirect()->route('user.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('pages.datalowongan.data-lowongan')->with(['success' => 'Pendaftaran Berhasil, Mohon Menunggu Proses Verifikasi!']);
     }
 
     public function destroy($id): RedirectResponse
