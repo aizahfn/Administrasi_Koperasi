@@ -9,9 +9,15 @@
                     <div class="col-md-12 mt-4">
                         <div class="card">
                             <div class="card-header pb-0 px-3">
+<<<<<<< HEAD
                                 <h2 class="text-center mb-0 ">DAFTAR LOWONGAN</h2>
                             </div>
                             {{-- <div class="card-body pt-4 p-3">
+=======
+                                <h2 class="mb-0">DAFTAR LOWONGAN</h2>
+                            </div>
+                            <div class="card-body pt-4 p-3">
+>>>>>>> 4d56dc791a5a919e3c0705cf0adf5aad46aa1eb7
                                 <ul class="list-group">
                                     @forelse ($datalowongan as $data_lowongan)
                                         <li class="list-group-item border-3 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
@@ -38,6 +44,7 @@
                                         </div>
                                     @endforelse
                                 </ul>
+<<<<<<< HEAD
                             </div> --}}
 
                             <div class="card-body pt-4 p-3">
@@ -62,7 +69,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </li>
                                     @empty
                                         <div class="alert alert-danger" role="alert">
@@ -72,6 +78,11 @@
                                 </ul>
                             </div>
 
+                        </div>
+                    </div>
+                </div>
+=======
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -135,6 +146,7 @@
                         </div>
                     </div>
                 </div> --}}
+>>>>>>> 4d56dc791a5a919e3c0705cf0adf5aad46aa1eb7
                 <x-footers.auth></x-footers.auth>
             </div>
         </main>

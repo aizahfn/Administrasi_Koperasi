@@ -23,17 +23,9 @@ class ProfileController extends Controller
             'alamat'        => 'required',
             'jenis_kelamin' => 'required',
             'tanggal_lahir' => 'required',
-
-
-            'email' => 'required|email|unique:users,email,'.$user->id,
-            'name' => 'required',
-            'phone' => 'required|max:10',
-            'about' => 'required:max:150',
-            'location' => 'required'
         ]);
 
         auth()->user()->update($attributes);
         return back()->withStatus('Profile successfully updated.');
-
 }
 }
