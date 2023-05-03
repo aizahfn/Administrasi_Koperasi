@@ -60,11 +60,7 @@
                     <div class="card-header pb-0 p-3">
                         <div class="row">
                             <div class="col-md-8 d-flex align-items-center">
-<<<<<<< HEAD
                                 <h3 class="mb-3 ">ISI BIODATA</h3>
-=======
-                                <h6 class="mb-3">BIODATA</h6>
->>>>>>> 4d56dc791a5a919e3c0705cf0adf5aad46aa1eb7
                             </div>
                         </div>
                     </div>
@@ -121,7 +117,6 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Jabatan</label>
-<<<<<<< HEAD
                                     <select class="form-control border border-3 p-2" name="jabatan">
                                         @forelse (App\Models\Lowongan::all() as $lowongan)
                                             <option value="{{ $lowongan->id }}">{{ $lowongan->nama_lowongan }}</option>
@@ -135,14 +130,6 @@
                                 </div>
 
 
-=======
-                                    <input type="number" name="jabatan" class="form-control border border-2 p-2" value='{{ old('jabatan') }}'>
-                                    @error('jabatan')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
-                                    @enderror
-                                </div>
-
->>>>>>> 4d56dc791a5a919e3c0705cf0adf5aad46aa1eb7
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Password</label>
                                     <input type="password" name="password" class="form-control border border-2 p-2" value='{{ old('password') }}'>
@@ -156,11 +143,7 @@
                                     <select class="form-control border border-3 p-2" name="jenis_kelamin">
                                         <option value="pria">Pria</option>
                                         <option value="wanita">Wanita</option>
-<<<<<<< HEAD
                                     </select>
-=======
-                                      </select>
->>>>>>> 4d56dc791a5a919e3c0705cf0adf5aad46aa1eb7
                                     @error('jenis_kelamin')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -184,14 +167,10 @@
                                         @enderror
                                 </div>
                             </div>
-<<<<<<< HEAD
                             <div class="btn-group btn-group-lg d-flex justify-content-center" role="group" aria-label="Navigation">
                                 <button type="button" class="btn bg-gradient-dark">Kembali</button>
                                 <button type="button" class="btn bg-gradient-dark">Lanjut</button>
                             </div>
-=======
-                            <button type="submit" class="btn bg-gradient-dark">Submit</button>
->>>>>>> 4d56dc791a5a919e3c0705cf0adf5aad46aa1eb7
                         </form>
 
                     </div>
