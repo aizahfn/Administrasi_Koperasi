@@ -10,7 +10,7 @@ class Berkas extends Model
     use HasFactory;
     protected $table ='berkas';
     protected $fillable = [
-
+        
         'ktp',
         'ktm',
         's_pernyataan'

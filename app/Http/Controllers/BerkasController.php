@@ -19,7 +19,7 @@ class BerkasController extends Controller
 
     public function create(): View
     {
-        return view('berkas.create');
+        return view('pages.berkas.create');
     }
 
     public function store(Request $request): RedirectResponse
