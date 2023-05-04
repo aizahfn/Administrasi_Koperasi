@@ -11677,3 +11677,47 @@
 #61 C:\\laragon\\www\\Administrasi_Koperasi\\public\\index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #62 {main}
 "} 
+[2023-05-04 03:50:17] local.ERROR: Unmatched '}' {"exception":"[object] (ParseError(code: 0): Unmatched '}' at C:\\laragon\\www\\Administrasi_Koperasi\\app\\Console\\Commands\\DemoCron.php:55)
+[stacktrace]
+#0 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}('C:\\\\laragon\\\\www\\\\...')
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Console\\\\Com...')
+#2 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(343): is_subclass_of('App\\\\Console\\\\Com...', 'Illuminate\\\\Cons...')
+#3 C:\\laragon\\www\\Administrasi_Koperasi\\app\\Console\\Kernel.php(23): Illuminate\\Foundation\\Console\\Kernel->load(Array)
+#4 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(434): App\\Console\\Kernel->commands()
+#5 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#6 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 {main}
+"} 
+[2023-05-04 03:50:17] local.ERROR: Unmatched '}' {"exception":"[object] (ParseError(code: 0): Unmatched '}' at C:\\laragon\\www\\Administrasi_Koperasi\\app\\Console\\Commands\\DemoCron.php:55)
+[stacktrace]
+#0 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}('C:\\\\laragon\\\\www\\\\...')
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Console\\\\Com...')
+#2 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(343): is_subclass_of('App\\\\Console\\\\Com...', 'Illuminate\\\\Cons...')
+#3 C:\\laragon\\www\\Administrasi_Koperasi\\app\\Console\\Kernel.php(23): Illuminate\\Foundation\\Console\\Kernel->load(Array)
+#4 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(434): App\\Console\\Kernel->commands()
+#5 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#6 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 {main}
+"} 
+[2023-05-04 03:50:18] local.ERROR: Unmatched '}' {"exception":"[object] (ParseError(code: 0): Unmatched '}' at C:\\laragon\\www\\Administrasi_Koperasi\\app\\Console\\Commands\\DemoCron.php:55)
+[stacktrace]
+#0 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}('C:\\\\laragon\\\\www\\\\...')
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Console\\\\Com...')
+#2 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(343): is_subclass_of('App\\\\Console\\\\Com...', 'Illuminate\\\\Cons...')
+#3 C:\\laragon\\www\\Administrasi_Koperasi\\app\\Console\\Kernel.php(23): Illuminate\\Foundation\\Console\\Kernel->load(Array)
+#4 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(434): App\\Console\\Kernel->commands()
+#5 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#6 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 {main}
+"} 
+[2023-05-04 03:50:23] local.ERROR: Unmatched '}' {"exception":"[object] (ParseError(code: 0): Unmatched '}' at C:\\laragon\\www\\Administrasi_Koperasi\\app\\Console\\Commands\\DemoCron.php:55)
+[stacktrace]
+#0 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}('C:\\\\laragon\\\\www\\\\...')
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Console\\\\Com...')
+#2 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(343): is_subclass_of('App\\\\Console\\\\Com...', 'Illuminate\\\\Cons...')
+#3 C:\\laragon\\www\\Administrasi_Koperasi\\app\\Console\\Kernel.php(23): Illuminate\\Foundation\\Console\\Kernel->load(Array)
+#4 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(434): App\\Console\\Kernel->commands()
+#5 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#6 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 {main}
+"} 
