@@ -51,48 +51,64 @@ class MultipleStepsFormController extends Controller
             $request->session()->put('user', $user);
         }
 
-        return redirect()->route('pages.berkas.create');
+        $user->fill($validatedData);
+
+        return redirect()->route('pages.berkas.create',['id_user' => $user->id]);
     }
 
     public function createStepTwo(Request $request)
     {
         $user = $request->session()->get('user');
-        $berkas = Berkas::all();
-
-        return view('pages.berkas.create', compact('user', 'berkas'));
+        return view('pages.berkas.create', compact('user'));
     }
 
     public function postCreateStepTwo(Request $request)
     {
         $validatedData = $request->validate([
-            'ktp'           => 'required',
-            'ktm'           => 'required',
-            's_pernyataan'  => 'required',
+            'ktp'            => 'required|image|mimes:jpeg,jpg,png|max:10000',
+            'ktm'            => 'required|image|mimes:jpeg,jpg,png|max:10000',
+            's_pernyataan'   => 'required|image|mimes:jpeg,jpg,png|max:10000'
         ]);
 
-            $user = $request->session()->get('user');
-            $user->fill($validatedData);
-            $request->session()->put('user', $user);
+        $user = $request->session()->get('user');
+
+        if (!$user) {
+            return redirect()->route('pages.user.create');
         }
 
-        return redirect()->route('pages.konfirmasi');
+        $berkas = new Berkas();
+        $berkas->fill($validatedData);
+        $berkas->id_user = $user->id;
+        $request->session()->put('berkas', $berkas);
+        return redirect()->route('pages.review',['id_user' => $user->id]);
     }
 
     public function createStepThree(Request $request)
     {
         $user = $request->session()->get('user');
-        $berkas = Berkas::all();
+        $berkas = $request->session()->get('berkas');
 
-        return view('pages.konfirmasi', compact('user', 'berkas'));
+        if (!$user || !$berkas) {
+            return redirect()->route('pages.user.create');
+        }
+
+        return view('pages.review', compact('user', 'berkas'));
     }
 
     public function postCreateStepThree(Request $request)
     {
         $user = $request->session()->get('user');
+        $berkas = $request->session()->get('berkas');
+
+        // Save user and berkas to database
         $user->save();
+        $berkas->save();
 
+        // Clear session data
         $request->session()->forget('user');
+        $request->session()->forget('berkas');
 
-        return redirect()->route('pages.datalowongan.data-lowongan');
+        return redirect()->route('pages.datalowongan.data-lowongan')
+            ->with('success','Data Pendaftaran Berhasil Disimpan, Mohon Tunggu Konfirmasi Selanjutnya');
     }
 }
