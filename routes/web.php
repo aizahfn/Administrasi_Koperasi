@@ -8,7 +8,11 @@ use App\Http\Controllers\BerkasController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArsipController;
 use App\Http\Controllers\PenjadwalanController;
-
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\MultipleStepsFormController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +31,21 @@ Route::resource('user', UserController::class);
 Route::resource('arsip', ArsipController::class);
 Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
 
+//Multiple Step Form Route
+Route::get('/create-step-one', [MultipleStepsFormController::class, 'createStepOne'])->name('pages.user.create');
+Route::post('/create-step-one', [MultipleStepsFormController::class, 'postCreateStepOne'])->name('pages.user.postCreateStepOne');
+
+// Route for the second step
+Route::get('/create-step-two', [MultipleStepsFormController::class, 'createStepTwo'])->name('pages.berkas.create');
+Route::post('/create-step-two', [MultipleStepsFormController::class, 'postCreateStepTwo'])->name('pages.berkas.postCreateStepTwo');
+
+// Route for the third step
+Route::get('/review', [MultipleStepsFormController::class, 'createStepThree'])->name('pages.review');
+Route::post('/review', [MultipleStepsFormController::class, 'postCreateStepThree'])->name('pages.postCreateStepThree');
+
+// Route to view the list of lowongan
+Route::get('/datalowongan', [MultipleStepsFormController::class, 'index'])->name('pages.datalowongan.data-lowongan');
+
 //Route Penjadwalan
 /*Route::get('/penjadwalan', [PenjadwalanController::class, 'index'])->name('penjadwalans');
 Route::get('/create', [PenjadwalanController::class, 'create'])->name('createJadwal');
@@ -36,16 +55,7 @@ Route::get('/edit/{id}', [PenjadwalanController::class, 'edit'])->name('edit');
 Route::post('/update/{id}', [PenjadwalanController::class, 'update'])->name('update');
 */
 
-Route::resource('lowongan', LowonganController::class);
-Route::resource('user', UserController::class);
-
-
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\SessionsController;
-
-
+//Default dari Template
 Route::get('/', function () {return redirect('sign-in');})->middleware('guest');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 Route::get('sign-up', [RegisterController::class, 'create'])->middleware('guest')->name('register');
