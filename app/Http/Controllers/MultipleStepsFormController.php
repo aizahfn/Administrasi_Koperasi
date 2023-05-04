@@ -70,11 +70,6 @@ class MultipleStepsFormController extends Controller
             's_pernyataan'  => 'required',
         ]);
 
-        if(empty($request->session()->get('user'))){
-            $user = new User();
-            $user->fill($validatedData);
-            $request->session()->put('user', $user);
-        }else{
             $user = $request->session()->get('user');
             $user->fill($validatedData);
             $request->session()->put('user', $user);
