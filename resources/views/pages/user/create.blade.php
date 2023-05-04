@@ -169,7 +169,7 @@
                             </div>
                             <div class="btn-group btn-group-lg d-flex justify-content-center" role="group" aria-label="Navigation">
                                 <button type="submit" class="btn bg-gradient-dark">Kembali</button>
-                                <button type="submit" class="btn bg-gradient-dark">Lanjut</button>
+                                <button type="button" class="btn bg-gradient-dark">Lanjut</button>
                             </div>
                         </form>
 

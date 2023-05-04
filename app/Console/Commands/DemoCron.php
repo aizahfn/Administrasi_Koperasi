@@ -35,20 +35,5 @@ class DemoCron extends Command
         I am getting users and create new users if not exist....
         --------------------------------------------
         --------------------------------------------*/
-        $response = Http::get('https://jsonplaceholder.typicode.com/users');
-
-        $users = $response->json();
-
-        if (!empty($users)) {
-            foreach ($users as $key => $user) {
-                if(!User::where('email', $user['email'])->exists() ){
-                    User::create([
-                        'name' => $user['name'],
-                        'email' => $user['email'],
-                        'password' => bcrypt('123456789')
-                    ]);
-                }
-            }
-        }
     }
 }

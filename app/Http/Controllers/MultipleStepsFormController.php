@@ -100,6 +100,9 @@ class MultipleStepsFormController extends Controller
         $user = $request->session()->get('user');
         $berkas = $request->session()->get('berkas');
 
+        if (!$user || !$berkas) {
+            return redirect()->route('pages.user.create');
+        }
         // Save user and berkas to database
         $user->save();
         $berkas->save();
