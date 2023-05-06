@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                         @endif
-                        <form method='POST' action='{{ route('pages.berkas.postCreateStepTwo') }}' enctype="multipart/form-data">
+                        <form method='POST' action='{{ route('pages.pendaftaran.postCreateStepTwo') }}' enctype="multipart/form-data">
                             @csrf
                                 <div class="form-group mb-3">
                                     <label class="form-label">Kartu Tanda Penduduk</label>
@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                             <div class="btn-group btn-group-lg d-flex justify-content-center" role="group" aria-label="Navigation">
-                                <button href="{{ route('pages.user.create') }}" type="button" class="btn bg-gradient-dark mx-auto d-block">Kembali</button>
+                                {{-- <button href="{{ route('pages.user.create') }}" type="button" class="btn bg-gradient-dark mx-auto d-block">Kembali</button> --}}
                                 <button type="submit" class="btn bg-gradient-dark mx-auto d-block">Lanjut</button>
                             </div>
                         </form>

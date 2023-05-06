@@ -25,9 +25,8 @@ class MultipleStepsFormController extends Controller
     {
         $user = $request->session()->get('user');
 
-        return view('pages.user.create', compact('user'));
+        return view('pages.pendaftaran.biodata', compact('user'));
     }
-
     public function postCreateStepOne(Request $request)
     {
         $validatedData = $request->validate([
@@ -53,13 +52,13 @@ class MultipleStepsFormController extends Controller
 
         $user->fill($validatedData);
 
-        return redirect()->route('pages.berkas.create',['id_user' => $user->id]);
+        return redirect()->route('pages.pendaftaran.berkas',['id_user' => $user->id]);
     }
 
     public function createStepTwo(Request $request)
     {
         $user = $request->session()->get('user');
-        return view('pages.berkas.create', compact('user'));
+        return view('pages.pendaftaran.berkas', compact('user'));
     }
 
     public function postCreateStepTwo(Request $request)
@@ -73,7 +72,7 @@ class MultipleStepsFormController extends Controller
         $user = $request->session()->get('user');
 
         if (!$user) {
-            return redirect()->route('pages.user.create');
+            return redirect()->route('pages.pendaftaran.review');
         }
 
         $berkas = new Berkas();
