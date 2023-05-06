@@ -23,7 +23,7 @@
                             </div>
                             <div class="card-body">
                                 <form role="form" class="text-center">
-                                    <div class="btn d-flex justify-content-center">
+                                    {{-- <div class="btn d-flex justify-content-center">
                                         <a href="{{ route('pages.pendaftaran.lowongan') }}">
                                             <button type="button" class="btn bg-gradient-dark w-100 btn-lg" >Pendaftaran Anggota Koperasi</button>
                                         </a>
@@ -33,8 +33,13 @@
                                     </div>
                                     <div class="btn d-flex justify-content-center">
                                         <button type="button" class="btn bg-gradient-dark w-100 btn-lg">Penjadwalan</button>
-                                    </div>
+                                    </div> --}}
 
+                                    <div class="list-group">
+                                        <a href="{{ route('pages.pendaftaran.lowongan') }}" class="list-group-item list-group-item-action btn bg-gradient-dark w-100 btn-lg p-4 mb-5">Pendaftaran Anggota Koperasi</a>
+                                        <a href="#" class="list-group-item list-group-item-action btn bg-gradient-dark w-100 btn-lg p-4 mb-5">Arsip Surat dan Dokumen</a>
+                                        <a href="#" class="list-group-item list-group-item-action btn bg-gradient-dark w-100 btn-lg p-4 mb-5">Penjadwalan</a>
+                                    </div>
                                 </form>
                             </div>
                         </div>

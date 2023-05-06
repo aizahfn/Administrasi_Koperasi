@@ -71,7 +71,7 @@
                                 </div>
 
                                 <div class="mb-3 col-md-6">
-                                    <label class="form-label">Jabatan</label>
+                                    <label class="form-label">Lowongan yang Dilamar</label>
                                     <select class="form-control border border-3 p-2" name="jabatan">
                                         @forelse (App\Models\Lowongan::all() as $lowongan)
                                             <option value="{{ $lowongan->id }}">{{ $lowongan->nama_lowongan }}</option>
