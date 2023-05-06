@@ -22,26 +22,11 @@
                                 </div>
                             </div>
                             <div class="card-body">
-
                                 <form role="form" class="text-center">
-                                    {{-- <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">Email</label>
-                                        <input type="email" class="form-control" name="email" required>
-                                    </div>
-                                    <div class="input-group input-group-outline mb-3">
-                                        <label class="form-label">Password</label>
-                                        <input type="password" class="form-control" name="password" required>
-                                    </div>
-                                    <div class="form-check form-switch d-flex align-items-center mb-3">
-                                        <input class="form-check-input" type="checkbox" id="rememberMe">
-                                        <label class="form-check-label mb-0 ms-2" for="rememberMe">Remember
-                                            me</label>
-                                    </div> --}}
                                     <div class="btn d-flex justify-content-center">
-                                        <button type="button" class="btn bg-gradient-dark w-100 btn-lg" >Pendaftaran Anggota Koperasi
-                                            a href="{{ route('') }}"
-                                        </button>
-
+                                        <a href="{{ route('pages.pendaftaran.lowongan') }}">
+                                            <button type="button" class="btn bg-gradient-dark w-100 btn-lg" >Pendaftaran Anggota Koperasi</button>
+                                        </a>
                                     </div>
                                     <div class="btn d-flex justify-content-center">
                                         <button type="button" class="btn bg-gradient-dark w-100 btn-lg">Arsip Surat dan Dokumen</button>
@@ -49,11 +34,7 @@
                                     <div class="btn d-flex justify-content-center">
                                         <button type="button" class="btn bg-gradient-dark w-100 btn-lg">Penjadwalan</button>
                                     </div>
-                                    {{-- <p class="mt-4 text-sm text-center">
-                                        Don't have an account?
-                                        <a href="{{ route('static-sign-up') }}"
-                                            class="text-primary text-gradient font-weight-bold">Sign up</a>
-                                    </p> --}}
+
                                 </form>
                             </div>
                         </div>

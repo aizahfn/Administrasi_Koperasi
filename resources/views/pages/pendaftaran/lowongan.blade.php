@@ -27,7 +27,7 @@
                                                     <h6 class="m-3 text-start">{{ $data_lowongan->tanggal_lowongan }}</h6>
                                                     <div class="ms-auto text-end">
                                                         <a class="btn btn-link text-danger text-gradient m-3"
-                                                            href="javascript:;">
+                                                            href="{{ route('pages.pendaftaran.biodata') }}">
                                                             <i class="material-icons text-lg me-2">register</i> Daftar
                                                         </a>
                                                     </div>

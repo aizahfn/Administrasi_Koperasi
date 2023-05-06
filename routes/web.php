@@ -25,12 +25,29 @@ use App\Http\Controllers\MultipleStepsFormController;
 |
 */
 
+//UNTUK TABEL-TABEL DULU YANG DIBUAT
 //Route::resource('koperasi', KoperasiController::class);
 Route::resource('datalowongan', LowonganController::class);
 Route::resource('berkas', BerkasController::class);
 Route::resource('user', UserController::class);
 //Route::resource('arsip', ArsipController::class);
 //Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
+//
+//Route Penjadwalan
+/*Route::get('/penjadwalan', [PenjadwalanController::class, 'index'])->name('penjadwalans');
+Route::get('/create', [PenjadwalanController::class, 'create'])->name('createJadwal');
+Route::post('/saveJadwal', [PenjadwalanController::class, 'saveJadwal'])->name('saveJadwal');
+Route::get('/Delete/{id}', [PenjadwalanController::class, 'Delete'])->name('Delete');
+Route::get('/edit/{id}', [PenjadwalanController::class, 'edit'])->name('edit');
+Route::post('/update/{id}', [PenjadwalanController::class, 'update'])->name('update');
+*/
+
+
+//HALAMAN UTAMA
+Route::get('/', function () {return redirect('halaman-utama');})->middleware('guest');
+Route::get('halaman-utama', function () {
+    return view('pages.halaman-utama');
+})->name('halaman-utama');
 
 //Multiple Step Form Route
 Route::get('/lowongan', [MultipleStepsFormController::class, 'lowongan'])->name('pages.pendaftaran.lowongan');
@@ -43,26 +60,8 @@ Route::post('/create-step-two', [MultipleStepsFormController::class, 'postCreate
 Route::get('/review', [MultipleStepsFormController::class, 'createStepThree'])->name('pages.review');
 Route::post('/review', [MultipleStepsFormController::class, 'postCreateStepThree'])->name('pages.pendaftaran.postCreateStepThree');
 
-Route::get('halaman-utama', function () {
-    return view('pages.halaman-utama');
-})->name('halaman-utama');
-
 // Route to view the list of lowongan
 
-
-//
-//Route Penjadwalan
-/*Route::get('/penjadwalan', [PenjadwalanController::class, 'index'])->name('penjadwalans');
-Route::get('/create', [PenjadwalanController::class, 'create'])->name('createJadwal');
-Route::post('/saveJadwal', [PenjadwalanController::class, 'saveJadwal'])->name('saveJadwal');
-Route::get('/Delete/{id}', [PenjadwalanController::class, 'Delete'])->name('Delete');
-Route::get('/edit/{id}', [PenjadwalanController::class, 'edit'])->name('edit');
-Route::post('/update/{id}', [PenjadwalanController::class, 'update'])->name('update');
-*/
-
-
-
-Route::get('/', function () {return redirect('sign-in');})->middleware('guest');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('guest')->name('dashboard');
 Route::get('sign-up', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('sign-up', [RegisterController::class, 'store'])->middleware('guest');
