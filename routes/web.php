@@ -35,18 +35,21 @@ Route::resource('user', UserController::class);
 //Multiple Step Form Route
 Route::get('/create-step-one', [MultipleStepsFormController::class, 'createStepOne'])->name('pages.pendaftaran.biodata');
 Route::post('/create-step-one', [MultipleStepsFormController::class, 'postCreateStepOne'])->name('pages.pendaftaran.postCreateStepOne');
-
 // Route for the second step
 Route::get('/create-step-two', [MultipleStepsFormController::class, 'createStepTwo'])->name('pages.pendaftaran.berkas');
 Route::post('/create-step-two', [MultipleStepsFormController::class, 'postCreateStepTwo'])->name('pages.pendaftaran.postCreateStepTwo');
-
 // Route for the third step
 Route::get('/review', [MultipleStepsFormController::class, 'createStepThree'])->name('pages.review');
 Route::post('/review', [MultipleStepsFormController::class, 'postCreateStepThree'])->name('pages.pendaftaran.postCreateStepThree');
 
+Route::get('halaman-utama', function () {
+    return view('pages.halaman-utama');
+})->name('halaman-utama');
+
 // Route to view the list of lowongan
 Route::get('/datalowongan', [MultipleStepsFormController::class, 'index'])->name('pages.datalowongan.data-lowongan');
 
+//
 //Route Penjadwalan
 /*Route::get('/penjadwalan', [PenjadwalanController::class, 'index'])->name('penjadwalans');
 Route::get('/create', [PenjadwalanController::class, 'create'])->name('createJadwal');

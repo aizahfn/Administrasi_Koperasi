@@ -46,7 +46,7 @@
                             @csrf
                                 <div class="form-group mb-3">
                                     <label class="form-label">Kartu Tanda Penduduk</label>
-                                    <input type="file" class="form-control border border-2 p-2 @error('ktp') is-invalid @enderror" name="ktp">
+                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('ktp') is-invalid @enderror" name="ktp">
 
                                     <!-- error message untuk title -->
                                     @error('ktp')
@@ -58,7 +58,7 @@
 
                                 <div class="form-group mb-3">
                                     <label class="form-label">Kartu Tanda Mahasiswa</label>
-                                    <input type="file" class="form-control border border-2 p-2 @error('ktm') is-invalid @enderror" name="ktm">
+                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('ktm') is-invalid @enderror" name="ktm">
 
                                     <!-- error message untuk title -->
                                     @error('ktm')
@@ -70,7 +70,7 @@
 
                                 <div class="form-group mb-3">
                                     <label class="form-label">Surat Peryataan</label>
-                                    <input type="file" class="form-control border border-2 p-2 @error('s_pernyataan') is-invalid @enderror" name="s_pernyataan">
+                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('s_pernyataan') is-invalid @enderror" name="s_pernyataan">
 
                                     <!-- error message untuk title -->
                                     @error('s_pernyataan')
