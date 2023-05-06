@@ -18,9 +18,7 @@ class LowonganController extends Controller
     public function index(): View
     {
         $datalowongan = Lowongan::latest()->paginate(5);
-
-        return view('pages.datalowongan.data-lowongan',compact('datalowongan'))
-                    ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('datalowongan.index',compact('datalowongan'));
     }
 
     /**
@@ -28,7 +26,7 @@ class LowonganController extends Controller
      */
     public function create(): View
     {
-        return view('pages.datalowongan.create');
+        return view('datalowongan.create');
     }
 
     /**
