@@ -40,19 +40,11 @@ class MultipleStepsFormController extends Controller
             'tanggal_lahir' => 'required',
         ]);
 
-        if(empty($request->session()->get('user'))){
-            $user = new User();
-            $user->fill($validatedData);
-            $request->session()->put('user', $user);
-        }else{
-            $user = $request->session()->get('user');
-            $user->fill($validatedData);
-            $request->session()->put('user', $user);
-        }
-
+        $user = new User();
         $user->fill($validatedData);
+        $request->session()->put('user', $user);
 
-        return redirect()->route('pages.pendaftaran.berkas',['id_user' => $user->id]);
+        return redirect()->route('pages.pendaftaran.berkas');
     }
 
     public function createStepTwo(Request $request)
@@ -79,7 +71,7 @@ class MultipleStepsFormController extends Controller
         $berkas->fill($validatedData);
         $berkas->id_user = $user->id;
         $request->session()->put('berkas', $berkas);
-        return redirect()->route('pages.review',['id_user' => $user->id]);
+        return redirect()->route('pages.review');
     }
 
     public function createStepThree(Request $request)
@@ -91,7 +83,7 @@ class MultipleStepsFormController extends Controller
             return redirect()->route('pages.user.create');
         }
 
-        return view('pages.review', compact('user', 'berkas'));
+        return view('pages.pendaftaran.review', compact('user', 'berkas'));
     }
 
     public function postCreateStepThree(Request $request)
@@ -111,7 +103,7 @@ class MultipleStepsFormController extends Controller
         $request->session()->forget('user');
         $request->session()->forget('berkas');
 
-        return redirect()->route('pages.datalowongan.data-lowongan')
+        return redirect()->route('pages.halaman-utama')
             ->with('success','Data Pendaftaran Berhasil Disimpan, Mohon Tunggu Konfirmasi Selanjutnya');
     }
 }

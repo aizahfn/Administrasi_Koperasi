@@ -54,11 +54,11 @@ Route::get('/lowongan', [MultipleStepsFormController::class, 'lowongan'])->name(
 Route::get('/create-step-one', [MultipleStepsFormController::class, 'createStepOne'])->name('pages.pendaftaran.biodata');
 Route::post('/create-step-one', [MultipleStepsFormController::class, 'postCreateStepOne'])->name('pages.pendaftaran.postCreateStepOne');
 // Route for the second step
-Route::get('/create-step-two', [MultipleStepsFormController::class, 'createStepTwo'])->name('pages.pendaftaran.berkas');
-Route::post('/create-step-two', [MultipleStepsFormController::class, 'postCreateStepTwo'])->name('pages.pendaftaran.postCreateStepTwo');
+Route::get('/create-step-two/{id_user}', [MultipleStepsFormController::class, 'createStepTwo'])->name('pages.pendaftaran.berkas');
+Route::post('/create-step-two/{id_user}', [MultipleStepsFormController::class, 'postCreateStepTwo'])->name('pages.pendaftaran.postCreateStepTwo');
 // Route for the third step
-Route::get('/review', [MultipleStepsFormController::class, 'createStepThree'])->name('pages.review');
-Route::post('/review', [MultipleStepsFormController::class, 'postCreateStepThree'])->name('pages.pendaftaran.postCreateStepThree');
+Route::get('/review/{id_user}', [MultipleStepsFormController::class, 'createStepThree'])->name('pages.review');
+Route::post('/review/{id_user}', [MultipleStepsFormController::class, 'postCreateStepThree'])->name('pages.pendaftaran.postCreateStepThree');
 
 // Route to view the list of lowongan
 
