@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                             <div class="btn-group btn-group-lg d-flex justify-content-center" role="group" aria-label="Navigation">
-                                <button type="button" class="btn bg-gradient-dark">Kembali</button>
+                                <a href="{{ route('pages.pendaftaran.biodata') }}" type="button" class="btn bg-gradient-dark">Kembali</a>
                                 <button type="submit" class="btn bg-gradient-dark">Lanjut</button>
                             </div>
                         </form>
