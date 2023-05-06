@@ -13,11 +13,11 @@ use App\Models\Lowongan;
 
 class MultipleStepsFormController extends Controller
 {
-    public function index(): View
+    public function lowongan(): View
     {
         $datalowongan = Lowongan::latest()->paginate(5);
 
-        return view('pages.datalowongan.data-lowongan',compact('datalowongan'))
+        return view('pages.pendaftaran.lowongan',compact('datalowongan'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

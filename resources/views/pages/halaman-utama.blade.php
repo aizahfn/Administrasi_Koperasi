@@ -17,11 +17,12 @@
                     <div class="col-lg-4 col-md-8 col-12 mx-auto">
                         <div class="card z-index-0 fadeIn3 fadeInBottom">
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+                                <div class="bg-gradient-primary shadow-primary border-radius-lg py-4 pe-3">
                                     <h3 class="text-white font-weight-bolder text-center mt-2 mb-0">Menu Administrasi</h3>
                                 </div>
                             </div>
                             <div class="card-body">
+
                                 <form role="form" class="text-center">
                                     {{-- <div class="input-group input-group-outline my-3">
                                         <label class="form-label">Email</label>
@@ -36,17 +37,17 @@
                                         <label class="form-check-label mb-0 ms-2" for="rememberMe">Remember
                                             me</label>
                                     </div> --}}
-                                    <div class="text-center">
-                                        <button type="button" class="btn-group btn-group-lg d-flex justify-content-center w-100 my-4 mb-3">Sign
-                                            in</button>
-                                            <button type="button" class="btn-group btn-group-lg d-flex justify-content-center w-100 my-4 mb-3">Sign
-                                                in</button>
+                                    <div class="btn d-flex justify-content-center">
+                                        <button type="button" class="btn bg-gradient-dark w-100 btn-lg" >Pendaftaran Anggota Koperasi
+                                            a href="{{ route('') }}"
+                                        </button>
+
                                     </div>
-                                    <div class="text-center">
+                                    <div class="btn d-flex justify-content-center">
+                                        <button type="button" class="btn bg-gradient-dark w-100 btn-lg">Arsip Surat dan Dokumen</button>
                                     </div>
-                                    <div class="text-center">
-                                        <button type="button" class="btn-group btn-group-lg d-flex justify-content-center my-4 mb-3">Sign
-                                            in</button>
+                                    <div class="btn d-flex justify-content-center">
+                                        <button type="button" class="btn bg-gradient-dark w-100 btn-lg">Penjadwalan</button>
                                     </div>
                                     {{-- <p class="mt-4 text-sm text-center">
                                         Don't have an account?

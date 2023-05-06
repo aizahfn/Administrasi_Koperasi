@@ -33,6 +33,7 @@ Route::resource('user', UserController::class);
 //Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
 
 //Multiple Step Form Route
+Route::get('/lowongan', [MultipleStepsFormController::class, 'lowongan'])->name('pages.pendaftaran.lowongan');
 Route::get('/create-step-one', [MultipleStepsFormController::class, 'createStepOne'])->name('pages.pendaftaran.biodata');
 Route::post('/create-step-one', [MultipleStepsFormController::class, 'postCreateStepOne'])->name('pages.pendaftaran.postCreateStepOne');
 // Route for the second step
@@ -47,7 +48,7 @@ Route::get('halaman-utama', function () {
 })->name('halaman-utama');
 
 // Route to view the list of lowongan
-Route::get('/datalowongan', [MultipleStepsFormController::class, 'index'])->name('pages.datalowongan.data-lowongan');
+
 
 //
 //Route Penjadwalan
