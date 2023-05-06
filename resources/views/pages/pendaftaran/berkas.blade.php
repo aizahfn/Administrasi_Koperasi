@@ -15,7 +15,7 @@
                     <div class="card-header pb-0 p-3">
                         <div class="row">
                             <div class="col-md-8 d-flex align-items-center">
-                                <h3 class="mb-3">UPLOAD BERKAS</h3>
+                                <h3 class="mb-0">UPLOAD BERKAS</h3>
                             </div>
                         </div>
                     </div>
@@ -42,6 +42,9 @@
                                     </div>
                                 </div>
                         @endif
+                        <div class="col-md-8 d-flex align-items-center">
+                            <h6 class="mb-5">format jpg, jpeg, dan png</h6>
+                        </div>
                         <form method='POST' action='{{ route('pages.pendaftaran.postCreateStepTwo') }}' enctype="multipart/form-data">
                             @csrf
                                 <div class="form-group mb-3">
@@ -68,7 +71,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group mb-3">
+                                <div class="form-group mb-5">
                                     <label class="form-label">Surat Peryataan</label>
                                     <input type="file" class="form-control form-control-lg border border-2 p-2 @error('s_pernyataan') is-invalid @enderror" name="s_pernyataan">
 
@@ -82,8 +85,8 @@
                                 </div>
                             </div>
                             <div class="btn-group btn-group-lg d-flex justify-content-center" role="group" aria-label="Navigation">
-                                {{-- <button href="{{ route('pages.user.create') }}" type="button" class="btn bg-gradient-dark mx-auto d-block">Kembali</button> --}}
-                                <button type="submit" class="btn bg-gradient-dark mx-auto d-block">Lanjut</button>
+                                <button type="button" class="btn bg-gradient-dark">Kembali</button>
+                                <button type="submit" class="btn bg-gradient-dark">Lanjut</button>
                             </div>
                         </form>
 
