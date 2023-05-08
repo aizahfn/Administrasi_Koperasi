@@ -36,4 +36,4 @@ Deploy:
     - ssh $VAR_USER@$VAR_IP "systemctl restart nginx"
     # - ssh $VAR_USER@$VAR_IP "if [ -f $VAR_DIREKTORI/.htaccess ]; then rm $VAR_DIREKTORI/.htaccess; fi"
     # - ssh $VAR_USER@$VAR_IP "cd $VAR_DIREKTORI && echo '$VAR_FILE_HTACCESS' >> .htaccess"
-    - echo "SELESAI!"
+    - echo "SELESAIi!"
