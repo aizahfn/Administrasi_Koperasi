@@ -4,11 +4,11 @@ stages:
 Deploy:
   stage: deploy
   variables:
-    VAR_DIREKTORI: "/home/administrasi_koprasi/www"
+    VAR_DIREKTORI: "/var/www/html/administrasi_koprasi"
     VAR_GIT_URL_TANPA_HTTP: "gitlab.com/RizkiWijanarko2/Administrasi_Koperasi.git"
     VAR_CLONE_KEY: "glpat-htQRuStkm95P5cXACgsP"
-    VAR_USER: "deployer"
-    VAR_IP: "103.253.145.236"
+    VAR_USER: "root"
+    VAR_IP: "mc.hoaks.my.id"
     VAR_FILE_ENV: $FILE_ENV
     VAR_FILE_HTACCESS: $FILE_HTACCESS
 
@@ -20,20 +20,20 @@ Deploy:
     - chmod 700 ~/.ssh
     - ssh-keyscan $VAR_IP >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-    - echo "$VAR_FILE_HTACCESS"
+    # - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
   script:
     - ssh $VAR_USER@$VAR_IP "git config --global safe.directory '*'"
     - ssh $VAR_USER@$VAR_IP "if [ ! -d $VAR_DIREKTORI/.git ]; then echo 'Project belum ditemukan di direktori $VAR_DIREKTORI' && cd $VAR_DIREKTORI && git clone https://oauth2:$VAR_CLONE_KEY@$VAR_GIT_URL_TANPA_HTTP .; fi"
-    - ssh $VAR_USER@$VAR_IP "cd $VAR_DIREKTORI && git pull origin master && exit"
+    - ssh $VAR_USER@$VAR_IP "cd $VAR_DIREKTORI && git pull && exit"
     - ssh $VAR_USER@$VAR_IP "if [ -f $VAR_DIREKTORI/.env ]; then rm $VAR_DIREKTORI/.env; fi"
     - ssh $VAR_USER@$VAR_IP "cd $VAR_DIREKTORI && echo '$VAR_FILE_ENV' >> .env"
-    - ssh $VAR_USER@$VAR_IP "if [ -f $VAR_DIREKTORI/.htaccess ]; then rm $VAR_DIREKTORI/.htaccess; fi"
-    - ssh $VAR_USER@$VAR_IP "cd $VAR_DIREKTORI && echo '$VAR_FILE_HTACCESS' >> .htaccess"
-    - ssh $VAR_USER@$VAR_IP "docker exec webserver_koprasi composer install"
-    - ssh $VAR_USER@$VAR_IP "docker exec webserver_koprasi composer update"
-    - ssh $VAR_USER@$VAR_IP "docker exec webserver_koprasi php artisan migrate"
-    # - ssh $VAR_USER@$VAR_IP "docker exec webserver_koprasi php artisan db:seed"
-    - ssh $VAR_USER@$VAR_IP "docker exec webserver_koprasi php artisan key:generate"
+    - ssh $VAR_USER@$VAR_IP "export COMPOSER_ALLOW_SUPERUSER=1 && cd $VAR_DIREKTORI && composer install"
+    - ssh $VAR_USER@$VAR_IP "export COMPOSER_ALLOW_SUPERUSER=1 && cd $VAR_DIREKTORI && composer update"
+    - ssh $VAR_USER@$VAR_IP "cd $VAR_DIREKTORI && php artisan migrate"
+    # - ssh $VAR_USER@$VAR_IP "cd $VAR_DIREKTORI && php artisan db:seed"
+    - ssh $VAR_USER@$VAR_IP "cd $VAR_DIREKTORI && php artisan key:generate"
+    - ssh $VAR_USER@$VAR_IP "systemctl restart nginx"
+    # - ssh $VAR_USER@$VAR_IP "if [ -f $VAR_DIREKTORI/.htaccess ]; then rm $VAR_DIREKTORI/.htaccess; fi"
+    # - ssh $VAR_USER@$VAR_IP "cd $VAR_DIREKTORI && echo '$VAR_FILE_HTACCESS' >> .htaccess"
     - echo "SELESAI!"
