@@ -1,0 +1,16 @@
+[2023-05-09 17:15:13] local.ERROR: rename(C:\laragon\www\Administrasi_Koperasi\bootstrap\cache\ser5C7D.tmp,C:\laragon\www\Administrasi_Koperasi\bootstrap\cache/services.php): Access is denied (code: 5) {"exception":"[object] (ErrorException(code: 0): rename(C:\\laragon\\www\\Administrasi_Koperasi\\bootstrap\\cache\\ser5C7D.tmp,C:\\laragon\\www\\Administrasi_Koperasi\\bootstrap\\cache/services.php): Access is denied (code: 5) at C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php:233)
+[stacktrace]
+#0 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(250): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'rename(C:\\\\larag...', 'C:\\\\laragon\\\\www\\\\...', 233)
+#1 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}(2, 'rename(C:\\\\larag...', 'C:\\\\laragon\\\\www\\\\...', 233)
+#2 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(233): rename('C:\\\\laragon\\\\www\\\\...', 'C:\\\\laragon\\\\www\\\\...')
+#3 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(192): Illuminate\\Filesystem\\Filesystem->replace('C:\\\\laragon\\\\www\\\\...', '<?php return ar...')
+#4 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(163): Illuminate\\Foundation\\ProviderRepository->writeManifest(Array)
+#5 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(61): Illuminate\\Foundation\\ProviderRepository->compileManifest(Array)
+#6 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(741): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#7 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#8 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(261): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#9 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(428): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#10 C:\\laragon\\www\\Administrasi_Koperasi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#11 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#12 {main}
+"} 
