@@ -44,11 +44,7 @@ class MultipleStepsFormController extends Controller
         $user->fill($validatedData);
         $request->session()->put('user', $user);
 
-<<<<<<< HEAD
-        return redirect()->route('pages.pendaftaran.berkas');
-=======
         return redirect()->route('pages.pendaftaran.berkas', ['id_user' => $user->id]);
->>>>>>> 578816a63fa4e5f853570024e2109e38117e0dad
     }
 
     public function createStepTwo(Request $request)
@@ -74,14 +70,9 @@ class MultipleStepsFormController extends Controller
         $berkas = new Berkas();
         $berkas->fill($validatedData);
         $berkas->id_user = $user->id;
-<<<<<<< HEAD
-        $request->session()->put('berkas', $berkas);
-        return redirect()->route('pages.review');
-=======
         $id_user = $request->route('id_user');
         $request->session()->put('berkas', $berkas);
         return redirect()->route('pages.review',['id_user' => $id_user]);
->>>>>>> 578816a63fa4e5f853570024e2109e38117e0dad
     }
 
     public function createStepThree(Request $request)
