@@ -23,12 +23,6 @@ jobs:
       run: |
           ssh root@mc.hoaks.my.id "
             cd /var/www/html/administrasi_koprasi ;
-            if [ -f .env ]; then rm .env; fi ;
-            echo '${{ secrets.FILE_ENV }}' >> .env ;
-            export COMPOSER_ALLOW_SUPERUSER=1 && cd $VAR_DIREKTORI && composer install ;
-            export COMPOSER_ALLOW_SUPERUSER=1 && cd $VAR_DIREKTORI && composer update ;
-            php artisan migrate ;
-            php artisan key:generate ;
-            systemctl restart nginx ;
+            ls -la ;
             echo 'Deployment completed.'
           "
