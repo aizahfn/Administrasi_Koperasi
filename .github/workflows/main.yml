@@ -21,11 +21,14 @@ jobs:
     - name: Deploy code to VPS
       run: |
           ssh -o StrictHostKeyChecking=no root@mc.hoaks.my.id "
+            git config --global safe.directory '*' ;
             cd /var/www/html/administrasi_koprasi ;
+            if [ ! -d .git ]; then echo 'Project belum ditemukan' && git clone https://oauth2:${{ secrets.CLONE_TOKEN }}@$github.com/aizahfn/Administrasi_Koperasi.git .; fi
             if [ -f .env ]; then rm .env; fi ;
             echo '${{ secrets.FILE_ENV }}' >> .env ;
-            export COMPOSER_ALLOW_SUPERUSER=1 && composer install ;
-            export COMPOSER_ALLOW_SUPERUSER=1 && composer update ;
+            export COMPOSER_ALLOW_SUPERUSER=1 ;
+            composer install ;
+            composer update ;
             php artisan migrate ;
             php artisan key:generate ;
             systemctl restart nginx ;
