@@ -13,7 +13,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: executing remote ssh commands
+    - name: Deployyyyy
       uses: appleboy/ssh-action@v0.1.10
       with:
         host: mc.hoaks.my.id
