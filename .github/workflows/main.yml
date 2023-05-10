@@ -13,14 +13,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Deployyyyy
-      uses: appleboy/ssh-action@v0.1.10
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.7.0
       with:
-        host: mc.hoaks.my.id
-        username: root
-        key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
-        port: 22
-        script: |
-          echo "Deploying to server..."
-          cd /var/www/html
-          ls -la
+        ssh-private-key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
+
+    - name: Deploy code to VPS
+      run: |
+          ssh -o StrictHostKeyChecking=no root@mc.hoaks.my.id "
+            cd /var/www/html/administrasi_koprasi ;
+            ls -la ;
+            echo 'Deployment completed.'
