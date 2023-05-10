@@ -17,16 +17,15 @@ jobs:
       uses: webfactory/ssh-agent@v0.7.0
       with:
         ssh-private-key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
-        known-hosts: mc.hoaks.my.id
 
     - name: Deploy code to VPS
       run: |
-          ssh root@mc.hoaks.my.id "
+          ssh -o StrictHostKeyChecking=no root@mc.hoaks.my.id "
             cd /var/www/html/administrasi_koprasi ;
             if [ -f .env ]; then rm .env; fi ;
             echo '${{ secrets.FILE_ENV }}' >> .env ;
-            export COMPOSER_ALLOW_SUPERUSER=1 && cd $VAR_DIREKTORI && composer install ;
-            export COMPOSER_ALLOW_SUPERUSER=1 && cd $VAR_DIREKTORI && composer update ;
+            export COMPOSER_ALLOW_SUPERUSER=1 && composer install ;
+            export COMPOSER_ALLOW_SUPERUSER=1 && composer update ;
             php artisan migrate ;
             php artisan key:generate ;
             systemctl restart nginx ;
