@@ -56,9 +56,9 @@ class MultipleStepsFormController extends Controller
     public function postCreateStepTwo(Request $request)
     {
         $validatedData = $request->validate([
-            'ktp' => 'required|image|mimes:jpeg,jpg,png|max:10000',
-            'ktm' => 'required|image|mimes:jpeg,jpg,png|max:10000',
-            's_pernyataan' => 'required|image|mimes:jpeg,jpg,png|max:10000'
+            'ktp' => 'required|image|mimes:jpeg,jpg,png,pdf|max:10000',
+            'ktm' => 'required|image|mimes:jpeg,jpg,png,pdf|max:10000',
+            's_pernyataan' => 'required|image|mimes:jpeg,jpg,png,pdf|max:10000'
         ]);
 
         $user = $request->session()->get('user');

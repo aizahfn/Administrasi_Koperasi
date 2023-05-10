@@ -13,6 +13,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\MultipleStepsFormController;
+use App\Http\Livewire\Wizard;
+
+use function Termwind\render;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +65,8 @@ Route::post('/create-step-two', [MultipleStepsFormController::class, 'postCreate
 Route::get('/review', [MultipleStepsFormController::class, 'createStepThree'])->name('pages.review');
 Route::post('/review', [MultipleStepsFormController::class, 'postCreateStepThree'])->name('pages.pendaftaran.postCreateStepThree');
 
+Route::get('/pendaftaran', [Wizard::class, 'render'])->name('pendaftaran');
+//Route::view('pendaftaran-berhasil', 'pages.pendaftaran.multiform2')->name('pendaftaran2');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('guest')->name('dashboard');
 Route::get('sign-up', [RegisterController::class, 'create'])->middleware('guest')->name('register');
