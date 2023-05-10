@@ -24,3 +24,4 @@ jobs:
             cd /var/www/html/administrasi_koprasi ;
             ls -la ;
             echo 'Deployment completed.'
+          "
