@@ -21,8 +21,4 @@ jobs:
 
     - name: Deploy code to VPS
       run: |
-          ssh root@mc.hoaks.my.id "
-            cd /var/www/html/administrasi_koprasi ;
-            ls -la ;
-            echo 'Deployment completed.'
-          "
+          ssh root@mc.hoaks.my.id "cd /var/www/html/administrasi_koprasi && ls -la"
