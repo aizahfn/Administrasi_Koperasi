@@ -21,4 +21,4 @@ jobs:
         username: root
         host: mc.hoaks.my.id
     - name: Deploy to VPS
-      run: ssh root@mc.hoaks.my.id "ls -la"
+      run: ssh root@mc.hoaks.my.id "cd /var/www/html && ls -la"
