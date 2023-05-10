@@ -22,6 +22,12 @@ jobs:
       run: |
           ssh -o StrictHostKeyChecking=no root@mc.hoaks.my.id "
             cd /var/www/html/administrasi_koprasi ;
-            ls -la ;
+            if [ -f .env ]; then rm .env; fi ;
+            echo '${{ secrets.FILE_ENV }}' >> .env ;
+            export COMPOSER_ALLOW_SUPERUSER=1 && composer install ;
+            export COMPOSER_ALLOW_SUPERUSER=1 && composer update ;
+            php artisan migrate ;
+            php artisan key:generate ;
+            systemctl restart nginx ;
             echo 'Deployment completed.'
           "
