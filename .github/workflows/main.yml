@@ -17,8 +17,6 @@ jobs:
       uses: webfactory/ssh-agent@v0.7.0
       with:
         ssh-private-key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
-        known-hosts: mc.hoaks.my.id
 
     - name: Deploy code to VPS
-      run: |
-          ssh root@mc.hoaks.my.id "cd /var/www/html/administrasi_koprasi && ls -la"
+      run: ssh -o "StrictHostKeyChecking=no" -i ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }} root@mc.hoaks.my.id "ls -la"
