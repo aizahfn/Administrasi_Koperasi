@@ -1,0 +1,35 @@
+language: php
+php:
+  - 8.1
+os: linux
+dist: focal
+
+addons:
+  ssh_known_hosts: mc.hoaks.my.id
+
+before_deploy:
+  - echo "$ssh_key" | base64 -d > /tmp/deploy_key
+  - eval "$(ssh-agent -s)"
+  - chmod 600 /tmp/deploy_key
+  - ssh-add /tmp/deploy_key
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: 
+    - ssh root@mc.hoaks.my.id "git config --global safe.directory '*'"
+    - ssh root@mc.hoaks.my.id "if [ ! -d $VAR_DIREKTORI/.git ]; then echo 'Project belum ditemukan di direktori $VAR_DIREKTORI' && cd $VAR_DIREKTORI && git clone https://oauth2:$VAR_CLONE_KEY@$VAR_GIT_URL_TANPA_HTTP .; fi"
+    - ssh root@mc.hoaks.my.id "cd $VAR_DIREKTORI && git pull && exit"
+    - ssh root@mc.hoaks.my.id "if [ -f $VAR_DIREKTORI/.env ]; then rm $VAR_DIREKTORI/.env; fi"
+    - ssh root@mc.hoaks.my.id "cd $VAR_DIREKTORI && echo '$VAR_FILE_ENV' >> .env"
+    - ssh root@mc.hoaks.my.id "export COMPOSER_ALLOW_SUPERUSER=1 && cd $VAR_DIREKTORI && composer install"
+    - ssh root@mc.hoaks.my.id "export COMPOSER_ALLOW_SUPERUSER=1 && cd $VAR_DIREKTORI && composer update"
+    - ssh root@mc.hoaks.my.id "cd $VAR_DIREKTORI && php artisan migrate"
+    # - ssh root@mc.hoaks.my.id "cd $VAR_DIREKTORI && php artisan db:seed"
+    - ssh root@mc.hoaks.my.id "cd $VAR_DIREKTORI && php artisan key:generate"
+    # - ssh root@mc.hoaks.my.id "if [ -f $VAR_DIREKTORI/.htaccess ]; then rm $VAR_DIREKTORI/.htaccess; fi"
+    # - ssh root@mc.hoaks.my.id "cd $VAR_DIREKTORI && echo '$VAR_FILE_HTACCESS' >> .htaccess"
+    - echo "SELESAIi!"
+
+after_deploy:
+  - ssh root@mc.hoaks.my.id "systemctl restart nginx"
