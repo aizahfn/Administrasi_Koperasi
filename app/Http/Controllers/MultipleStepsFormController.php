@@ -56,19 +56,24 @@ class MultipleStepsFormController extends Controller
     public function postCreateStepTwo(Request $request)
     {
         $validatedData = $request->validate([
-            'ktp'            => 'required|image|mimes:jpeg,jpg,png|max:10000',
-            'ktm'            => 'required|image|mimes:jpeg,jpg,png|max:10000',
-            's_pernyataan'   => 'required|image|mimes:jpeg,jpg,png|max:10000'
+            'ktp' => 'required|image|mimes:jpeg,jpg,png|max:10000',
+            'ktm' => 'required|image|mimes:jpeg,jpg,png|max:10000',
+            's_pernyataan' => 'required|image|mimes:jpeg,jpg,png|max:10000'
         ]);
 
         $user = $request->session()->get('user');
 
         if (!$user) {
-            return redirect()->route('pages.pendaftaran.review');
+            return redirect()->route('pages.pendaftaran.biodata');
         }
 
         $berkas = new Berkas();
-        $berkas->fill($validatedData);
+
+        // Save the uploaded files to a file path
+        $berkas->ktp = $validatedData['ktp']->store('berkas');
+        $berkas->ktm = $validatedData['ktm']->store('berkas');
+        $berkas->s_pernyataan = $validatedData['s_pernyataan']->store('berkas');
+
         $berkas->id_user = $user->id;
         $request->session()->put('berkas', $berkas);
         return redirect()->route('pages.review');
