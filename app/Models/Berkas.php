@@ -13,7 +13,8 @@ class Berkas extends Model
 
         'ktp',
         'ktm',
-        's_pernyataan'
+        's_pernyataan',
+        'id_user'
     ];
 
     public function user()
