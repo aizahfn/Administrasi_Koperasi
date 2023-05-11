@@ -23,7 +23,8 @@ jobs:
           ssh -o StrictHostKeyChecking=no root@mc.hoaks.my.id "
             git config --global safe.directory '*' ;
             cd /var/www/html/administrasi_koprasi ;
-            if [ ! -d .git ]; then echo 'Project belum ditemukan' && git clone https://oauth2:${{ secrets.CLONE_TOKEN }}@$github.com/aizahfn/Administrasi_Koperasi.git .; fi
+            if [ ! -d .git ]; then echo 'Project belum ada' && git clone https://oauth2:'${{ secrets.CLONE_TOKEN }}'@github.com/aizahfn/Administrasi_Koperasi.git .; fi
+            git pull ;
             if [ -f .env ]; then rm .env; fi ;
             echo '${{ secrets.FILE_ENV }}' >> .env ;
             export COMPOSER_ALLOW_SUPERUSER=1 ;
