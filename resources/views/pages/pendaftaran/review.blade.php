@@ -16,7 +16,7 @@
                     <div class="card-header pb-0 p-3">
                         <div class="row">
                             <div class="col-md-8 d-flex align-items-center">
-                                <h3 class="mb-3 ">ISI BIODATA</h3>
+                                <h3 class="mb-3 ">REVIEW BIODATA</h3>
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Email</label>
-                                    <input type="email" name="email" class="form-control border border-2 p-2" value='{{ old('email') }}'>
+                                    <input type="email" name="email" class="form-control border border-2 p-2" value='{{ $user->email }}'>
                                     @error('email')
                                 <p class='text-danger inputerror'>{{ $message }} </p>
                                 @enderror
@@ -57,7 +57,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Nama Lengkap</label>
-                                    <input type="text" name="nama_lengkap" class="form-control border border-2 p-2" value='{{ old('nama_lengkap') }}'>
+                                    <input type="text" name="nama_lengkap" class="form-control border border-2 p-2" value='{{ $user->nama_lengkap }}'>
                                     @error('nama_lengkap')
                                 <p class='text-danger inputerror'>{{ $message }} </p>
                                 @enderror
@@ -65,7 +65,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">No. Telepon</label>
-                                    <input type="number" name="no_telp" class="form-control border border-2 p-2" value='{{ old('no_telp') }}'>
+                                    <input type="number" name="no_telp" class="form-control border border-2 p-2" value='{{ $user->no_telp }}'>
                                     @error('no_telp')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -88,7 +88,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Password</label>
-                                    <input type="password" name="password" class="form-control border border-2 p-2" value='{{ old('password') }}'>
+                                    <input type="password" name="password" class="form-control border border-2 p-2" value='{{ $user->password }}'>
                                     @error('password')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -107,7 +107,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Tanggal Lahir</label>
-                                    <input type="date" name="tanggal_lahir" class="form-control border border-2 p-2" value='{{ old('tanggal_lahir') }}'>
+                                    <input type="date" name="tanggal_lahir" class="form-control border border-2 p-2" value='{{ $user->tanggal_lahir }}'>
                                     @error('tanggal_lahir')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -117,14 +117,15 @@
                                     <label for="floatingTextarea2">Alamat</label>
                                     <textarea class="form-control border border-2 p-2"
                                         placeholder=" Say something about your alamat" id="floatingTextarea2" name="alamat"
-                                        rows="4" cols="50">{{ old('alamat') }}</textarea>
+                                        rows="4" cols="50">{{ $user->alamat }}</textarea>
                                         @error('alamat')
                                         <p class='text-danger inputerror'>{{ $message }} </p>
                                         @enderror
                                 </div>
                             </div>
                             <div class="btn-group btn-group-lg d-flex justify-content-center" role="group" aria-label="Navigation">
-                                <button type="button" class="btn bg-gradient-dark">Kembali</button>
+                                <a href="{{ route('pages.pendaftaran.berkas', compact(['user', 'berkas'])) }}" type="button" class="btn bg-gradient-dark">Kembali</a>
+                                {{-- <button type="button" class="btn bg-gradient-dark">Kembali</button> --}}
                                 <button type="submit" class="btn bg-gradient-dark">Lanjut</button>
                             </div>
                         </form>

@@ -42,13 +42,13 @@
                                     </div>
                                 </div>
                         @endif
-                        <form method='POST' action='{{ route('pages.pendaftaran.postCreateStepOne') }}'>
+                        <form method='POST' action='{{ route('pages.pendaftaran.postCreateStepOne', isset($berkas) ? compact('berkas') : "") }}'>
                             @csrf
                             <div class="row">
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Email</label>
-                                    <input type="email" name="email" class="form-control border border-2 p-2" value='{{ old('email') }}'>
+                                    <input type="email" name="email" class="form-control border border-2 p-2" value='{{ isset($user) ? $user->email : old('email') }}'>
                                     @error('email')
                                 <p class='text-danger inputerror'>{{ $message }} </p>
                                 @enderror
@@ -56,7 +56,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Nama Lengkap</label>
-                                    <input type="text" name="nama_lengkap" class="form-control border border-2 p-2" value='{{ old('nama_lengkap') }}'>
+                                    <input type="text" name="nama_lengkap" class="form-control border border-2 p-2" value='{{ isset($user) ? $user->nama_lengkap : old('nama_lengkap') }}'>
                                     @error('nama_lengkap')
                                 <p class='text-danger inputerror'>{{ $message }} </p>
                                 @enderror
@@ -64,7 +64,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">No. Telepon</label>
-                                    <input type="number" name="no_telp" class="form-control border border-2 p-2" value='{{ old('no_telp') }}'>
+                                    <input type="number" name="no_telp" class="form-control border border-2 p-2" value='{{ isset($user) ? $user->no_telp : old('no_telp') }}'>
                                     @error('no_telp')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -74,7 +74,7 @@
                                     <label class="form-label">Lowongan yang Dilamar</label>
                                     <select class="form-control border border-3 p-2" name="jabatan">
                                         @forelse (App\Models\Lowongan::all() as $lowongan)
-                                            <option value="{{ $lowongan->id }}">{{ $lowongan->nama_lowongan }}</option>
+                                            <option value="{{ $lowongan->id }}" {{ ($lowongan->id == $id) ? "selected" : "" }}>{{ $lowongan->nama_lowongan  }}</option>
                                         @empty
                                             <option value="">Tidak ada lowongan</option>
                                         @endforelse
@@ -87,7 +87,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Password</label>
-                                    <input type="password" name="password" class="form-control border border-2 p-2" value='{{ old('password') }}'>
+                                    <input type="password" name="password" class="form-control border border-2 p-2" value='{{ isset($user) ? $user->password : old('password') }}'>
                                     @error('password')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -96,8 +96,8 @@
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Jenis Kelamin</label><br>
                                     <select class="form-control border border-3 p-2" name="jenis_kelamin">
-                                        <option value="pria">Pria</option>
-                                        <option value="wanita">Wanita</option>
+                                        <option value="pria" {{ isset($user) ? ($user->jenis_kelamin == "pria" ? "selected" : "") : "" }}>Pria</option>
+                                        <option value="wanita" {{ isset($user) ? ($user->jenis_kelamin == "wanita" ? "selected" : "") : "" }}>Wanita</option>
                                     </select>
                                     @error('jenis_kelamin')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
@@ -106,7 +106,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Tanggal Lahir</label>
-                                    <input type="date" name="tanggal_lahir" class="form-control border border-2 p-2" value='{{ old('tanggal_lahir') }}'>
+                                    <input type="date" name="tanggal_lahir" class="form-control border border-2 p-2" value='{{ isset($user) ? $user->tanggal_lahir : old('tanggal_lahir') }}'>
                                     @error('tanggal_lahir')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -116,7 +116,7 @@
                                     <label for="floatingTextarea2">Alamat</label>
                                     <textarea class="form-control border border-2 p-2"
                                         placeholder=" Say something about your alamat" id="floatingTextarea2" name="alamat"
-                                        rows="4" cols="50">{{ old('alamat') }}</textarea>
+                                        rows="4" cols="50">{{ isset($user) ? $user->alamat : old('alamat') }}</textarea>
                                         @error('alamat')
                                         <p class='text-danger inputerror'>{{ $message }} </p>
                                         @enderror

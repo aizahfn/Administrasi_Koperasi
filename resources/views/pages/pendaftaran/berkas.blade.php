@@ -49,7 +49,8 @@
                             @csrf
                                 <div class="form-group mb-3">
                                     <label class="form-label">Kartu Tanda Penduduk</label>
-                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('ktp') is-invalid @enderror" name="ktp">
+                                    <span><img src="{{ isset($berkas) ? asset('/storage/'.preg_replace('/public\//i', '', $berkas->ktp)) : "" }}" alt=""> </span>
+                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('ktp') is-invalid @enderror" name="ktp" value='{{ isset($berkas) ? asset('/storage/'.preg_replace('/public\//i', '', $berkas->ktp)) : old('ktp') }}'>
 
                                     <!-- error message untuk title -->
                                     @error('ktp')
@@ -61,8 +62,8 @@
 
                                 <div class="form-group mb-3">
                                     <label class="form-label">Kartu Tanda Mahasiswa</label>
-                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('ktm') is-invalid @enderror" name="ktm">
-
+                                    <span><img src="{{ isset($berkas) ? asset('/storage/'.preg_replace('/public\//i', '', $berkas->ktm)) : "" }}" alt=""></span>
+                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('ktm') is-invalid @enderror" name="ktm" value='{{ isset($berkas) ? asset('/storage/'.preg_replace('/public\//i', '', $berkas->ktm)) : old('ktm') }}'>
                                     <!-- error message untuk title -->
                                     @error('ktm')
                                         <div class="alert alert-danger mt-2">
@@ -73,7 +74,8 @@
 
                                 <div class="form-group mb-5">
                                     <label class="form-label">Surat Peryataan</label>
-                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('s_pernyataan') is-invalid @enderror" name="s_pernyataan">
+                                    <span><img src="{{ isset($berkas) ? asset('/storage/'.preg_replace('/public/i', '', $berkas->s_pernyataan)) : "" }}" alt=""></span>
+                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('s_pernyataan') is-invalid @enderror" name="s_pernyataan" value='{{ isset($berkas) ? asset('/storage/'.$berkas->s_pernyataan) : old('s_pernyataan') }}'>
 
                                     <!-- error message untuk title -->
                                     @error('s_pernyataan')
@@ -84,8 +86,18 @@
                                 </div>
                                 </div>
                             </div>
+
                             <div class="btn-group btn-group-lg d-flex justify-content-center" role="group" aria-label="Navigation">
-                                <a href="{{ route('pages.pendaftaran.biodata') }}" type="button" class="btn bg-gradient-dark">Kembali</a>
+                                {{-- {{ $datos = array('user');}} --}}
+                                @php
+                                    $datos = array('user');
+                                    if(isset($berkas)){
+                                        $datos[] = 'berkas';
+                                    }
+                                    // echo asset('/storage/'.preg_replace('/public\//i', '', $berkas->ktm)) ;
+                                @endphp
+                                {{-- {{ datos[] = isset($berkas)? 'berkas' :  }} --}}
+                                <a href="{{ route('pages.pendaftaran.biodata', $user->jabatan, compact($datos)) }}" type="button" class="btn bg-gradient-dark">Kembali</a>
                                 <button type="submit" class="btn bg-gradient-dark">Lanjut</button>
                             </div>
                         </form>

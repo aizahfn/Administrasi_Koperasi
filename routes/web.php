@@ -56,7 +56,7 @@ Route::get('halaman-utama', function () {
 // Route to view the list of lowongan
 Route::get('/lowongan', [MultipleStepsFormController::class, 'lowongan'])->name('pages.pendaftaran.lowongan');
 // Route for the first step
-Route::get('/create-step-one', [MultipleStepsFormController::class, 'createStepOne'])->name('pages.pendaftaran.biodata');
+Route::get('/create-step-one/{lowongan}', [MultipleStepsFormController::class, 'createStepOne'])->name('pages.pendaftaran.biodata');
 Route::post('/create-step-one', [MultipleStepsFormController::class, 'postCreateStepOne'])->name('pages.pendaftaran.postCreateStepOne');
 // Route for the second step
 Route::get('/create-step-two', [MultipleStepsFormController::class, 'createStepTwo'])->name('pages.pendaftaran.berkas');
