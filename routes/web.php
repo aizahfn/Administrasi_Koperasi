@@ -64,9 +64,8 @@ Route::post('/create-step-two', [MultipleStepsFormController::class, 'postCreate
 // Route for the third step
 Route::get('/review', [MultipleStepsFormController::class, 'createStepThree'])->name('pages.review');
 Route::post('/review', [MultipleStepsFormController::class, 'postCreateStepThree'])->name('pages.pendaftaran.postCreateStepThree');
-
-Route::get('/pendaftaran', [Wizard::class, 'render'])->name('pendaftaran');
-//Route::view('pendaftaran-berhasil', 'pages.pendaftaran.multiform2')->name('pendaftaran2');
+//Route for the sukses
+Route::get('/sukses', [MultipleStepsFormController::class, 'sukses'])->name('sukses');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('guest')->name('dashboard');
 Route::get('sign-up', [RegisterController::class, 'create'])->middleware('guest')->name('register');

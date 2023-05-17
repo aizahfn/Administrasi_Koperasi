@@ -136,7 +136,11 @@ class MultipleStepsFormController extends Controller
         $this->request->session()->forget('user');
         $this->request->session()->forget('berkas');
 
-        return redirect()->route('halaman-utama')
-            ->with('success','Data Pendaftaran Berhasil Disimpan, Mohon Tunggu Konfirmasi Selanjutnya');
+        return redirect()->route('sukses');
+    }
+
+    public function sukses(): View
+    {
+        return view('pages.pendaftaran.sukses');
     }
 }

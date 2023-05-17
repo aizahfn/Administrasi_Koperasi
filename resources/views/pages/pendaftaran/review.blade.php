@@ -126,17 +126,17 @@
                             <div class="btn-group btn-group-lg d-flex justify-content-center" role="group" aria-label="Navigation">
                                 <a href="{{ route('pages.pendaftaran.berkas', compact(['user', 'berkas'])) }}" type="button" class="btn bg-gradient-dark">Kembali</a>
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn bg-gradient-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <button type="button" class="btn bg-gradient-dark" data-bs-toggle="modal" data-bs-target="#konfirmasi">
                                     Lanjut
                                 </button>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="konfirmasi" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="konfirmasiLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                                         <div class="modal-content">
 
                                             <div class="modal-header text-center">
-                                                <h3 class="modal-title font-weight-normal" id="exampleModalLabel">Peringatan!</h3>
+                                                <h3 class="modal-title font-weight-normal" id="konfirmasiLabel">Peringatan!</h3>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -156,6 +156,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </form>
 
