@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-Use Str;
 Use Hash;
 use Illuminate\Auth\Events\PasswordReset;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
 
-class SessionsController extends Controller
+Class SessionsController extends Controller
 {
     public function create()
     {
