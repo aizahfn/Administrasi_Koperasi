@@ -18,7 +18,7 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
 
-    - name: Deploy code to VPS
+    - name: Deploy to VPS
       run: |
           ssh -o StrictHostKeyChecking=no root@${{ secrets.IP_VPS }} "
             git config --global safe.directory '*' ;
