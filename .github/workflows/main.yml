@@ -29,6 +29,7 @@ jobs:
             echo '${{ secrets.FILE_HTACCESS }}' >> .htaccess ;
             if [ -f .env ]; then rm .env; fi ;
             echo '${{ secrets.FILE_ENV }}' >> .env ;
+            echo 'Run Composer...' ;
             export COMPOSER_ALLOW_SUPERUSER=1 ;
             composer update ;
             composer install ;
