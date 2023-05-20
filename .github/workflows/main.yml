@@ -30,8 +30,8 @@ jobs:
             if [ -f .env ]; then rm .env; fi ;
             echo '${{ secrets.FILE_ENV }}' >> .env ;
             export COMPOSER_ALLOW_SUPERUSER=1 ;
-            composer install ;
             composer update ;
+            composer install ;
             php artisan migrate ;
             php artisan key:generate ;
             # systemctl restart nginx ;
