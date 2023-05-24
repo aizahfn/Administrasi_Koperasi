@@ -36,5 +36,5 @@ jobs:
             php artisan migrate ;
             php artisan key:generate ;
             # systemctl restart nginx ;
-            echo 'Deployment completed.'
+            echo 'yahahaha hayuukkkkk Deployment completed.'
           "
