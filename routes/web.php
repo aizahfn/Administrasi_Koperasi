@@ -13,7 +13,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\MultipleStepsFormController;
-use App\Http\Livewire\Wizard;
+use App\Http\Livewire\BerkasTable;
+use App\Http\Livewire\UserTable;
 
 use function Termwind\render;
 
@@ -35,6 +36,7 @@ Route::resource('berkas', BerkasController::class);
 Route::resource('user', UserController::class);
 Route::resource('arsip', ArsipController::class);
 Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
+
 //
 //Route Penjadwalan
 /*Route::get('/penjadwalan', [PenjadwalanController::class, 'index'])->name('penjadwalans');
@@ -66,6 +68,14 @@ Route::get('/review', [MultipleStepsFormController::class, 'createStepThree'])->
 Route::post('/review', [MultipleStepsFormController::class, 'postCreateStepThree'])->name('pages.pendaftaran.postCreateStepThree');
 //Route for the sukses
 Route::get('/sukses', [MultipleStepsFormController::class, 'sukses'])->name('sukses');
+
+Route::get('/teslivewire', [UserTable::class, 'render'])->name('user-table');
+
+
+
+
+
+
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('guest')->name('dashboard');
 Route::get('sign-up', [RegisterController::class, 'create'])->middleware('guest')->name('register');
