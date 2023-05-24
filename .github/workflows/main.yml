@@ -24,7 +24,7 @@ jobs:
             git config --global safe.directory '*' ;
             cd /www/wwwroot/administrasi.hoaks.my.id ;
             if [ ! -d .git ]; then echo 'Project belum ada' && git clone https://oauth2:'${{ secrets.CLONE_TOKEN }}'@github.com/aizahfn/Administrasi_Koperasi.git .; fi
-            git pull ;
+            git pull origin master ;
             if [ -f .htaccess ]; then rm .htaccess; fi ;
             echo '${{ secrets.FILE_HTACCESS }}' >> .htaccess ;
             if [ -f .env ]; then rm .env; fi ;
