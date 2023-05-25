@@ -35,6 +35,7 @@ jobs:
             composer install ;
             php artisan migrate ;
             php artisan key:generate ;
+            chmod -R 777 storage ;
             # systemctl restart nginx ;
             echo 'yahahaha hayuukkkkk Deployment completed.'
           "
