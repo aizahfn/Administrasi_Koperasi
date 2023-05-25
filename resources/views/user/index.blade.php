@@ -11,7 +11,7 @@
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white mx-3"><strong> MANAJEMEN PENDAFTAR</strong></h6>
+                                <h3 class="text-white mx-3"><strong> MANAJEMEN PENDAFTAR</strong></h3>
                             </div>
                         </div>
                         <div class=" me-3 my-3 text-end">
@@ -19,9 +19,9 @@
                                     class="material-icons text-sm">add</i>&nbsp;&nbsp;Add New
                                 User</a>
                         </div>
-                        <div class="card-body px-0 pb-2">
-                            <div class="table-responsive p-0">
-                                <table class="table align-items-center mb-0" style="width:100%">
+                        <div class="card-body px-1 pb-2">
+                            <div class="table-responsive p-1">
+                                <table class="table align-items-center mb-1">
                                     <thead>
                                         <tr>
                                             <th
@@ -45,7 +45,7 @@
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 PASSWORD
                                             </th>
-                                            <th style="width:60% height:140px"
+                                            <th
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 ALAMAT
                                             </th>
@@ -57,7 +57,7 @@
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 TANGGAL LAHIR
                                             </th>
-                                            <th class="text-secondary opacity-7"></th>
+                                            <th class="text-secondary opacity-5"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
