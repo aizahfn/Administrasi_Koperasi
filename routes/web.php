@@ -120,7 +120,7 @@ Route::group(['middleware' => 'guest'], function () {
 		return view('pages.laravel-examples.user-management');
 	})->name('berkas-pendaftar');
 	Route::get('informasi-pendaftar', [UserController::class, 'index'])->name('informasi-pendaftar');
-
+    Route::get('data-lowongan', [LowonganController::class, 'index'])->name('data-lowongan');
 
 
 
