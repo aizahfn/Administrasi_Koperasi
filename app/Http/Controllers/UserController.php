@@ -13,14 +13,21 @@ class UserController extends Controller
 {
     public function index(): View
     {
-        $user = User::latest()->paginate(5);
 
-        return view('user.index', compact('user'));
+    $users = User::join('datalowongan', 'datalowongan.id', '=', 'user.jabatan')
+    ->orderBy('user.created_at', 'asc')
+    ->orderBy('datalowongan.created_at', 'asc')
+    ->latest('user.created_at')
+    ->selectRaw('user.*, datalowongan.nama_lowongan')
+    ->paginate(10);
+
+
+        return view('pages.crud.user-management', compact('users'));
     }
     public function create(): View
     {
-        // $berkas = Berkas::all();
-    return view('pages.user.create'/*, compact('berkas')*/);
+        $berkas = Berkas::all();
+    return view('user.create', compact('berkas'));
     }
 
     public function store(Request $request): RedirectResponse
@@ -134,4 +141,6 @@ class UserController extends Controller
 
         return view('user.edit', compact(['user', 'berkas']));
     }
+
+
 }

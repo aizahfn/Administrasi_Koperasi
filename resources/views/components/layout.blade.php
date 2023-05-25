@@ -37,7 +37,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('assets') }}/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
-    @stack('styles')
+    @livewireStyles
 </head>
 <body class="{{ $bodyClass }}">
 
@@ -63,6 +63,7 @@
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('assets') }}/js/material-dashboard.min.js?v=3.0.0"></script>
 
-    @stack('scripts')
+    @livewireScripts
+    @yield('script')
 </body>
 </html>

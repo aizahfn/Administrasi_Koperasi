@@ -18,8 +18,8 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Pendaftaran</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ $activePage == 'user-profile' ? ' active bg-gradient-primary' : '' }} "
-                    href="{{ route('user-profile') }}">
+                <a class="nav-link text-white {{ $activePage == 'informasi-pendaftar' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('informasi-pendaftar') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">person</i>
                     </div>
@@ -27,8 +27,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ $activePage == 'user-management' ? ' active bg-gradient-primary' : '' }} "
-                    href="{{ route('user-management') }}">
+                <a class="nav-link text-white {{ $activePage == 'berkas-pendaftar' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('berkas-pendaftar') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">receipt_long</i>
                     </div>
@@ -39,8 +39,8 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Arsip</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ $activePage == 'dashboard' ? ' active bg-gradient-primary' : '' }} "
-                    href="{{ route('dashboard') }}">
+                <a class="nav-link text-white {{ $activePage == 'surat-masuk' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('surat-masuk') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">dashboard</i>
                     </div>
@@ -48,8 +48,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ $activePage == 'tables' ? ' active bg-gradient-primary' : '' }} "
-                    href="{{ route('tables') }}">
+                <a class="nav-link text-white {{ $activePage == 'surat-keluar' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('surat-keluar') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">table_view</i>
                     </div>
@@ -57,8 +57,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ $activePage == 'billing' ? ' active bg-gradient-primary' : '' }}  "
-                    href="{{ route('billing') }}">
+                <a class="nav-link text-white {{ $activePage == 'dokumen' ? ' active bg-gradient-primary' : '' }}  "
+                    href="{{ route('dokumen') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">receipt_long</i>
                     </div>
@@ -69,22 +69,15 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Penjadwalan</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ $activePage == 'profile' ? ' active bg-gradient-primary' : '' }}  "
-                    href="{{ route('profile') }}">
+                <a class="nav-link text-white {{ $activePage == 'aktivitas' ? ' active bg-gradient-primary' : '' }}  "
+                    href="{{ route('aktivitas') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">person</i>
                     </div>
                     <span class="nav-link-text ms-1">Aktivitas</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-white " href="{{ route('static-sign-in') }}">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">login</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Shift</span>
-                </a>
-            </li>
+            
         </ul>
     </div>
 </aside>

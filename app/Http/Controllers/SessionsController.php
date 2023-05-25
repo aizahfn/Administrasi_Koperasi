@@ -32,7 +32,7 @@ Class SessionsController extends Controller
 
         session()->regenerate();
 
-        return redirect('/dashboard');
+        return redirect('/halaman-utama');
 
     }
 

@@ -43,7 +43,7 @@
                                 @forelse ($user as $users)
                                     <tr>
                                         <td>{{ $users->id_berkas }}</td>
-                                        <td>{{ $users->role }}</td>
+                                        <td>{{ $users->jabatan }}</td>
                                         <td>{{ $users->nama_lengkap }}</td>
                                         <td>{{ $users->no_telp }}</td>
                                         <td>{{ $users->jabatan }}</td>

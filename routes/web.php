@@ -106,22 +106,22 @@ Route::group(['middleware' => 'guest'], function () {
 	})->name('rtl');
 	Route::get('virtual-reality', function () {
 		return view('pages.virtual-reality');
-	})->name('virtual-reality');
+	})->name('aktivitas');
 	Route::get('notifications', function () {
 		return view('pages.notifications');
-	})->name('notifications');
+	})->name('dokumen');
 	Route::get('static-sign-in', function () {
 		return view('pages.static-sign-in');
-	})->name('static-sign-in');
+	})->name('surat-keluar');
 	Route::get('static-sign-up', function () {
 		return view('pages.static-sign-up');
-	})->name('static-sign-up');
+	})->name('surat-masuk');
 	Route::get('user-management', function () {
 		return view('pages.laravel-examples.user-management');
-	})->name('user-management');
+	})->name('berkas-pendaftar');
 	Route::get('user-profile', function () {
-		return view('pages.laravel-examples.user-profile');
-	})->name('user-profile');
+		return view('pages.crud.user-management');
+	})->name('informasi-pendaftar');
 
 
 
@@ -177,3 +177,7 @@ Route::group(['middleware' => 'guest'], function () {
 // 		return view('pages.laravel-examples.user-profile');
 // 	})->name('user-profile');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
