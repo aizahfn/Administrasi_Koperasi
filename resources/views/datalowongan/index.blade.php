@@ -1,9 +1,9 @@
 <x-layout bodyClass="g-sidenav-show  bg-gray-200">
 
-    <x-navbars.sidebar activePage="informasi-pendaftar"></x-navbars.sidebar>
+    <x-navbars.sidebar activePage="data-lowongan"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage="User Management"></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage="lowongan Management"></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row">
@@ -15,12 +15,12 @@
                             </div>
                         </div>
                         <div class=" me-3 my-3 text-end">
-                            <a class="btn bg-gradient-dark mb-0" href="{{ route('berkas.create') }}"><i
+                            <a class="btn bg-gradient-dark mb-0" href="{{ route('datalowongan.create') }}"><i
                                     class="material-icons text-sm">add</i>&nbsp;&nbsp;Tambahkan Lowongan</a>
                         </div>
                         <div class="card-body px-0 pb-2">
                             <div class="table-responsive p-0">
-                                <table class="table align-items-center mb-0" style="width:100%">
+                                <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
                                             <th
@@ -51,74 +51,52 @@
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->id }}</p>
+                                                            <p class="mb-0 text-sm">{{ $lowongan->id }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->nama_lengkap }}</p>
+                                                            <p class="mb-0 text-sm">{{ $lowongan->nama_lowongan }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="d-flex px-2 py-1">
+                                                        <img src="{{ asset('/storage/uploadan/'.$lowongan->gambar) }}" class="rounded" style="width: 150px">
+                                                    </div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm">{{ $lowongan->tanggal_lowongan }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->no_telp }}</p>
+                                                            <p class="mb-0 text-sm">{{ $lowongan->jumlah_lowongan }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->nama_lowongan }}</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->email }}</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->password }}</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->alamat }}</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->jenis_kelamin }}</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->tanggal_lahir }}</p>
+                                                            <p class="mb-0 text-sm">{{ $lowongan->deskripsi_lowongan }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="align-middle">
                                                     <a rel="tooltip" class="btn btn-success btn-link"
-                                                        href="{{ route('user.edit', $user->id) }}" data-original-title=""
+                                                        href="{{ route('datalowongan.edit', $lowongan->id) }}" data-original-title=""
                                                         title="">
                                                         <i class="material-icons">edit</i>
                                                         <div class="ripple-container"></div>
                                                     </a>
-                                                    <form id="delete-form" action="{{ route('user.destroy', $user->id) }}" method="POST">
+                                                    <form id="delete-form" action="{{ route('datalowongan.destroy', $lowongan->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-link" data-original-title="" title="">
@@ -132,14 +110,14 @@
                                             <tr>
                                                 <td colspan="11">
                                                     <div class="alert alert-danger">
-                                                        Data Pendaftar belum Tersedia.
+                                                        Data Lowongan belum Tersedia.
                                                     </div>
                                                 </td>
                                             </tr>
                                         @endforelse
                                     </tbody>
                                 </table>
-                                {{ $users->links() }}
+                                {{ $datalowongan->links() }}
                             </div>
                         </div>
                     </div>

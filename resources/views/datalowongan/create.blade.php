@@ -1,66 +1,104 @@
-@extends('datalowongan.layout')
-  
-@section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Add New Lowongan</h2>
+<x-layout bodyClass="g-sidenav-show bg-gray-200">
+
+    <x-navbars.sidebar activePage="data-lowongan"></x-navbars.sidebar>
+    <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
+        <!-- Navbar -->
+        <x-navbars.navs.auth titlePage='Tambah Lowongan'></x-navbars.navs.auth>
+        <!-- End Navbar -->
+        <div class="container-fluid px-2 px-md-4">
+            <div class="page-header min-height-300 border-radius-xl mt-4"
+                style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+                <span class="mask  bg-gradient-primary  opacity-6"></span>
+            </div>
+            <div class="card card-body mx-3 mx-md-4 mt-n6">
+                <div class="card card-plain h-100">
+                    <div class="card-header pb-0 p-3">
+                        <div class="row">
+                                <h3 class="mb-3 ">Masukkan Data Lowongan</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-3">
+                        @if (session('status'))
+                        <div class="row">
+                            <div class="alert alert-success alert-dismissible text-white" role="alert">
+                                <span class="text-sm">{{ Session::get('status') }}</span>
+                                <button type="button" class="btn-close text-lg py-3 opacity-10"
+                                    data-bs-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                        @endif
+                        @if (Session::has('demo'))
+                                <div class="row">
+                                    <div class="alert alert-danger alert-dismissible text-white" role="alert">
+                                        <span class="text-sm">{{ Session::get('demo') }}</span>
+                                        <button type="button" class="btn-close text-lg py-3 opacity-10"
+                                            data-bs-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                        @endif
+                        <form method='POST' action='{{ route('datalowongan.store') }}'>
+                            @csrf
+                            <div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Posisi Lowongan</label>
+                                    <input type="text" name="nama_datalowongan" class="form-control border border-2 p-2" value='{{ isset($datalowongan) ? $datalowongan->nama_datalowongan : old('nama_datalowongan') }}'>
+                                    @error('nama_datalowongan')
+                                <p class='text-danger inputerror'>{{ $message }} </p>
+                                @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Gambar Lowongan</label>
+                                    <span><img src="{{ isset($datalowongan) ? asset('/storage/'.preg_replace('/public\//i', '', $datalowongan->gambar)) : "" }}" alt=""> </span>
+                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('gambar') is-invalid @enderror" name="gambar" value='{{ isset($datalowongan) ? asset('/storage/'.preg_replace('/public\//i', '', $datalowongan->gambar)) : old('gambar') }}'>
+
+                                    <!-- error message untuk title -->
+                                    @error('gambar')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Tanggal Lowongan</label>
+                                    <input type="date" name="tanggal_lowongan" class="form-control border border-2 p-2" value='{{ isset($datalowongan) ? $datalowongan->tanggal_lowongan : old('tanggal_lowongan') }}'>
+                                    @error('tanggal_lowongan')
+                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @enderror
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Jumlah Lowongan</label>
+                                    <input type="text" name="jumlah_lowongan" class="form-control border border-2 p-2" value='{{ isset($datalowongan) ? $datalowongan->tanggal_lowongan : old('tanggal_lowongan') }}'>
+                                    @error('jumlah_lowongan')
+                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @enderror
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Deskripsi Lowongan</label>
+                                    <textarea class="form-control border border-2 p-2"
+                                        placeholder=" Deskripsikan lowongan yang akan dibuka!" id="floatingTextarea2" name="desc_lowongan"
+                                        rows="4" cols="50">{{ isset($datalowongan) ? $datalowongan->deskripsi_lowongan : old('deskripsi_lowongan') }}</textarea>
+                                        @error('desc_lowongan')
+                                        <p class='text-danger inputerror'>{{ $message }} </p>
+                                        @enderror
+                                </div>
+                            </div>
+                            <div class="btn-lg d-flex justify-content-center">
+                                <button type="submit" class="btn bg-gradient-dark">Submit</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('datalowongan.index') }}"> Back</a>
-        </div>
+        <x-footers.auth></x-footers.auth>
     </div>
-</div>
-     
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Maaf!</strong> Ada Kesalahan Pada Data Yang Dimasukkan.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-     
-<form action="{{ route('datalowongan.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    
-     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Lowongan:</strong>
-                <input type="text" name="nama_lowongan" class="form-control" placeholder="Nama Lowongan">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Batas Akhir:</strong>
-                <input type="date" name="tanggal_lowongan" class="form-control" placeholder="Batas Tanggal Akhir Lowongan">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Jumlah Yang Dibutuhkan:</strong>
-                <input type="number" name="jumlah_lowongan" min="1" max="50" class="form-control" placeholder="Jumlah Lowongan Yang Tersedia">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Deskripsi:</strong>
-                <textarea class="form-control" style="height:150px" name="deskripsi_lowongan" placeholder="Deskripsi"></textarea>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Gambar:</strong>
-                <input type="file" name="image" class="form-control" placeholder="Gambar">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </div>
-     
-</form>
-@endsection
+    <x-plugins></x-plugins>
+
+</x-layout>
