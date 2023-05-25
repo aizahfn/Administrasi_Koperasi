@@ -119,9 +119,7 @@ Route::group(['middleware' => 'guest'], function () {
 	Route::get('user-management', function () {
 		return view('pages.laravel-examples.user-management');
 	})->name('berkas-pendaftar');
-	Route::get('user-profile', function () {
-		return view('pages.crud.user-management');
-	})->name('informasi-pendaftar');
+	Route::get('informasi-pendaftar', [UserController::class, 'index'])->name('informasi-pendaftar');
 
 
 

@@ -21,7 +21,6 @@ class UserController extends Controller
     ->selectRaw('user.*, datalowongan.nama_lowongan')
     ->paginate(10);
 
-
         return view('user.index', compact('users'));
     }
     public function create(): View
