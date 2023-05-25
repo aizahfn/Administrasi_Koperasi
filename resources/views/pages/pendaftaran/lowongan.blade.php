@@ -24,7 +24,7 @@
                                                         class="mb-2 text-sm">{{ $data_lowongan->jumlah_lowongan }}</span></span>
                                                 <span class="mb-2 text-sm">{{ $data_lowongan->deskripsi_lowongan }}</span>
                                                 <div class="d-flex flex-row">
-                                                    <h6 class="m-3 text-start">{{ $data_lowongan->tanggal_lowongan }}</h6>
+                                                <span class="mb-2 text-sm">{{ $data_lowongan->tanggal_lowongan }}</span>
                                                     <div class="ms-auto text-end">
                                                         <a class="btn btn-link text-danger text-gradient m-3"
                                                             href="{{ route('pages.pendaftaran.biodata', $data_lowongan->id) }}">
