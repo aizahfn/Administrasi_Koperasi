@@ -7,7 +7,7 @@ use App\Models\Berkas;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
-
+use App\Models\Lowongan;
 
 class UserController extends Controller
 {
@@ -22,21 +22,18 @@ class UserController extends Controller
     ->paginate(10);
 
 
-        return view('pages.crud.user-management', compact('users'));
+        return view('user.index', compact('users'));
     }
     public function create(): View
     {
-        $berkas = Berkas::all();
-    return view('user.create', compact('berkas'));
+        $lowongan = Lowongan::all();
+    return view('user.create', compact('lowongan'));
     }
 
     public function store(Request $request): RedirectResponse
     {
         //validate form
         $this->validate($request, [
-            // 'image'     => 'required|image|mimes:jpeg,jpg,png|max:2048',
-
-            // 'role'          => 'required',
             'nama_lengkap'  => 'required',
             'no_telp'       => 'required',
             'jabatan'       => 'required',
@@ -45,19 +42,10 @@ class UserController extends Controller
             'alamat'        => 'required',
             'jenis_kelamin' => 'required',
             'tanggal_lahir' => 'required',
-
-            // 'title'     => 'required',
-            // 'content'   => 'required|min:10'
         ]);
-
-        //upload image
-        // $image = $request->file('image');
-        // $image->storeAs('public/posts', $image->hashName());
 
         //create post
         User::create([
-            // 'id_berkas'     => $request->id_berkas,
-            // 'role'          => $request->role,
             'nama_lengkap'  => $request->nama_lengkap,
             'no_telp'       => $request->no_telp,
             'jabatan'       => $request->jabatan,
@@ -66,16 +54,9 @@ class UserController extends Controller
             'alamat'        => $request->alamat,
             'jenis_kelamin' => $request->jenis_kelamin,
             'tanggal_lahir' => $request->tanggal_lahir
-            // 'image'     => $image->hashName(),
-            // 'title'     => $request->title,
-            // 'content'   => $request->content
         ]);
 
-        //redirect to index
-        // return redirect()->route('user.index', ['success' => 'Data Berhasil Disimpan!']);
-        // return redirect('/user')->with('status', 'Profile updated!');
-        // return redirect('/user');
-        return redirect()->route('pages.datalowongan.data-lowongan')->with(['success' => 'Pendaftaran Berhasil, Mohon Menunggu Proses Verifikasi!']);
+        return redirect()->route('user.index')->with(['success' => 'Pendaftaran Berhasil, Mohon Menunggu Proses Verifikasi!']);
     }
 
     public function destroy($id): RedirectResponse

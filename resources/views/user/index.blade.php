@@ -1,103 +1,165 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ADMINISTRASI KOPERASI</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-</head>
-<body style="background: lightgray">
+<x-layout bodyClass="g-sidenav-show  bg-gray-200">
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div>
-                    <h3 class="text-center my-4">Indeks User</h3>
-                    <h5 class="text-center"></h5>
-                    <hr>
-                </div>
-                <div class="card border-0 shadow-sm rounded">
-                    <div class="card-body">
-                        <a href="{{ route('user.create') }}" class="btn btn-md btn-success mb-3">TAMBAH USER</a>
-                        <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th scope="col">id_berkas</th>
-                                <th scope="col">role</th>
-                                <th scope="col">nama_lengkap</th>
-                                <th scope="col">no_telp</th>
-                                <th scope="col">jabatan</th>
-                                <th scope="col">email</th>
-                                <th scope="col">password</th>
-                                <th scope="col">alamat</th>
-                                <th scope="col">jenis_kelamin</th>
-                                <th scope="col">tanggal_lahir</th>
-                                <th scope="col">AKSI</th>
-                              </tr>
-                            </thead>
-                            <!-- ... previous HTML code ... -->
-
-                            <tbody>
-                                @forelse ($user as $users)
-                                    <tr>
-                                        <td>{{ $users->id_berkas }}</td>
-                                        <td>{{ $users->jabatan }}</td>
-                                        <td>{{ $users->nama_lengkap }}</td>
-                                        <td>{{ $users->no_telp }}</td>
-                                        <td>{{ $users->jabatan }}</td>
-                                        <td>{{ $users->email }}</td>
-                                        <td>{{ $users->password }}</td>
-                                        <td>{{ $users->alamat }}</td>
-                                        <td>{{ $users->jenis_kelamin }}</td>
-                                        <td>{{ $users->tanggal_lahir }}</td>
-                                        <td>
-                                            <a href="{{ route('user.edit', $users->id) }}" class="btn btn-sm btn-primary">EDIT</a>
-                                            <form action="{{ route('user.destroy', $users->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-sm btn-danger">HAPUS</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="11">
-                                            <div class="alert alert-danger">
-                                                Data users belum Tersedia.
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-
-                            <!-- ... remaining HTML code ... -->
-
-                          </table>
-                          {{ $user->links() }}
+    <x-navbars.sidebar activePage="informasi-pendaftar"></x-navbars.sidebar>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <!-- Navbar -->
+        <x-navbars.navs.auth titlePage="User Management"></x-navbars.navs.auth>
+        <!-- End Navbar -->
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white mx-3"><strong> MANAJEMEN PENDAFTAR</strong></h6>
+                            </div>
+                        </div>
+                        <div class=" me-3 my-3 text-end">
+                            <a class="btn bg-gradient-dark mb-0" href="{{ route('user.create') }}"><i
+                                    class="material-icons text-sm">add</i>&nbsp;&nbsp;Add New
+                                User</a>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center mb-0" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                ID PENDAFTAR
+                                            </th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                NAMA LENGKAP</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                NO. TELEPON</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                JABATAN</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                EMAIL
+                                            </th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                PASSWORD
+                                            </th>
+                                            <th style="width:60% height:140px"
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                ALAMAT
+                                            </th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                JENIS KELAMIN
+                                            </th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                TANGGAL LAHIR
+                                            </th>
+                                            <th class="text-secondary opacity-7"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($users as $user)
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm">{{ $user->id }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm">{{ $user->nama_lengkap }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm">{{ $user->no_telp }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm">{{ $user->nama_lowongan }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm">{{ $user->email }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm">{{ $user->password }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm">{{ $user->alamat }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm">{{ $user->jenis_kelamin }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm">{{ $user->tanggal_lahir }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <a rel="tooltip" class="btn btn-success btn-link"
+                                                        href="{{ route('user.edit', $user->id) }}" data-original-title=""
+                                                        title="">
+                                                        <i class="material-icons">edit</i>
+                                                        <div class="ripple-container"></div>
+                                                    </a>
+                                                    <button type="button" class="btn btn-danger btn-link"
+                                                        data-original-title="" title="" href="{{ route('user.destroy', $user->id) }}">
+                                                        <i class="material-icons">close</i>
+                                                        <div class="ripple-container"></div>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="11">
+                                                    <div class="alert alert-danger">
+                                                        Data Pendaftar belum Tersedia.
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                                {{ $users->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <x-footers.auth></x-footers.auth>
         </div>
-    </div>
+    </main>
+    <x-plugins></x-plugins>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-    <script>
-        //message with toastr
-        @if(session()->has('success'))
-
-            toastr.success('{{ session('success') }}', 'BERHASIL!');
-
-        @elseif(session()->has('error'))
-
-            toastr.error('{{ session('error') }}', 'GAGAL!');
-
-        @endif
-    </script>
-
-</body>
-</html>
+</x-layout>
