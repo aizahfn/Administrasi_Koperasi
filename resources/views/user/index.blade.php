@@ -133,11 +133,14 @@
                                                         <i class="material-icons">edit</i>
                                                         <div class="ripple-container"></div>
                                                     </a>
-                                                    <button type="button" class="btn btn-danger btn-link"
-                                                        data-original-title="" title="" href="{{ route('user.destroy', $user->id) }}">
-                                                        <i class="material-icons">close</i>
-                                                        <div class="ripple-container"></div>
-                                                    </button>
+                                                    <form id="delete-form" action="{{ route('user.destroy', $user->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-link" data-original-title="" title="">
+                                                            <i class="material-icons">close</i>
+                                                            <div class="ripple-container"></div>
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @empty
