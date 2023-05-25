@@ -63,9 +63,6 @@ class UserController extends Controller
         //get post by ID
         $user = User::findOrFail($id);
 
-        //delete image
-        // Storage::delete('public/posts/'. $post->image);
-
         //delete post
         $user->delete();
 
@@ -77,9 +74,6 @@ class UserController extends Controller
     {
         //validate form
         $this->validate($request, [
-            // 'image'     => 'image|mimes:jpeg,jpg,png|max:2048',
-            // 'id_berkas'     => 'required',
-            // 'role'          => 'required',
             'nama_lengkap'  => 'required',
             'no_telp'       => 'required',
             'jabatan'       => 'required',
@@ -88,16 +82,12 @@ class UserController extends Controller
             'alamat'        => 'required',
             'jenis_kelamin' => 'required',
             'tanggal_lahir' => 'required',
-            // 'title'     => 'required',
-            // 'content'   => 'required|min:10'
         ]);
 
         //get post by ID
         $user = User::findOrFail($id);
 
         $user->update([
-            // 'id_berkas'     => $request->id_berkas,
-            // 'role'          => $request->role,
             'nama_lengkap'  => $request->nama_lengkap,
             'no_telp'       => $request->no_telp,
             'jabatan'       => $request->jabatan,
@@ -106,13 +96,11 @@ class UserController extends Controller
             'alamat'        => $request->alamat,
             'jenis_kelamin' => $request->jenis_kelamin,
             'tanggal_lahir' => $request->tanggal_lahir
-            // 'image'     => $image->hashName(),
-            // 'title'     => $request->title,
-            // 'content'   => $request->content
         ]);
         //redirect to index
         return redirect()->route('user.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
+    
     public function edit($id): View
     {
         //get post by ID
