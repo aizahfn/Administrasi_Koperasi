@@ -33,37 +33,33 @@ class LowonganController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'nama_lowongan' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'tanggal_lowongan' => 'required',
-            'jumlah_lowongan' => 'required',
-            'deskripsi_lowongan' => 'required'
-        ]);
+{
+    $request->validate([
+        'nama_lowongan' => 'required',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'tanggal_lowongan' => 'required',
+        'jumlah_lowongan' => 'required',
+        'deskripsi_lowongan' => 'required'
+    ]);
 
-        $input = $request->all();
-
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        }
-
-        Lowongan::create($input);
-
-        return redirect()->route('datalowongan.index')
-                        ->with('success','Lowongan created successfully.');
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->store('public/gambarLowongan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Lowongan $lowongan): View
-    {
-        return view('datalowongan.show',compact('lowongan'));
-    }
+    Lowongan::create([
+        'nama_lowongan' => $request->nama_lowongan,
+        'image' => $imageName,
+        'tanggal_lowongan' => $request->tanggal_lowongan,
+        'jumlah_lowongan' => $request->jumlah_lowongan,
+        'deskripsi_lowongan' => $request->deskripsi_lowongan
+    ]);
+
+    return redirect()->route('datalowongan.index')->with(['success' => 'Pendaftaran Berhasil, Mohon Menunggu Proses Verifikasi!']);
+}
+
+
 
     /**
      * Show the form for editing the specified resource.

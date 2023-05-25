@@ -41,30 +41,28 @@
                                     </div>
                                 </div>
                         @endif
-                        <form method='POST' action='{{ route('datalowongan.store') }}'>
+                        <form method="POST" action="{{ route('datalowongan.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div>
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Posisi Lowongan</label>
-                                    <input type="text" name="nama_datalowongan" class="form-control border border-2 p-2" value='{{ isset($datalowongan) ? $datalowongan->nama_datalowongan : old('nama_datalowongan') }}'>
-                                    @error('nama_datalowongan')
-                                <p class='text-danger inputerror'>{{ $message }} </p>
-                                @enderror
+                                    <input type="text" name="nama_lowongan" class="form-control border border-2 p-2" value='{{ isset($datalowongan) ? $datalowongan->nama_lowongan : old('nama_lowongan') }}'>
+                                    @error('nama_lowongan')
+                                        <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Gambar Lowongan</label>
-                                    <span><img src="{{ isset($datalowongan) ? asset('/storage/'.preg_replace('/public\//i', '', $datalowongan->gambar)) : "" }}" alt=""> </span>
-                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('gambar') is-invalid @enderror" name="gambar" value='{{ isset($datalowongan) ? asset('/storage/'.preg_replace('/public\//i', '', $datalowongan->gambar)) : old('gambar') }}'>
-
-                                    <!-- error message untuk title -->
-                                    @error('gambar')
+                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('image') is-invalid @enderror" name="image">
+                                    <!-- error message for image -->
+                                    @error('image')
                                         <div class="alert alert-danger mt-2">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label class="form-label">Tanggal Lowongan</label>
+                                    <label class="form-label">Batas Akhir Lowongan</label>
                                     <input type="date" name="tanggal_lowongan" class="form-control border border-2 p-2" value='{{ isset($datalowongan) ? $datalowongan->tanggal_lowongan : old('tanggal_lowongan') }}'>
                                     @error('tanggal_lowongan')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
@@ -72,7 +70,7 @@
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Jumlah Lowongan</label>
-                                    <input type="text" name="jumlah_lowongan" class="form-control border border-2 p-2" value='{{ isset($datalowongan) ? $datalowongan->tanggal_lowongan : old('tanggal_lowongan') }}'>
+                                    <input type="text" name="jumlah_lowongan" class="form-control border border-2 p-2" value='{{ isset($datalowongan) ? $datalowongan->jumlah_lowongan : old('jumlah_lowongan') }}'>
                                     @error('jumlah_lowongan')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror

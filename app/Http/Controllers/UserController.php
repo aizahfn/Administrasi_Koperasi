@@ -100,7 +100,7 @@ class UserController extends Controller
         //redirect to index
         return redirect()->route('user.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
-    
+
     public function edit($id): View
     {
         //get post by ID

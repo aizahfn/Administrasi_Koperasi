@@ -55,18 +55,17 @@
                                                         </div>
                                                     </div>
                                                 </td>
+                                                <td class="text-center">
+                                                    <div class="d-flex px-2 py-1">
+                                                        <img src="{{ asset('/storage/uploadan/'.$lowongan->gambar) }}" class="rounded" style="width: 150px">
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
                                                             <p class="mb-0 text-sm">{{ $lowongan->nama_lowongan }}</p>
                                                         </div>
                                                     </div>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="d-flex px-2 py-1">
-                                                        <img src="{{ asset('/storage/uploadan/'.$lowongan->gambar) }}" class="rounded" style="width: 150px">
-                                                    </div>
-
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
