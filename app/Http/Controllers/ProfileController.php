@@ -10,10 +10,9 @@ class ProfileController extends Controller
     {
         return view('pages.profile');
     }
-
+    
     public function update()
     {
-
         $user = request()->user();
         $attributes = request()->validate([
             'nama_lengkap'  => 'required',

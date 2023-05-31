@@ -3,7 +3,7 @@
     <x-navbars.sidebar activePage="berkas-pendaftar"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage="Berkas Management"></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage="berkas Management"></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row">
@@ -11,12 +11,13 @@
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                <h3 class="text-white mx-3"><strong> MANAJEMEN Berkas</strong></h3>
+                                <h3 class="text-white mx-3"><strong> MANAJEMEN BERKAS</strong></h3>
                             </div>
                         </div>
                         <div class=" me-3 my-3 text-end">
                             <a class="btn bg-gradient-dark mb-0" href="{{ route('berkas.create') }}"><i
-                                    class="material-icons text-sm">add</i>&nbsp;&nbsp;Tambahkan Berkas</a>
+                                    class="material-icons text-sm">add</i>&nbsp;&nbsp;Tambahkan Berkas
+                            </a>
                         </div>
                         <div class="card-body px-0 pb-2">
                             <div class="table-responsive p-0">
@@ -52,21 +53,21 @@
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                        <img src="{{ asset('/storage/uploadan/'.$list_berkas->ktp) }}" class="rounded" style="width: 150px">
+                                                            <img src="{{ asset('public/berkas'.$list_berkas->ktp) }}" class="rounded" style="width: 150px">
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                        <img src="{{ asset('/storage/uploadan/'.$list_berkas->ktm) }}" class="rounded" style="width: 150px">
+                                                            <img src="{{ asset('/storage/uploadan/'.$list_berkas->ktm) }}" class="rounded" style="width: 150px">
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                        <img src="{{ asset('/storage/uploadan/'.$list_berkas->s_pernyataan) }}" class="rounded" style="width: 150px">
+                                                            <img src="{{ asset('/storage/uploadan/'.$list_berkas->s_pernyataan) }}" class="rounded" style="width: 150px">
                                                         </div>
                                                     </div>
                                                 </td>
@@ -91,7 +92,7 @@
                                             <tr>
                                                 <td colspan="11">
                                                     <div class="alert alert-danger">
-                                                        Data Berkas belum Tersedia.
+                                                        Berkas belum Tersedia.
                                                     </div>
                                                 </td>
                                             </tr>

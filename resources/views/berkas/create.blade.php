@@ -59,7 +59,6 @@
                                         </div>
                                     @enderror
                                 </div>
-
                                 <div class="form-group mb-3">
                                     <label class="form-label">Kartu Tanda Mahasiswa</label>
                                     <span><img src="{{ isset($berkas) ? asset('/storage/'.preg_replace('/public\//i', '', $berkas->ktm)) : "" }}" alt=""></span>
@@ -71,9 +70,8 @@
                                         </div>
                                     @enderror
                                 </div>
-
                                 <div class="form-group mb-5">
-                                    <label class="form-label">Surat Pernyataan</label>
+                                    <label class="form-label">Surat Peryataan</label>
                                     <span><img src="{{ isset($berkas) ? asset('/storage/'.preg_replace('/public/i', '', $berkas->s_pernyataan)) : "" }}" alt=""></span>
                                     <input type="file" class="form-control form-control-lg border border-2 p-2 @error('s_pernyataan') is-invalid @enderror" name="s_pernyataan" value='{{ isset($berkas) ? asset('/storage/'.$berkas->s_pernyataan) : old('s_pernyataan') }}'>
 
