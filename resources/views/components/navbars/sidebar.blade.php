@@ -37,7 +37,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'berkas-pendaftar' ? ' active bg-gradient-primary' : '' }} "
-                    href="{{ route('berkas') }}">
+                    href="{{ route('berkas-pendaftar') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">receipt_long</i>
                     </div>
@@ -88,7 +88,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'aktivitas' ? ' active bg-gradient-primary' : '' }}  "
-                    href="{{ route('shift') }}">
+                    href="{{ route('aktivitas') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">person</i>
                     </div>
