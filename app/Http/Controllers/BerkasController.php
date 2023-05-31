@@ -40,9 +40,9 @@ class BerkasController extends Controller
         $s_pernyataan   = $request->file('s_pernyataan');
 
         //upload image
-        $ktp            ->storeAs('public/uploadan', $ktp->hashName());
-        $ktm            ->storeAs('public/uploadan', $ktm->hashName());
-        $s_pernyataan   ->storeAs('public/uploadan', $s_pernyataan->hashName());
+        $ktp            ->storeAs('public/berkas', $ktp->hashName());
+        $ktm            ->storeAs('public/berkas', $ktm->hashName());
+        $s_pernyataan   ->storeAs('public/berkas', $s_pernyataan->hashName());
 
         //create post
         Berkas::create([
@@ -65,9 +65,9 @@ class BerkasController extends Controller
 
 
         //delete image
-        Storage::delete('public/uploadan/'. $berkas->ktp);
-        Storage::delete('public/uploadan/'. $berkas->ktm);
-        Storage::delete('public/uploadan/'. $berkas->s_pernyataan);
+        Storage::delete('public/berkas/'. $berkas->ktp);
+        Storage::delete('public/berkas/'. $berkas->ktm);
+        Storage::delete('public/berkas/'. $berkas->s_pernyataan);
 
         //delete data berkas
         $berkas->delete();
@@ -94,11 +94,11 @@ class BerkasController extends Controller
 
                 //upload new image
                 $image = $request->file('ktp');
-                $image->storeAs('public/uploadan', $image->hashName());
+                $image->storeAs('public/berkas', $image->hashName());
 
                 if ($berkas->ktp)
                     //delete old image
-                    Storage::delete('public/uploadan/'.$berkas->ktp);
+                    Storage::delete('public/berkas/'.$berkas->ktp);
 
 
 
@@ -112,11 +112,11 @@ class BerkasController extends Controller
 
                 //upload new image
                 $image = $request->file('ktm');
-                $image->storeAs('public/uploadan', $image->hashName());
+                $image->storeAs('public/berkas', $image->hashName());
 
                 if ($berkas->ktm)
                     //delete old image
-                    Storage::delete('public/uploadan/'.$berkas->ktm);
+                    Storage::delete('public/berkas/'.$berkas->ktm);
 
                 //update post with new image
                 $berkas->update([
@@ -127,11 +127,11 @@ class BerkasController extends Controller
 
                 //upload new image
                 $image = $request->file('s_pernyataan');
-                $image->storeAs('public/uploadan', $image->hashName());
+                $image->storeAs('public/berkas', $image->hashName());
 
                 if ($berkas->s_pernyataan)
                     //delete old image
-                    Storage::delete('public/uploadan/'.$berkas->s_pernyataan);
+                    Storage::delete('public/berkas/'.$berkas->s_pernyataan);
 
                 //update post with new image
                 $berkas->update([

@@ -116,14 +116,12 @@ Route::group(['middleware' => 'guest'], function () {
 	Route::get('static-sign-up', function () {
 		return view('pages.static-sign-up');
 	})->name('surat-masuk');
-	Route::get('user-management', function () {
-		return view('pages.laravel-examples.user-management');
+	Route::get('berkas', function () {
+		return view('berkas.index');
 	})->name('berkas-pendaftar');
 	Route::get('informasi-pendaftar', [UserController::class, 'index'])->name('informasi-pendaftar');
     Route::get('data-lowongan', [LowonganController::class, 'index'])->name('data-lowongan');
-
-
-
+    Route::get('berkas',[BerkasController::class, 'index'])->name('berkas-pendaftar');
 
 
 
