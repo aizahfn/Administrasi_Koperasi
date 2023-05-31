@@ -84,7 +84,6 @@
                                 </div>
                                 </div>
                             </div>
-
                             <div class="btn-group btn-group-lg d-flex justify-content-center" role="group" aria-label="Navigation">
                                 <button type="submit" class="btn bg-gradient-dark">Submit</button>
                             </div>
