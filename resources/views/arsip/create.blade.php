@@ -1,102 +1,92 @@
-@extends('arsip.layout')
+<x-layout bodyClass="g-sidenav-show bg-gray-200">
 
-@section('content')
-<x-layout bodyClass="g-sidenav-show bg-gray-150">
-    <x-navbars.sidebar activePage="user-management"></x-navbars.sidebar>
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
-        <div class="container-fluid py-3">
-            <div class="row">
-                <div class="col-lg-12 margin-tb">
-                    <div class="pull-left">
-                        <h2>Add New Arsip</h2>
-                    </div>
-                    <div class="pull-right">
-                        <a class="btn btn-primary" href="{{ route('arsip.index') }}"> Back</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <div class="container-fluid py-2">
+    <x-navbars.sidebar activePage="arsip"></x-navbars.sidebar>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <!-- Navbar -->
+        <x-navbars.navs.auth titlePage="ADD NEW ARSIP"></x-navbars.navs.auth>
+        <!-- End Navbar -->
+        <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('arsip.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>No Dokumen:</strong>
-                                    <input type="integer" name="no_dokumen" class="form-control" placeholder="No Dokumen (Isi dengan Angka)">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Nama Dokumen:</strong>
-                                    <input type="string" name="nama_dokumen" class="form-control" placeholder="Nama Dokumen">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Kategori Dokumen:</strong>
-                                    <input type="string" name="kategori_dokumen" class="form-control" placeholder="Kategori Dokumen">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Tanggal Dokumen:</strong>
-                                    <input type="date" name="tanggal_dokumen" class="form-control" placeholder="Tanggal Dokumen">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Isi Dokumen:</strong>
-                                    <input type="string" name="isi_dokumen" class="form-control" placeholder="Isi Dokumen">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Sumber Dokumen:</strong>
-                                    <input type="string" name="sumber_dokumen" class="form-control" placeholder="Sumber Dokumen">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Penerima Dokumen:</strong>
-                                    <input type="String" name="penerima_dokumen" class="form-control" placeholder="Penerima Dokumen">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Status Dokumen:</strong>
-                                    <input type="String" name="status_dokumen" class="form-control" placeholder="Status Dokumen">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Aksesibilitas Dokumen:</strong>
-                                    <input type="String" name="aksesibilitas_dokumen" class="form-control" placeholder="Aksesibilitas Dokumen">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                <h3 class="text-white mx-3"><strong>ADD NEW ARSIP</strong></h3>
                             </div>
                         </div>
-                    </form>
+                        <div class="me-3 my-3 text-end">
+                            <a class="btn bg-gradient-dark mb-0" href="{{ route('arsip.index') }}">
+                                <i class="material-icons text-sm"></i>&nbsp;&nbsp;Back
+                            </a>
+                        </div>
+                        <form action="{{ route('arsip.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row me-3 ms-3">
+                                <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <strong>No Dokumen:</strong>
+                                        <input type="integer" name="no_dokumen" class="form-control border border-2 p-2" placeholder="No Dokumen (Isi dengan Angka)">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <strong>Nama Dokumen:</strong>
+                                        <input type="string" name="nama_dokumen" class="form-control border border-2 p-2" placeholder="Nama Dokumen">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <strong>Kategori Dokumen:</strong>
+                                        <input type="string" name="kategori_dokumen" class="form-control border border-2 p-2" placeholder="Kategori Dokumen">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <strong>Tanggal Dokumen:</strong>
+                                        <input type="date" name="tanggal_dokumen" class="form-control border border-2 p-2" placeholder="Tanggal Dokumen">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <strong>Isi Dokumen:</strong>
+                                        <input type="string" name="isi_dokumen" class="form-control border border-2 p-2" placeholder="Isi Dokumen">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <strong>Sumber Dokumen:</strong>
+                                        <input type="string" name="sumber_dokumen" class="form-control border border-2 p-2" placeholder="Sumber Dokumen">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <strong>Penerima Dokumen:</strong>
+                                        <input type="String" name="penerima_dokumen" class="form-control border border-2 p-2" placeholder="Penerima Dokumen">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <strong>Status Dokumen:</strong>
+                                        <input type="String" name="status_dokumen" class="form-control border border-2 p-2" placeholder="Status Dokumen">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <strong>Aksesibilitas Dokumen:</strong>
+                                        <input type="String" name="aksesibilitas_dokumen" class="form-control border border-2 p-2" placeholder="Aksesibilitas Dokumen">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                        <x-footers.auth></x-footers.auth>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
     <x-plugins></x-plugins>
+
 </x-layout>
-@endsection
