@@ -43,10 +43,6 @@
                                             </th>
                                             <th
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                PASSWORD
-                                            </th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 ALAMAT
                                             </th>
                                             <th
@@ -95,13 +91,6 @@
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
                                                             <p class="mb-0 text-sm">{{ $user->email }}</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->password }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
