@@ -1,13 +1,13 @@
 <?php
-  
+
 namespace App\Http\Controllers;
-  
+
 use App\Models\arsip;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
-  
+
 class ArsipController extends Controller
 {
     // /**
@@ -18,11 +18,11 @@ class ArsipController extends Controller
     public function index(): View
     {
         $arsips = arsip::latest()->paginate(5);
-        
-        return view('arsip\index',compact('arsips'))
+
+        return view('arsip.index',compact('arsips'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
     }
-  
+
     /**
      * Show the form for creating a new resource.
      */
@@ -30,7 +30,7 @@ class ArsipController extends Controller
     {
         return view('arsip.create');
     }
-  
+
     /**
      * Store a newly created resource in storage.
      */
@@ -47,22 +47,22 @@ class ArsipController extends Controller
             'status_dokumen' => 'required',
             'aksesibilitas_dokumen' => 'required',
         ]);
-    
+
         $input = $request->all();
-    
+
         // if ($image = $request->file('image')) {
         //     $destinationPath = 'images/';
         //     $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
         //     $image->move($destinationPath, $profileImage);
         //     $input['image'] = "$profileImage";
         // }
-      
+
         arsip::create($input);
-       
+
         return redirect()->route('arsip.index')
                         ->with('Success!','Arsip Created Successfully.');
     }
-  
+
     /**
      * Display the specified resource.
      */
@@ -70,7 +70,7 @@ class ArsipController extends Controller
     {
         return view('arsip.show',compact('arsip'));
     }
-  
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -78,7 +78,7 @@ class ArsipController extends Controller
     {
         return view('arsip.edit',compact('arsip'));
     }
-  
+
     /**
      * Update the specified resource in storage.
      */
@@ -95,9 +95,9 @@ class ArsipController extends Controller
             'status_dokumen' => 'required',
             'aksesibilitas_dokumen' => 'required'
         ]);
-    
+
         $input = $request->all();
-    
+
         // if ($image = $request->file('image')) {
         //     $destinationPath = 'images/';
         //     $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -106,20 +106,20 @@ class ArsipController extends Controller
         // }else{
         //     unset($input['image']);
         // }
-            
+
         $arsip->update($input);
-      
+
         return redirect()->route('arsip.index')
                         ->with('Success!','Arsip Updated Successfully');
     }
-  
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(arsip $arsip): RedirectResponse
     {
         $arsip->delete();
-         
+
         return redirect()->route('arsip.index')
                         ->with('Success!','Arsip Deleted Successfully');
     }
