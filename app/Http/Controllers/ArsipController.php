@@ -15,6 +15,7 @@ class ArsipController extends Controller
     //  *
     //  * @return response()
     //  */
+    
     public function index(): View
     {
         $arsips = arsip::latest()->paginate(5);
