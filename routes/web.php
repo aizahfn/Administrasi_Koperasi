@@ -121,10 +121,7 @@ Route::group(['middleware' => 'guest'], function () {
 	})->name('berkas-pendaftar');
 	Route::get('informasi-pendaftar', [UserController::class, 'index'])->name('informasi-pendaftar');
     Route::get('data-lowongan', [LowonganController::class, 'index'])->name('data-lowongan');
-	Route::get('berkas', [BerkasController::class, 'index'])->name('berkas');
-
-
-
+    Route::get('berkas',[BerkasController::class, 'index'])->name('berkas-pendaftar');
 
 
 

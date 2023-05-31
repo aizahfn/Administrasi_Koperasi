@@ -1,9 +1,9 @@
 <x-layout bodyClass="g-sidenav-show bg-gray-200">
 
-    <x-navbars.sidebar activePage="berkas-pendaftaran"></x-navbars.sidebar>
+    <x-navbars.sidebar activePage="berkas-pendaftar"></x-navbars.sidebar>
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage='Tambah Berkas'></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage='User Profile'></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid px-2 px-md-4">
             <div class="page-header min-height-300 border-radius-xl mt-4"
@@ -14,7 +14,8 @@
                 <div class="card card-plain h-100">
                     <div class="card-header pb-0 p-3">
                         <div class="row">
-                                <h3 class="mb-3 ">UPLOAD BERKAS</h3>
+                            <div class="col-md-8 d-flex align-items-center">
+                                <h3 class="mb-0">UPLOAD BERKAS</h3>
                             </div>
                         </div>
                     </div>
@@ -41,32 +42,49 @@
                                     </div>
                                 </div>
                         @endif
-                        <form method="POST" action="{{ route('berkas.create') }}" enctype="multipart/form-data">
+                        <div class="col-md-8 d-flex align-items-center">
+                            <h6 class="mb-5">format jpg, jpeg, dan png</h6>
+                        </div>
+                        <form method='POST' action='{{ route('berkas.create') }}' enctype="multipart/form-data">
                             @csrf
-                            <div>
-                                <div class="mb-3 col-md-6">
+                                <div class="form-group mb-3">
                                     <label class="form-label">Kartu Tanda Penduduk</label>
-                                    <input type="file" name="ktp" class="form-control border border-2 p-2" value='{{ isset($berkas) ? $berkas->ktp : old('ktp') }}'>
+                                    <span><img src="{{ isset($berkas) ? asset('/storage/'.preg_replace('/public\//i', '', $berkas->ktp)) : "" }}" alt=""> </span>
+                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('ktp') is-invalid @enderror" name="ktp" value='{{ isset($berkas) ? asset('/storage/'.preg_replace('/public\//i', '', $berkas->ktp)) : old('ktp') }}'>
+
+                                    <!-- error message untuk title -->
                                     @error('ktp')
-                                        <p class='text-danger inputerror'>{{ $message }} </p>
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
-                                <div class="mb-3 col-md-6">
+                                <div class="form-group mb-3">
                                     <label class="form-label">Kartu Tanda Mahasiswa</label>
-                                    <input type="file" name="ktm" class="form-control border border-2 p-2" value='{{ isset($berkas) ? $berkas->ktm : old('ktm') }}'>
+                                    <span><img src="{{ isset($berkas) ? asset('/storage/'.preg_replace('/public\//i', '', $berkas->ktm)) : "" }}" alt=""></span>
+                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('ktm') is-invalid @enderror" name="ktm" value='{{ isset($berkas) ? asset('/storage/'.preg_replace('/public\//i', '', $berkas->ktm)) : old('ktm') }}'>
+                                    <!-- error message untuk title -->
                                     @error('ktm')
-                                        <p class='text-danger inputerror'>{{ $message }} </p>
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
-                                    <div class="mb-3 col-md-6">
-                                    <label class="form-label">Surat Pernyataan</label>
-                                    <input type="file" name="s_pernyataan" class="form-control border border-2 p-2" value='{{ isset($berkas) ? $berkas->s_pernyataan : old('s_pernyataan') }}'>
-                                    @error('ktp')
-                                        <p class='text-danger inputerror'>{{ $message }} </p>
+                                </div>
+                                <div class="form-group mb-5">
+                                    <label class="form-label">Surat Peryataan</label>
+                                    <span><img src="{{ isset($berkas) ? asset('/storage/'.preg_replace('/public/i', '', $berkas->s_pernyataan)) : "" }}" alt=""></span>
+                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('s_pernyataan') is-invalid @enderror" name="s_pernyataan" value='{{ isset($berkas) ? asset('/storage/'.$berkas->s_pernyataan) : old('s_pernyataan') }}'>
+
+                                    <!-- error message untuk title -->
+                                    @error('s_pernyataan')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
                                 </div>
                             </div>
-                            <div class="btn-lg d-flex justify-content-center">
+                            <div class="btn-group btn-group-lg d-flex justify-content-center" role="group" aria-label="Navigation">
                                 <button type="submit" class="btn bg-gradient-dark">Submit</button>
                             </div>
                         </form>
