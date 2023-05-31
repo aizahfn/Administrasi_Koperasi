@@ -1,74 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tambah Berkas</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body style="background: lightgray">
+<x-layout bodyClass="g-sidenav-show bg-gray-200">
 
-    <div class="container mt-5 mb-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card border-0 shadow-sm rounded">
-                    <div class="card-body">
-                        <form action="{{ route('berkas.store') }}" method="POST" enctype="multipart/form-data">
-
+    <x-navbars.sidebar activePage="berkas-pendaftar"></x-navbars.sidebar>
+    <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
+        <!-- Navbar -->
+        <x-navbars.navs.auth titlePage='User Profile'></x-navbars.navs.auth>
+        <!-- End Navbar -->
+        <div class="container-fluid px-2 px-md-4">
+            <div class="page-header min-height-300 border-radius-xl mt-4"
+                style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+                <span class="mask  bg-gradient-primary  opacity-6"></span>
+            </div>
+            <div class="card card-body mx-3 mx-md-4 mt-n6">
+                <div class="card card-plain h-100">
+                    <div class="card-header pb-0 p-3">
+                        <div class="row">
+                            <div class="col-md-8 d-flex align-items-center">
+                                <h3 class="mb-0">UPLOAD BERKAS</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-3">
+                        @if (session('status'))
+                        <div class="row">
+                            <div class="alert alert-success alert-dismissible text-white" role="alert">
+                                <span class="text-sm">{{ Session::get('status') }}</span>
+                                <button type="button" class="btn-close text-lg py-3 opacity-10"
+                                    data-bs-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                        @endif
+                        @if (Session::has('demo'))
+                                <div class="row">
+                                    <div class="alert alert-danger alert-dismissible text-white" role="alert">
+                                        <span class="text-sm">{{ Session::get('demo') }}</span>
+                                        <button type="button" class="btn-close text-lg py-3 opacity-10"
+                                            data-bs-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                        @endif
+                        <div class="col-md-8 d-flex align-items-center">
+                            <h6 class="mb-5">format jpg, jpeg, dan png</h6>
+                        </div>
+                        <form method='POST' action='{{ route('berkas.create') }}' enctype="multipart/form-data">
                             @csrf
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Kartu Tanda Penduduk</label>
+                                    <span><img src="{{ isset($berkas) ? asset('/storage/'.preg_replace('/public\//i', '', $berkas->ktp)) : "" }}" alt=""> </span>
+                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('ktp') is-invalid @enderror" name="ktp" value='{{ isset($berkas) ? asset('/storage/'.preg_replace('/public\//i', '', $berkas->ktp)) : old('ktp') }}'>
 
-                            <div class="form-group">
-                                <label class="font-weight-bold">ktp</label>
-                                <input type="file" class="form-control @error('ktp') is-invalid @enderror" name="ktp">
+                                    <!-- error message untuk title -->
+                                    @error('ktp')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
 
-                                <!-- error message untuk title -->
-                                @error('ktp')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Kartu Tanda Mahasiswa</label>
+                                    <span><img src="{{ isset($berkas) ? asset('/storage/'.preg_replace('/public\//i', '', $berkas->ktm)) : "" }}" alt=""></span>
+                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('ktm') is-invalid @enderror" name="ktm" value='{{ isset($berkas) ? asset('/storage/'.preg_replace('/public\//i', '', $berkas->ktm)) : old('ktm') }}'>
+                                    <!-- error message untuk title -->
+                                    @error('ktm')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-5">
+                                    <label class="form-label">Surat Pernyataan</label>
+                                    <span><img src="{{ isset($berkas) ? asset('/storage/'.preg_replace('/public/i', '', $berkas->s_pernyataan)) : "" }}" alt=""></span>
+                                    <input type="file" class="form-control form-control-lg border border-2 p-2 @error('s_pernyataan') is-invalid @enderror" name="s_pernyataan" value='{{ isset($berkas) ? asset('/storage/'.$berkas->s_pernyataan) : old('s_pernyataan') }}'>
+
+                                    <!-- error message untuk title -->
+                                    @error('s_pernyataan')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="font-weight-bold">ktm</label>
-                                <input type="file" class="form-control @error('ktm') is-invalid @enderror" name="ktm">
-
-                                <!-- error message untuk title -->
-                                @error('ktm')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                            <div class="btn-group btn-group-lg d-flex justify-content-center" role="group" aria-label="Navigation">
+                                <button type="submit" class="btn bg-gradient-dark">Submit</button>
                             </div>
-
-                            <div class="form-group">
-                                <label class="font-weight-bold">s_pernyataan</label>
-                                <input type="file" class="form-control @error('s_pernyataan') is-invalid @enderror" name="s_pernyataan">
-
-                                <!-- error message untuk title -->
-                                @error('s_pernyataan')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
-                            <button type="reset" class="btn btn-md btn-warning">RESET</button>
-
                         </form>
+
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace( 'content' );
-</script>
-</body>
-</html>
+        </div>
+        <x-footers.auth></x-footers.auth>
+    </div>
+    <x-plugins></x-plugins>
+
+</x-layout>
