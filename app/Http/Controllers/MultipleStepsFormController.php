@@ -98,10 +98,6 @@ class MultipleStepsFormController extends Controller
         if(!empty($validatedData['ktp']))            $berkas->ktp = $validatedData['ktp']->store('public/berkas');
         if(!empty($validatedData['ktm']))            $berkas->ktm = $validatedData['ktm']->store('public/berkas');
         if(!empty($validatedData['s_pernyataan']))   $berkas->s_pernyataan = $validatedData['s_pernyataan']->store('public/berkas');
-        // $berkas->ktp = $validatedData['ktp']->store('public/berkas');
-        // $berkas->ktm = $validatedData['ktm']->store('public/berkas');
-        // $berkas->s_pernyataan = $validatedData['s_pernyataan']->store('public/berkas');
-
         if(!empty($validatedData['ktp']) && !empty($validatedData['ktm']) && !empty($validatedData['s_pernyataan'])) $berkas->id_user = $user->id;
         if(!empty($validatedData['ktp']) && !empty($validatedData['ktm']) && !empty($validatedData['s_pernyataan'])) $this->request->session()->put('berkas', $berkas);
         return redirect()->route('pages.review', compact(['user', 'berkas']));
@@ -136,7 +132,11 @@ class MultipleStepsFormController extends Controller
         $this->request->session()->forget('user');
         $this->request->session()->forget('berkas');
 
-        return redirect()->route('halaman-utama')
-            ->with('success','Data Pendaftaran Berhasil Disimpan, Mohon Tunggu Konfirmasi Selanjutnya');
+        return redirect()->route('sukses');
+    }
+
+    public function sukses(): View
+    {
+        return view('pages.pendaftaran.sukses');
     }
 }

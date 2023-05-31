@@ -1,177 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta nama_lengkap="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tambah User</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body style="background: lightgray">
+<x-layout bodyClass="g-sidenav-show bg-gray-200">
 
-    <div class="container mt-5 mb-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card border-0 shadow-sm rounded">
-                    <div class="card-body">
-                        <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
-
+    <x-navbars.sidebar activePage="informasi-pendaftar"></x-navbars.sidebar>
+    <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
+        <!-- Navbar -->
+        <x-navbars.navs.auth titlePage='User Profile'></x-navbars.navs.auth>
+        <!-- End Navbar -->
+        <div class="container-fluid px-2 px-md-4">
+            <div class="page-header min-height-300 border-radius-xl mt-4"
+                style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+                <span class="mask  bg-gradient-primary  opacity-6"></span>
+            </div>
+            <div class="card card-body mx-3 mx-md-4 mt-n6">
+                <div class="card card-plain h-100">
+                    <div class="card-header pb-0 p-3">
+                        <div class="row">
+                            <div class="col-md-8 d-flex align-items-center">
+                                <h3 class="mb-3 ">Masukkan Data Pendaftar</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-3">
+                        @if (session('status'))
+                        <div class="row">
+                            <div class="alert alert-success alert-dismissible text-white" role="alert">
+                                <span class="text-sm">{{ Session::get('status') }}</span>
+                                <button type="button" class="btn-close text-lg py-3 opacity-10"
+                                    data-bs-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                        @endif
+                        @if (Session::has('demo'))
+                                <div class="row">
+                                    <div class="alert alert-danger alert-dismissible text-white" role="alert">
+                                        <span class="text-sm">{{ Session::get('demo') }}</span>
+                                        <button type="button" class="btn-close text-lg py-3 opacity-10"
+                                            data-bs-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                        @endif
+                        <form method='POST' action='{{ route('user.store') }}'>
                             @csrf
-                            <div class="form-group">
-                                <label class="font-weight-bold">Nama Lengkap</label>
-                                <input type="text" class="form-control @error('nama_lengkap') is-invalid @enderror" name="nama_lengkap" value="{{ old('nama_lengkap') }}" placeholder="Masukkan Nama Lengkap">
+                            <div class="row">
 
-                                <!-- error message untuk title -->
-                                @error('nama_lengkap')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" name="email" class="form-control border border-2 p-2" value='{{ isset($user) ? $user->email : old('email') }}'>
+                                    @error('email')
+                                <p class='text-danger inputerror'>{{ $message }} </p>
                                 @enderror
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Nama Lengkap</label>
+                                    <input type="text" name="nama_lengkap" class="form-control border border-2 p-2" value='{{ isset($user) ? $user->nama_lengkap : old('nama_lengkap') }}'>
+                                    @error('nama_lengkap')
+                                <p class='text-danger inputerror'>{{ $message }} </p>
+                                @enderror
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">No. Telepon</label>
+                                    <input type="number" name="no_telp" class="form-control border border-2 p-2" value='{{ isset($user) ? $user->no_telp : old('no_telp') }}'>
+                                    @error('no_telp')
+                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Lowongan yang Dilamar</label>
+                                    <select class="form-select border border-3 p-2" name="jabatan">
+                                        @forelse ($lowongan as $lowonganItem)
+                                            <option value="{{ $lowonganItem->id }}">{{ $lowonganItem->nama_lowongan }}</option>
+                                        @empty
+                                            <option value="">Tidak ada lowongan</option>
+                                        @endforelse
+                                    </select>
+                                    @error('jabatan')
+                                        <p class="text-danger inputerror">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" name="password" class="form-control border border-2 p-2" value='{{ isset($user) ? $user->password : old('password') }}'>
+                                    @error('password')
+                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Jenis Kelamin</label><br>
+                                    <select class="form-select border border-3 p-2" name="jenis_kelamin">
+                                        <option value="pria" {{ isset($user) ? ($user->jenis_kelamin == "pria" ? "selected" : "") : "" }}>Pria</option>
+                                        <option value="wanita" {{ isset($user) ? ($user->jenis_kelamin == "wanita" ? "selected" : "") : "" }}>Wanita</option>
+                                    </select>
+                                    @error('jenis_kelamin')
+                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Tanggal Lahir</label>
+                                    <input type="date" name="tanggal_lahir" class="form-control border border-2 p-2" value='{{ isset($user) ? $user->tanggal_lahir : old('tanggal_lahir') }}'>
+                                    @error('tanggal_lahir')
+                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3 col-md-12">
+                                    <label for="floatingTextarea2">Alamat</label>
+                                    <textarea class="form-control border border-2 p-2"
+                                        placeholder=" Say something about your alamat" id="floatingTextarea2" name="alamat"
+                                        rows="4" cols="50">{{ isset($user) ? $user->alamat : old('alamat') }}</textarea>
+                                        @error('alamat')
+                                        <p class='text-danger inputerror'>{{ $message }} </p>
+                                        @enderror
+                                </div>
                             </div>
-
-                            <div class="form-group">
-                                <label class="control-label">ID Berkas</label><br/>
-                                <select class="form-select @error('id_berkas') is-invalid @enderror" name="id_berkas">
-
-                            <option selected disabled>Open this select menu</option>
-
-                                @forelse ($berkas as $berkass)
-                                    <option value="{{ $berkass->id}}">{{ $berkass->id}}</option>
-                                @empty
-                                    <option value="">Data Berkas Belum Tersedia</option>
-                                @endforelse
-                            </select>
-
-                                @error('id_berkas')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                            <div class="btn-lg d-flex justify-content-center">
+                                <button type="submit" class="btn bg-gradient-dark">Submit</button>
                             </div>
-
-                            <div class="form-group">
-                                <label class="font-weight-bold">role</label>
-                                <input type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" placeholder="Masukkan role">
-
-                                <!-- error message untuk title -->
-                                @error('role')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label class="font-weight-bold">no_telp</label>
-                                <input type="text" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" value="{{ old('no_telp') }}" placeholder="Masukkan no_telp">
-
-                                <!-- error message untuk title -->
-                                @error('no_telp')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label class="font-weight-bold">jabatan</label>
-                                <input type="text" class="form-control @error('jabatan') is-invalid @enderror" name="jabatan" value="{{ old('jabatan') }}" placeholder="Masukkan jabatan">
-
-                                <!-- error message untuk title -->
-                                @error('jabatan')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label class="font-weight-bold">email</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Masukkan email">
-
-                                <!-- error message untuk title -->
-                                @error('email')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label class="font-weight-bold">password</label>
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('title') }}" placeholder="Masukkan password">
-
-                                <!-- error message untuk title -->
-                                @error('password')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label class="font-weight-bold">alamat</label>
-                                <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') }}" placeholder="Masukkan alamat">
-
-                                <!-- error message untuk title -->
-                                @error('alamat')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label class="font-weight-bold">Jenis jenis_kelamin</label>
-                                <input type="text" class="form-control @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin" value="{{ old('jenis_kelamin') }}" placeholder="Masukkan Jenis jenis_kelamin">
-
-                                <!-- error message untuk title -->
-                                @error('jenis_kelamin')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label class="font-weight-bold">Tangal Lahir</label>
-                                <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" placeholder="Masukkan Tanggal Lahir">
-
-                                <!-- error message untuk title -->
-                                @error('tanggal_lahir')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            {{-- <div class="form-group">
-                                <label class="font-weight-bold">KONTEN</label>
-                                <textarea class="form-control @error('content') is-invalid @enderror" name="content" rows="5" placeholder="Masukkan Konten Post">{{ old('content') }}</textarea>
-
-                                <!-- error message untuk content -->
-                                @error('content')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div> --}}
-
-                            <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
-                            <button type="reset" class="btn btn-md btn-warning">RESET</button>
-
                         </form>
+
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace( 'content' );
-</script>
-</body>
-</html>
+        </div>
+        <x-footers.auth></x-footers.auth>
+    </div>
+    <x-plugins></x-plugins>
+
+</x-layout>

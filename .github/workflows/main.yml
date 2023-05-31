@@ -18,20 +18,25 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
 
-    - name: Deploy code to VPS
+    - name: Deploy to VPS
       run: |
-          ssh -o StrictHostKeyChecking=no root@mc.hoaks.my.id "
+          ssh -o StrictHostKeyChecking=no root@${{ secrets.IP_VPS }} "
             git config --global safe.directory '*' ;
-            cd /var/www/html/administrasi_koprasi ;
+            cd /www/wwwroot/administrasi.hoaks.my.id ;
             if [ ! -d .git ]; then echo 'Project belum ada' && git clone https://oauth2:'${{ secrets.CLONE_TOKEN }}'@github.com/aizahfn/Administrasi_Koperasi.git .; fi
-            git pull ;
+            git checkout . ;
+            git pull origin master ;
+            if [ -f .htaccess ]; then rm .htaccess; fi ;
+            echo '${{ secrets.FILE_HTACCESS }}' >> .htaccess ;
             if [ -f .env ]; then rm .env; fi ;
             echo '${{ secrets.FILE_ENV }}' >> .env ;
+            echo 'Run Composer...' ;
             export COMPOSER_ALLOW_SUPERUSER=1 ;
-            composer install ;
             composer update ;
+            composer install ;
             php artisan migrate ;
             php artisan key:generate ;
-            systemctl restart nginx ;
-            echo 'Deployment completed.'
+            chmod -R 777 storage ;
+            # systemctl restart nginx ;
+            echo 'yahahaha hayuukkkkk Deployment completed.'
           "

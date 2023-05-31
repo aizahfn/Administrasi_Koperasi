@@ -72,7 +72,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Lowongan yang Dilamar</label>
-                                    <select class="form-control border border-3 p-2" name="jabatan">
+                                    <select class="form-select border border-3 p-2" name="jabatan">
                                         @forelse (App\Models\Lowongan::all() as $lowongan)
                                             <option value="{{ $lowongan->id }}" {{ ($lowongan->id == $id) ? "selected" : "" }}>{{ $lowongan->nama_lowongan  }}</option>
                                         @empty
@@ -95,7 +95,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Jenis Kelamin</label><br>
-                                    <select class="form-control border border-3 p-2" name="jenis_kelamin">
+                                    <select class="form-select border border-3 p-2" name="jenis_kelamin">
                                         <option value="pria" {{ isset($user) ? ($user->jenis_kelamin == "pria" ? "selected" : "") : "" }}>Pria</option>
                                         <option value="wanita" {{ isset($user) ? ($user->jenis_kelamin == "wanita" ? "selected" : "") : "" }}>Wanita</option>
                                     </select>

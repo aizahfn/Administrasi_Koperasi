@@ -49,7 +49,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Email</label>
-                                    <input type="email" name="email" class="form-control border border-2 p-2" value='{{ $user->email }}'>
+                                    <input type="email" name="email" class="form-control border border-2 p-2" value='{{ $user->email }}' readonly>
                                     @error('email')
                                 <p class='text-danger inputerror'>{{ $message }} </p>
                                 @enderror
@@ -57,7 +57,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Nama Lengkap</label>
-                                    <input type="text" name="nama_lengkap" class="form-control border border-2 p-2" value='{{ $user->nama_lengkap }}'>
+                                    <input type="text" name="nama_lengkap" class="form-control border border-2 p-2" value='{{ $user->nama_lengkap }}' readonly>
                                     @error('nama_lengkap')
                                 <p class='text-danger inputerror'>{{ $message }} </p>
                                 @enderror
@@ -65,7 +65,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">No. Telepon</label>
-                                    <input type="number" name="no_telp" class="form-control border border-2 p-2" value='{{ $user->no_telp }}'>
+                                    <input type="number" name="no_telp" class="form-control border border-2 p-2" value='{{ $user->no_telp }}' readonly>
                                     @error('no_telp')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -73,7 +73,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Jabatan</label>
-                                    <select class="form-control border border-3 p-2" name="jabatan">
+                                    <select class="form-control border border-3 p-2" name="jabatan" readonly>
                                         @forelse (App\Models\Lowongan::all() as $lowongan)
                                             <option value="{{ $lowongan->id }}">{{ $lowongan->nama_lowongan }}</option>
                                         @empty
@@ -88,7 +88,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Password</label>
-                                    <input type="password" name="password" class="form-control border border-2 p-2" value='{{ $user->password }}'>
+                                    <input type="password" name="password" class="form-control border border-2 p-2" value='{{ $user->password }}' readonly>
                                     @error('password')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -96,7 +96,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Jenis Kelamin</label><br>
-                                    <select class="form-control border border-3 p-2" name="jenis_kelamin">
+                                    <select class="form-control border border-3 p-2" name="jenis_kelamin" readonly>
                                         <option value="pria">Pria</option>
                                         <option value="wanita">Wanita</option>
                                     </select>
@@ -107,7 +107,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Tanggal Lahir</label>
-                                    <input type="date" name="tanggal_lahir" class="form-control border border-2 p-2" value='{{ $user->tanggal_lahir }}'>
+                                    <input type="date" name="tanggal_lahir" class="form-control border border-2 p-2" value='{{ $user->tanggal_lahir }}' readonly>
                                     @error('tanggal_lahir')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -117,7 +117,7 @@
                                     <label for="floatingTextarea2">Alamat</label>
                                     <textarea class="form-control border border-2 p-2"
                                         placeholder=" Say something about your alamat" id="floatingTextarea2" name="alamat"
-                                        rows="4" cols="50">{{ $user->alamat }}</textarea>
+                                        rows="4" cols="50" readonly>{{ $user->alamat }}</textarea>
                                         @error('alamat')
                                         <p class='text-danger inputerror'>{{ $message }} </p>
                                         @enderror
@@ -125,8 +125,38 @@
                             </div>
                             <div class="btn-group btn-group-lg d-flex justify-content-center" role="group" aria-label="Navigation">
                                 <a href="{{ route('pages.pendaftaran.berkas', compact(['user', 'berkas'])) }}" type="button" class="btn bg-gradient-dark">Kembali</a>
-                                {{-- <button type="button" class="btn bg-gradient-dark">Kembali</button> --}}
-                                <button type="submit" class="btn bg-gradient-dark">Lanjut</button>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn bg-gradient-dark" data-bs-toggle="modal" data-bs-target="#konfirmasi">
+                                    Lanjut
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="konfirmasi" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="konfirmasiLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header text-center">
+                                                <h3 class="modal-title font-weight-normal" id="konfirmasiLabel">Peringatan!</h3>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body text-center">
+                                                <div>
+                                                    <img src="{{ asset('assets/img/warning.png') }}" alt="" width="100px">
+                                                </div>
+                                                <b>Apakah anda yakin data yang anda isi sudah benar?</b><br>
+                                                Data yang sudah diisi tidak dapat diubah kembali.
+                                            </div>
+                                            <div class="modal-footer btn-group btn-group d-flex justify-content-center">
+                                                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn bg-gradient-primary">OK</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </form>
 
