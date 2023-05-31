@@ -69,9 +69,6 @@ Route::post('/review', [MultipleStepsFormController::class, 'postCreateStepThree
 //Route for the sukses
 Route::get('/sukses', [MultipleStepsFormController::class, 'sukses'])->name('sukses');
 
-Route::get('/teslivewire', [UserTable::class, 'render'])->name('user-table');
-
-
 
 
 
