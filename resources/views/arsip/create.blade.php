@@ -37,7 +37,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
                                     <div class="form-group">
                                         <strong>Kategori Dokumen:</strong>
-                                        <input type="string" name="kategori_dokumen" class="form-control border border-2 p-2" placeholder="Kategori Dokumen">
+                                        <input type="string" name="kategori_dokumen" class="form-control border border-2 p-2" placeholder="Surat Masuk/Keluar">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
