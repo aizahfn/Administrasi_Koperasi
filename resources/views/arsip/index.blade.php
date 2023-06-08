@@ -1,80 +1,168 @@
-<x-layout bodyClass="g-sidenav-show bg-gray-150">
-    <x-navbars.sidebar activePage="user-management"></x-navbars.sidebar>
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
-        <div class="container-fluid py-3">
-            <div class="row">
-                <div class="col-lg-12 margin-tb">
-                    <div class="pull-left">
-                        <h2>ARSIP</h2>
-                    </div>
-                    <div class="pull-right">
-                        <a class="btn btn-success" href="{{ route('arsips.create') }}">Create New Arsip</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<x-layout bodyClass="g-sidenav-show  bg-gray-200">
 
-        <div class="container-fluid py-2">
+    <x-navbars.sidebar activePage="arsip"></x-navbars.sidebar>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <!-- Navbar -->
+        <x-navbars.navs.auth titlePage="ARSIP"></x-navbars.navs.auth>
+        <!-- End Navbar -->
+        <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12">
-                    <div class="card my-1">
+                    <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                            @if ($message = Session::get('success'))
-                                <div class="alert alert-success">
-                                    <p>{{ $message }}</p>
-                                </div>
-                            @endif
-                            <div class="card-body px-0 pb-0">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead>
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                <h3 class="text-white mx-3"><strong> ARSIP</strong></h3>
+                            </div>
+                        </div>
+                        <div class=" me-3 my-3 text-end">
+                            <a class="btn bg-gradient-dark mb-0" href="{{ route('arsips.create') }}"><i
+                                    class="material-icons text-sm">add</i>&nbsp;&nbsp;Tambahkan Arsip</a>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
+                                                NO
+                                            </th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
+                                                NAMA DOKUMEN</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-13 ps-2">
+                                                KATEGORI DOKUMEN</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
+                                                TANGGAL DOKUMEN</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
+                                                ISI DOKUMEN</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
+                                                SUMBER DOKUMEN</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
+                                                PENERIMA DOKUMEN</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
+                                                STATUS DOKUMEN</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
+                                                AKSESIBILITAS DOKUMEN</th>
+                                            <th class="text-secondary opacity-7"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($arsips as $arsip)
                                             <tr>
-                                                <th>No</th>
-                                                <th>Nama Dokumen</th>
-                                                <th>Kategori Dokumen</th>
-                                                <th>Tanggal Dokumen</th>
-                                                <th>Isi Dokumen</th>
-                                                <th>Sumber Dokumen</th>
-                                                <th>Penerima Dokumen</th>
-                                                <th>Status Dokumen</th>
-                                                <th>Aksesibilitas Dokumen</th>
-                                                <th width="200px">Action</th>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->no_dokumen }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->nama_dokumen }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->kategori_dokumen }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->tanggal_dokumen }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->isi_dokumen }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->sumber_dokumen }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->penerima_dokumen }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->status_dokumen }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->aksesibilitas_dokumen }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <a rel="tooltip" class="btn btn-success btn-link"
+                                                        href="{{ route('arsip.edit', $arsip->id) }}" data-original-title=""
+                                                        title="">
+                                                        <i class="material-icons">edit</i>
+                                                        <div class="ripple-container"></div>
+                                                    </a>
+                                                    <a rel="tooltip" class="btn btn-success btn-link"
+                                                        href="{{ route('arsip.show', $arsip->id) }}" data-original-title=""
+                                                        title="">
+                                                        show
+                                                         
+                                                    </a>
+                                                    <form id="delete-form" action="{{ route('arsip.destroy', $arsip->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-link" data-original-title="" title="">
+                                                            <i class="material-icons">close</i>
+                                                            <div class="ripple-container"></div>
+                                                        </button>
+                                                    </form>
+                                                </td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($arsips as $arsip)
-                                                <tr>
-                                                    <!-- <td>{{ ++$i }}</td> -->
-                                                    <!-- <td><img src="/images/{{ $arsip->image }}" width="100px"></td> -->
-                                                    <td>{{ $arsip->no_dokumen }}</td>
-                                                    <td>{{ $arsip->nama_dokumen }}</td>
-                                                    <td>{{ $arsip->kategori_dokumen }}</td>
-                                                    <td>{{ $arsip->tanggal_dokumen }}</td>
-                                                    <td>{{ $arsip->isi_dokumen }}</td>
-                                                    <td>{{ $arsip->sumber_dokumen }}</td>
-                                                    <td>{{ $arsip->penerima_dokumen }}</td>
-                                                    <td>{{ $arsip->status_dokumen }}</td>
-                                                    <td>{{ $arsip->aksesibilitas_dokumen }}</td>
-                                                    <td>
-                                                        <form action="{{ route('arsip.destroy', $arsip->id) }}" method="POST">
-                                                            <a class="btn btn-info" href="{{ route('arsip.show', $arsip->id) }}">Show</a>
-                                                            <a class="btn btn-primary" href="{{ route('arsip.edit', $arsip->id) }}">Edit</a>
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        @empty
+                                            <tr>
+                                                <td colspan="11">
+                                                    <div class="alert alert-danger">
+                                                        Data Arsip Belum Tersedia
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                                {{ $arsips->links() }}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <x-footers.auth></x-footers.auth>
         </div>
     </main>
     <x-plugins></x-plugins>
+
 </x-layout>
