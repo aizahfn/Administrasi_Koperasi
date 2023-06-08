@@ -1,106 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Penjadwalan Rapat</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-</head>
-<body style="background: lightgray">
+<x-layout bodyClass="g-sidenav-show  bg-gray-200">
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div>
-                    <h3 class="text-center my-4">Penjadwalan Rapat Koperasi</h3>
-                    <hr>
-                </div>
-                <div class="card border-0 shadow-sm rounded">
-                    <div class="card-body">
-                        <a href="{{ route('createJadwal') }}" class="btn btn-md btn-success mb-3">TAMBAH PENJADWALAN</a>
-                        <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th scope="col">id_jadwal</th>
-                                <th scope="col">jadwal_rapat</th>
-                                <th scope="col">jadwal_shift</th>
-                                <th scope="col">jadwal_lain</th>
-                                <th scope="col">agenda_jadwal</th>
-                                <th scope="col">tanggal_jadwal</th>
-                                <th scope="col">deskripsi_jadwal</th>
-                                <th scope="col">tujuan_jadwal</th>
-                                <th>Aksi</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              @foreach ($penjadwalans as $penjadwalan)
-                                <tr>
-                                    <td>{{ $penjadwalan->id }}</td>
-                                    <td>{{ $penjadwalan->jadwal_rapat }}</td>
-                                    <td>{{ $penjadwalan->jadwal_shift }}</td>
-                                    <td>{{ $penjadwalan->jadwal_lain }}</td>
-                                    <td>{{ $penjadwalan->agenda_jadwal }}</td>
-                                    <td>{{ $penjadwalan->tanggal_jadwal }}</td>
-                                    <td>{{ $penjadwalan->deskripsi_jadwal }}</td>
-                                    <td>{{ $penjadwalan->tujuan_jadwal }}</td>
-
-                            <td>
-                                <div class="d-flex justify-content-center" style="gap:10px">
-                                    <a href="{{ route('edit', $penjadwalan->id)}} ">
-                                        <button class="btn btn-outline-danger">Edit</button>
-                                    </a>
-                                    <a href="{{ route('Delete', $penjadwalan->id) }}" onclick="return confirm('Are you sure ?')">
-                                        <button class="btn btn-outline-danger">Delete</button>
-                                    </a>
-
-                                    {{-- <td class="text-center">
-                                        <img src="{{ asset('/storage/penjadwalans/'.$penjadwalan->image) }}" class="rounded" style="width: 150px">
-                                    </td>
-                                    <td>{{ $penjadwalan->title }}</td>
-                                    <td>{!! $penjadwalan->content !!}</td> --}}
-                                    {{-- <td class="text-center">
-                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('penjadwalans.destroy', $penjadwalan->id) }}" method="POST">
-                                            <a href="{{ route('penjadwalans.show', $penjadwalan->id) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                            <a href="{{ route('penjadwalans.edit', $penjadwalan->id) }}" class="btn btn-sm btn-primary">EDIT</a>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
-                                        </form>
-                                    </td> --}}
-                                </tr>
-                              {{-- @empty
-                                  <div class="alert alert-danger">
-                                      Data Post belum Tersedia.
-                                  </div> --}}
-                              @endforeach
-                            </tbody>
-                          </table>
-                          {{-- {{ $penjadwalans->links() }} --}}
+    <x-navbars.sidebar activePage="penjadwalans"></x-navbars.sidebar>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <!-- Navbar -->
+        <x-navbars.navs.auth titlePage="PENJADWALAN"></x-navbars.navs.auth>
+        <!-- End Navbar -->
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                <h3 class="text-white mx-3"><strong>PENJADWALAN</strong></h3>
+                            </div>
+                        </div>
+                        <div class=" me-3 my-3 text-end">
+                            <a class="btn bg-gradient-dark mb-0" href="{{ route('createJadwal') }}"><i
+                                    class="material-icons text-sm">add</i>&nbsp;&nbsp;Tambahkan Jadwal</a>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
+                                                NO
+                                            </th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
+                                                Kategori</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
+                                                Tanggal Jadwal</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
+                                                Deskripsi</th>
+                                            <th class="text-secondary opacity-7"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($penjadwalans as $penjadwalan)
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $penjadwalan->id }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $penjadwalan->kategori }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $penjadwalan->tanggal_jadwal }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $penjadwalan->deskripsi_jadwal }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <a rel="tooltip" class="btn btn-success btn-link"
+                                                        href="{{ route('edit', $penjadwalan->id) }}" data-original-title=""
+                                                        title="">
+                                                        <i class="material-icons">edit</i>
+                                                        <div class="ripple-container"></div>
+                                                    </a>
+                                                    <form id="delete-form" action="{{ route('delete', $penjadwalan->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-link" data-original-title="" title="">
+                                                            <i class="material-icons">close</i>
+                                                            <div class="ripple-container"></div>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="11">
+                                                    <div class="alert alert-danger">
+                                                        Data Jadwal Belum Tersedia
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                                {{ $penjadwalans->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <x-footers.auth></x-footers.auth>
         </div>
-    </div>
+    </main>
+    <x-plugins></x-plugins>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-    <script>
-        //message with toastr
-        @if(session()->has('success'))
-
-            toastr.success('{{ session('success') }}', 'BERHASIL!');
-
-        @elseif(session()->has('error'))
-
-            toastr.error('{{ session('error') }}', 'GAGAL!');
-
-        @endif
-    </script>
-
-</body>
-</html>
-
+</x-layout>

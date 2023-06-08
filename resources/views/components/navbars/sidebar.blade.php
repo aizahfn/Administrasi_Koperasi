@@ -78,21 +78,12 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Penjadwalan</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ $activePage == 'aktivitas' ? ' active bg-gradient-primary' : '' }}  "
-                    href="{{ route('aktivitas') }}">
+                <a class="nav-link text-white {{ $activePage == 'penjadwalans' ? ' active bg-gradient-primary' : '' }}  "
+                    href="{{ route('penjadwalans') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">person</i>
                     </div>
-                    <span class="nav-link-text ms-1">Aktivitas</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white {{ $activePage == 'aktivitas' ? ' active bg-gradient-primary' : '' }}  "
-                    href="{{ route('aktivitas') }}">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">person</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Shift</span>
+                    <span class="nav-link-text ms-1">Penjadwalan</span>
                 </a>
             </li>
         </ul>

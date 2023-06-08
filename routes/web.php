@@ -39,13 +39,13 @@ Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.cr
 
 //
 //Route Penjadwalan
-/*Route::get('/penjadwalan', [PenjadwalanController::class, 'index'])->name('penjadwalans');
-Route::get('/create', [PenjadwalanController::class, 'create'])->name('createJadwal');
-Route::post('/saveJadwal', [PenjadwalanController::class, 'saveJadwal'])->name('saveJadwal');
-Route::get('/Delete/{id}', [PenjadwalanController::class, 'Delete'])->name('Delete');
+Route::get('/penjadwalan', [PenjadwalanController::class, 'index'])->name('penjadwalans');
+Route::get('/create/jadwal', [PenjadwalanController::class, 'create'])->name('createJadwal');
+Route::post('/saveJadwal', [PenjadwalanController::class, 'store'])->name('saveJadwal');
+Route::get('/delete/{id}', [PenjadwalanController::class, 'delete'])->name('delete');
 Route::get('/edit/{id}', [PenjadwalanController::class, 'edit'])->name('edit');
 Route::post('/update/{id}', [PenjadwalanController::class, 'update'])->name('update');
-*/
+
 
 
 //HALAMAN UTAMA
@@ -119,6 +119,7 @@ Route::group(['middleware' => 'guest'], function () {
 	Route::get('informasi-pendaftar', [UserController::class, 'index'])->name('informasi-pendaftar');
     Route::get('data-lowongan', [LowonganController::class, 'index'])->name('data-lowongan');
     Route::get('berkas',[BerkasController::class, 'index'])->name('berkas-pendaftar');
+	Route::get('penjadwalans',[PenjadwalanController::class, 'index'])->name('penjadwalans');
 
 
 
