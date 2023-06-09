@@ -49,14 +49,14 @@
                                     </thead>
                                     <tbody>
                                         @php
+                                            $kategori = array();
+                                            $penulis = array();
                                             $temp ="";
                                         @endphp
                                         @forelse ($buku as $bukus)
                                             @php
-                                                $penulis = array();
                                                 $penulis[] = $bukus->nama;
                                                 $raw_penulis = implode(", ", $penulis);
-                                                $kategori = array();
                                                 $kategori[] = $bukus->NamaKategori;
                                                 $raw_kategori = implode(", ", $kategori);
                                             @endphp
