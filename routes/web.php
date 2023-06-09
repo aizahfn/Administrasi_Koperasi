@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\BukuAhnafController;
 use App\Http\Controllers\KoperasiController;
 use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\BerkasController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\MultipleStepsFormController;
 use App\Http\Livewire\BerkasTable;
 use App\Http\Livewire\UserTable;
+use App\Http\Controllers\BukuController;
 
 use function Termwind\render;
 
@@ -29,6 +31,8 @@ use function Termwind\render;
 |
 */
 
+
+
 //UNTUK TABEL-TABEL DULU YANG DIBUAT
 //Route::resource('koperasi', KoperasiController::class);
 Route::resource('datalowongan', LowonganController::class);
@@ -36,6 +40,10 @@ Route::resource('berkas', BerkasController::class);
 Route::resource('user', UserController::class);
 Route::resource('arsip', ArsipController::class);
 Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
+
+//punyaanapp
+Route::resource('bukuanab', BukuAhnafController::class);
+
 
 //
 //Route Penjadwalan
