@@ -15,7 +15,7 @@ class BukuShevaController extends Controller
      */
     public function index(): View
     {
-        $bukuSheva = BukuSheva::latest()->paginate(5);
+        $bukusheva = BukuSheva::latest()->paginate(5);
         return view('bukusheva.index',compact('bukusheva'));
     }
 
@@ -52,7 +52,7 @@ class BukuShevaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(BukuSheva $bukuSheva): View
+    public function show(BukuSheva $bukusheva): View
     {
         return view('bukusheva.show',compact('bukusheva'));
     }
@@ -60,7 +60,7 @@ class BukuShevaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(BukuSheva $bukuSheva): View
+    public function edit(BukuSheva $bukusheva): View
     {
         return view('bukusheva.edit',compact('bukusheva'));
     }
@@ -68,7 +68,7 @@ class BukuShevaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, BukuSheva $bukuSheva): RedirectResponse
+    public function update(Request $request, BukuSheva $bukusheva): RedirectResponse
     {
         $request->validate([
             'Judul' => 'required',
@@ -81,7 +81,7 @@ class BukuShevaController extends Controller
 
         $input = $request->all();
 
-        $bukuSheva->update($input);
+        $bukusheva->update($input);
 
         return redirect()->route('bukusheva.index')
                         ->with('Success!','Buku Updated Successfully');
@@ -90,9 +90,9 @@ class BukuShevaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(BukuSheva $bukuSheva): RedirectResponse
+    public function destroy(BukuSheva $bukusheva): RedirectResponse
     {
-        $bukuSheva->delete();
+        $bukusheva->delete();
 
         return redirect()->route('bukusheva.index')
                         ->with('Success!','Buku Deleted Successfully');

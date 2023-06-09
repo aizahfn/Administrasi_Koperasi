@@ -15,11 +15,11 @@
                             </div>
                         </div>
                         <div class="me-3 my-3 text-end">
-                            <a class="btn bg-gradient-dark mb-0" href="{{ route('bukusheva.index') }}">
+                            <a class="btn bg-gradient-dark mb-0" href="{{ route('bukusheva') }}">
                                 <i class="material-icons text-sm"></i>&nbsp;&nbsp;Back
                             </a>
                         </div>
-                        <form action="{{ route('bukusheva.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('storebukusheva') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row me-3 ms-3">
                                 <div class="col-xs-12 col-sm-12 col-md-12 mb-3">

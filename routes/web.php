@@ -16,6 +16,7 @@ use App\Http\Controllers\MultipleStepsFormController;
 use App\Http\Livewire\BerkasTable;
 use App\Http\Livewire\UserTable;
 use App\Http\Controllers\BukuAizahController;
+use App\Http\Controllers\BukuShevaController;
 
 use function Termwind\render;
 
@@ -52,6 +53,12 @@ Route::post('/update/{id}', [PenjadwalanController::class, 'update'])->name('upd
 Route::resource('bukusheva',BukuShevaController::class);
 Route::resource('kategorisheva',KategoriShevaController::class);
 Route::get('/bukusheva', [BukuShevaController::class, 'index'])->name('bukusheva');
+Route::get('/createbukusheva', [BukuShevaController::class, 'create'])->name('createbukusheva');
+Route::post('/storebukusheva', [BukuShevaController::class, 'store'])->name('storebukusheva');
+Route::get('/deletebukusheva/{IDBuku}', [BukuShevaController::class, 'delete'])->name('deletebukusheva');
+Route::get('/editbukusheva/{IDBuku}', [BukuShevaController::class, 'edit'])->name('editbukusheva');
+Route::post('/updatebukusheva/{IDBuku}', [BukuShevaController::class, 'update'])->name('updatebukusheva');
+
 //BUKUAIZAH
 Route::resource('bukuaizah', BukuAizahController::class);
 

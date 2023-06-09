@@ -15,7 +15,7 @@
                             </div>
                         </div>
                         <div class=" me-3 my-3 text-end">
-                            <a class="btn bg-gradient-dark mb-0" href="{{ route('bukusheva.create') }}"><i
+                            <a class="btn bg-gradient-dark mb-0" href="{{ route('createbukusheva') }}"><i
                                     class="material-icons text-sm">add</i>&nbsp;&nbsp;Tambahkan Buku</a>
                         </div>
                         <div class="card-body px-0 pb-2">
@@ -49,65 +49,65 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($bukuSheva as $bukusheva)
+                                        @forelse ($bukusheva as $bukuSheva)
                                             <tr>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $bukusheva->IDBuku }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $bukuSheva->IDBuku }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $bukusheva->Judul }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $bukuSheva->Judul }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $bukusheva->Penulis }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $bukuSheva->Penulis }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $bukusheva->Penerbit }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $bukuSheva->Penerbit }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $bukusheva->TahunTerbit }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $bukuSheva->TahunTerbit }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $bukusheva->JumlahStok }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $bukuSheva->JumlahStok }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $bukusheva->DendaBuku }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $bukuSheva->DendaBuku }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="align-middle">
                                                     <a rel="tooltip" class="btn btn-success btn-link"
-                                                        href="{{ route('edit', $bukusheva->IDBuku) }}" data-original-title=""
+                                                        href="{{ route('editbukusheva', $bukuSheva->IDBuku) }}" data-original-title=""
                                                         title="">
                                                         <i class="material-icons">edit</i>
                                                         <div class="ripple-container"></div>
                                                     </a>
-                                                    <form id="delete-form" action="{{ route('delete', $bukusheva->IDBuku) }}" method="POST">
+                                                    <form id="delete-form" action="{{ route('deletebukusheva', $bukuSheva->IDBuku) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-link" data-original-title="" title="">
@@ -128,7 +128,7 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-                                {{ $bukuSheva->links() }}
+                                {{ $bukusheva->links() }}
                             </div>
                         </div>
                     </div>
