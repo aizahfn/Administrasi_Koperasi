@@ -15,6 +15,7 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\MultipleStepsFormController;
 use App\Http\Livewire\BerkasTable;
 use App\Http\Livewire\UserTable;
+use App\Http\Controllers\BukuAizahController;
 
 use function Termwind\render;
 
@@ -35,16 +36,20 @@ Route::resource('datalowongan', LowonganController::class);
 Route::resource('berkas', BerkasController::class);
 Route::resource('user', UserController::class);
 Route::resource('arsip', ArsipController::class);
-Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
+Route::resource('bukuaizah', BukuAizahController::class);
+//Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
 
 
 //Route Penjadwalan
 Route::get('/penjadwalan', [PenjadwalanController::class, 'index'])->name('penjadwalans');
-Route::get('/create', [PenjadwalanController::class, 'create'])->name('createJadwal');
-Route::post('/saveJadwal', [PenjadwalanController::class, 'saveJadwal'])->name('saveJadwal');
-Route::get('/Delete/{id}', [PenjadwalanController::class, 'Delete'])->name('Delete');
+Route::get('/create/jadwal', [PenjadwalanController::class, 'create'])->name('createJadwal');
+Route::post('/saveJadwal', [PenjadwalanController::class, 'store'])->name('saveJadwal');
+Route::get('/delete/{id}', [PenjadwalanController::class, 'delete'])->name('delete');
 Route::get('/edit/{id}', [PenjadwalanController::class, 'edit'])->name('edit');
 Route::post('/update/{id}', [PenjadwalanController::class, 'update'])->name('update');
+
+//BUKUAIZAH
+Route::resource('bukuaizah', BukuAizahController::class);
 
 
 
@@ -78,7 +83,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('gue
 Route::get('sign-up', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('sign-up', [RegisterController::class, 'store'])->middleware('guest');
 Route::get('sign-in', [SessionsController::class, 'create'])->middleware('guest')->name('login');
-Route::post('sign-in', [SessionsController::class, 'store'])->middleware('guest');
+Route::post('sign-in', [SessionsController::class, 'store'])->middleware('guest')->name('logon');
 Route::post('verify', [SessionsController::class, 'show'])->middleware('guest');
 Route::post('reset-password', [SessionsController::class, 'update'])->middleware('guest')->name('password.update');
 Route::get('verify', function () {
@@ -119,6 +124,7 @@ Route::group(['middleware' => 'guest'], function () {
 	Route::get('informasi-pendaftar', [UserController::class, 'index'])->name('informasi-pendaftar');
     Route::get('data-lowongan', [LowonganController::class, 'index'])->name('data-lowongan');
     Route::get('berkas',[BerkasController::class, 'index'])->name('berkas-pendaftar');
+	Route::get('penjadwalans',[PenjadwalanController::class, 'index'])->name('penjadwalans');
 
 
 

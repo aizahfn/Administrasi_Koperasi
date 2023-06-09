@@ -24,32 +24,32 @@
                                     <thead>
                                         <tr>
                                             <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
                                                 NO
                                             </th>
                                             <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
                                                 NAMA DOKUMEN</th>
                                             <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-13 ps-2">
                                                 KATEGORI DOKUMEN</th>
                                             <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
                                                 TANGGAL DOKUMEN</th>
                                             <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
                                                 ISI DOKUMEN</th>
                                             <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
                                                 SUMBER DOKUMEN</th>
                                             <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
                                                 PENERIMA DOKUMEN</th>
                                             <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
                                                 STATUS DOKUMEN</th>
                                             <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-13">
                                                 AKSESIBILITAS DOKUMEN</th>
                                             <th class="text-secondary opacity-7"></th>
                                         </tr>
@@ -60,63 +60,63 @@
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $arsip->no_dokumen }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->no_dokumen }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $arsip->nama_dokumen }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->nama_dokumen }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $arsip->kategori_dokumen }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->kategori_dokumen }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $arsip->tanggal_dokumen }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->tanggal_dokumen }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $arsip->isi_dokumen }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->isi_dokumen }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $arsip->sumber_dokumen }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->sumber_dokumen }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $arsip->penerima_dokumen }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->penerima_dokumen }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $arsip->status_dokumen }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->status_dokumen }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $arsip->aksesibilitas_dokumen }}</p>
+                                                            <p class="mb-0 text-sm fw-bold opacity-9">{{ $arsip->aksesibilitas_dokumen }}</p>
                                                         </div>
                                                     </div>
                                                 </td>

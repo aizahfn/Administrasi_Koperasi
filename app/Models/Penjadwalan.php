@@ -11,9 +11,8 @@ class Penjadwalan extends Model
 
     protected $table = "penjadwalans";
     protected $fillable = [
-        'agenda',
+        'kategori',
         'tanggal_jadwal',
-        'deskripsi_jadwal',
-        'tujuan_jadwal'
+        'deskripsi_jadwal'
     ];
 }

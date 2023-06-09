@@ -37,7 +37,11 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
                                     <div class="form-group">
                                         <strong>Kategori Dokumen:</strong>
-                                        <input type="string" name="kategori_dokumen" class="form-control border border-2 p-2" placeholder="Kategori Dokumen">
+                                        <select name="kategori_dokumen" class="form-control border border-2 p-2">
+                                            <option disabled selected value="">Pilih Kategori Dokumen</option>
+                                            <option value="Surat Masuk">Surat Masuk</option>
+                                            <option value="Surat Keluar">Surat Keluar</option>
+                                    </select>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
