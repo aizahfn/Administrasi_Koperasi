@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Buku;
+use App\Models\BukuRizki;
+use App\Models\RelasiBukuPenulisRizki;
 use Illuminate\Http\Request;
 
 class BukuController extends Controller
@@ -12,12 +13,12 @@ class BukuController extends Controller
      */
     public function index()
     {
-        $bukus = Buku::latest()->paginate(5);
-        $penulis = RelasiPenulis::join('buku', 'buku.id_buku', '=', 'relasipenulis.id_buku')
-        // ->selectRaw('user.*, datalowongan.nama_lowongan')
-        ->join('penulis', 'penulis.id_penulis', '=', 'relasipenulis.id_penulis')
+        $bukus = BukuRizki::latest()->paginate(5);
+        $penulis = RelasiBukuPenulisRizki::join('bukurizki', 'bukurizki.id_buku', '=', 'relasi_buku_penulis.id_buku')
+        ->join('penulis', 'penulis.id_penulis', '=', 'relasi_buku_penulis.id_penulis')
+        ->selectRaw('penulis.nama as nama_penulis, relasi_buku_penulis.id_buku as id_buku')
         ->get();
-        return view('rizki.buku.index',compact('bukus'))
+        return view('rizki.buku.index',compact(['bukus', 'penulis']))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -41,16 +42,16 @@ class BukuController extends Controller
             'thn_terbit' => 'required',
         ]);
 
-        Buku::create($request->all());
+        BukuRizki::create($request->all());
 
         return redirect()->route('buku.index')
-                        ->with('success','Buku created successfully.');
+                        ->with('success','BukuRizki created successfully.');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Buku $buku)
+    public function edit(BukuRizki $buku)
     {
         return view('rizki.buku.edit',compact('buku'));
     }
@@ -58,7 +59,7 @@ class BukuController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Buku $buku)
+    public function update(Request $request, BukuRizki $buku)
     {
         $request->validate([
             'judul' => 'required',
@@ -70,14 +71,14 @@ class BukuController extends Controller
         $buku->update($request->all());
 
         return redirect()->route('buku.index')
-                        ->with('success','Buku updated successfully');
+                        ->with('success','BukuRizki updated successfully');
     }
 
-    public function destroy(Buku $buku)
+    public function destroy(BukuRizki $buku)
     {
         $buku->delete();
 
         return redirect()->route('buku.index')
-                        ->with('success','Buku deleted successfully');
+                        ->with('success','BukuRizki deleted successfully');
     }
 }

@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('relasi_buku_penulis', function (Blueprint $table) {
-            $table->foreign(['id_buku'], 'buku_penulis')->references(['id_buku'])->on('buku');
-            $table->foreign(['id_penulis'], 'penulis_buku')->references(['id_penulis'])->on('penulis');
+        Schema::table('relasi_buku_penulis_rizki', function (Blueprint $table) {
+            $table->foreign(['id_buku'], 'buku_penulis')->references(['id_buku'])->on('bukurizki');
+            $table->foreign(['id_penulis'], 'penulis_buku')->references(['id_penulis'])->on('penulisrizki');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('relasi_buku_penulis', function (Blueprint $table) {
+        Schema::table('relasi_buku_penulis_rizki', function (Blueprint $table) {
             $table->dropForeign('buku_penulis');
             $table->dropForeign('penulis_buku');
         });

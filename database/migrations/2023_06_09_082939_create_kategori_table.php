@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kategori', function (Blueprint $table) {
+        Schema::create('kategoririzki', function (Blueprint $table) {
             $table->integer('IDKategori', true);
             $table->integer('NamaKategori');
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategori');
+        Schema::dropIfExists('kategoririzki');
     }
 };

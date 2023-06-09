@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('peminjaman', function (Blueprint $table) {
-            $table->foreign(['IDBuku'], 'peminjaman_buku')->references(['id_buku'])->on('buku');
-            $table->foreign(['IDPeminjam'], 'peminjaman_peminjam')->references(['IDPeminjam'])->on('peminjam');
+        Schema::table('peminjamanrizki', function (Blueprint $table) {
+            $table->foreign(['IDBuku'], 'peminjaman_buku')->references(['id_buku'])->on('bukurizki');
+            $table->foreign(['IDPeminjam'], 'peminjaman_peminjam')->references(['IDPeminjam'])->on('peminjamrizki');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('peminjaman', function (Blueprint $table) {
+        Schema::table('peminjamanrizki', function (Blueprint $table) {
             $table->dropForeign('peminjaman_buku');
             $table->dropForeign('peminjaman_peminjam');
         });
