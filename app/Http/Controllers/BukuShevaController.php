@@ -45,7 +45,7 @@ class BukuShevaController extends Controller
 
         BukuSheva::create($input);
 
-        return redirect()->route('bukusheva.index')
+        return redirect()->route('bukusheva')
                         ->with('Success!','Buku Created Successfully.');
     }
 
@@ -83,7 +83,7 @@ class BukuShevaController extends Controller
 
         $bukusheva->update($input);
 
-        return redirect()->route('bukusheva.index')
+        return redirect()->route('bukusheva')
                         ->with('Success!','Buku Updated Successfully');
     }
 
@@ -94,7 +94,7 @@ class BukuShevaController extends Controller
     {
         $bukusheva->delete();
 
-        return redirect()->route('bukusheva.index')
+        return redirect()->route('bukusheva')
                         ->with('Success!','Buku Deleted Successfully');
     }
 }

@@ -54,13 +54,21 @@ Route::post('/update/{id}', [PenjadwalanController::class, 'update'])->name('upd
 
 // ROUTE BUKUSHEVA
 Route::resource('bukusheva',BukuShevaController::class);
-Route::resource('kategorisheva',KategoriShevaController::class);
 Route::get('/bukusheva', [BukuShevaController::class, 'index'])->name('bukusheva');
 Route::get('/createbukusheva', [BukuShevaController::class, 'create'])->name('createbukusheva');
 Route::post('/storebukusheva', [BukuShevaController::class, 'store'])->name('storebukusheva');
 Route::get('/deletebukusheva/{IDBuku}', [BukuShevaController::class, 'delete'])->name('deletebukusheva');
 Route::get('/editbukusheva/{IDBuku}', [BukuShevaController::class, 'edit'])->name('editbukusheva');
 Route::post('/updatebukusheva/{IDBuku}', [BukuShevaController::class, 'update'])->name('updatebukusheva');
+
+// ROUTE KATEGORISHEVA
+Route::resource('kategorisheva',KategoriShevaController::class);
+Route::get('/kategorisheva', [KategoriShevaController::class, 'index'])->name('kategorisheva');
+Route::get('/createkategorisheva', [KategoriShevaController::class, 'create'])->name('createkategorisheva');
+Route::post('/storekategorisheva', [KategoriShevaController::class, 'store'])->name('storekategorisheva');
+Route::get('/deletekategorisheva/{IDKategori}', [KategoriShevaController::class, 'delete'])->name('deletekategorisheva');
+Route::get('/editkategorisheva/{IDKategori}', [KategoriShevaController::class, 'edit'])->name('editkategorisheva');
+Route::post('/updatekategorisheva/{IDKategori}', [KategoriShevaController::class, 'update'])->name('updatekategorisheva');
 
 //BUKUAIZAH
 Route::resource('bukuaizah', BukuAizahController::class);

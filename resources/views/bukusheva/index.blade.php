@@ -102,7 +102,7 @@
                                                 </td>
                                                 <td class="align-middle">
                                                     <a rel="tooltip" class="btn btn-success btn-link"
-                                                        href="{{ route('editbukusheva', $bukuSheva->IDBuku) }}" data-original-title=""
+                                                        href="{{ route('editbukusheva', [$bukuSheva->IDBuku]) }}" data-original-title=""
                                                         title="">
                                                         <i class="material-icons">edit</i>
                                                         <div class="ripple-container"></div>
