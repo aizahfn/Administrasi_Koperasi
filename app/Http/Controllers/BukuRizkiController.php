@@ -19,7 +19,8 @@ class BukuRizkiController extends Controller
         ->join('relasibukukategoririzki', 'relasibukukategoririzki.IDBuku', '=', 'bukurizki.id_buku')
         ->join('kategoririzki', 'kategoririzki.IDKategori', '=', 'relasibukukategoririzki.IDKategori')
         // ->selectRaw('bukurizki.*, penulis.nama', 'kategoririzki.NamaKategori')
-        ->latest()
+        // ->orderBy('bukurizki.id_buku', 'desc')
+        // ->latest()
         ->paginate(5);
         // $penulis = RelasiBukuPenulisRizki::join('bukurizki', 'bukurizki.id_buku', '=', 'relasi_buku_penulis_rizki.id_buku')
         // ->join('penulis', 'penulis.id_penulis', '=', 'relasi_buku_penulis_rizki.id_penulis')

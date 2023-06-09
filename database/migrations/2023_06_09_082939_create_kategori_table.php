@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('kategoririzki', function (Blueprint $table) {
             $table->integer('IDKategori', true);
-            $table->integer('NamaKategori');
+            $table->string('NamaKategori',50);
         });
     }
 
