@@ -13,12 +13,24 @@ class BukuRizkiController extends Controller
      */
     public function index()
     {
-        $bukus = BukuRizki::latest()->paginate(5);
-        $penulis = RelasiBukuPenulisRizki::join('bukurizki', 'bukurizki.id_buku', '=', 'relasi_buku_penulis.id_buku')
-        ->join('penulis', 'penulis.id_penulis', '=', 'relasi_buku_penulis.id_penulis')
-        ->selectRaw('penulis.nama as nama_penulis, relasi_buku_penulis.id_buku as id_buku')
-        ->get();
-        return view('rizki.buku.index',compact(['bukus', 'penulis']))
+        // $bukus = BukuRizki::latest()->paginate(5);
+        $buku = BukuRizki::join('relasi_buku_penulis_rizki', 'relasi_buku_penulis_rizki.id_buku', '=', 'bukurizki.id_buku')
+        ->join('penulisrizki', 'penulisrizki.id_penulis', '=', 'relasi_buku_penulis_rizki.id_penulis')
+        ->join('relasibukukategoririzki', 'relasibukukategoririzki.IDBuku', '=', 'bukurizki.id_buku')
+        ->join('kategoririzki', 'kategoririzki.IDKategori', '=', 'relasibukukategoririzki.IDKategori')
+        // ->selectRaw('bukurizki.*, penulis.nama', 'kategoririzki.NamaKategori')
+        // ->orderBy('bukurizki.id_buku', 'desc')
+        // ->latest()
+        ->paginate(5);
+        // $penulis = RelasiBukuPenulisRizki::join('bukurizki', 'bukurizki.id_buku', '=', 'relasi_buku_penulis_rizki.id_buku')
+        // ->join('penulis', 'penulis.id_penulis', '=', 'relasi_buku_penulis_rizki.id_penulis')
+        // ->selectRaw('penulis.nama as nama_penulis, relasi_buku_penulis_rizki.id_buku as id_buku')
+        // ->get();
+        // $kategori = RelasiBukuKategoriRizki::join('bukurizki', 'bukurizki.id_buku', '=', 'relasi_buku_penulis_rizki.id_buku')
+        // ->join('penulis', 'penulis.id_penulis', '=', 'relasi_buku_penulis_rizki.id_penulis')
+        // ->selectRaw('penulis.nama as nama_penulis, relasi_buku_penulis_rizki.id_buku as id_buku')
+        // ->get();
+        return view('rizki.buku.index',compact('buku'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

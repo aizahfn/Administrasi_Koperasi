@@ -30,6 +30,9 @@ use function Termwind\render;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//UAS RPL
+Route::resource('bukuaizah', BukuAizahController::class);
+route::resource('bukurizki', BukuRizkiController::class);
 
 //UNTUK TABEL-TABEL DULU YANG DIBUAT
 //Route::resource('koperasi', KoperasiController::class);
@@ -37,7 +40,7 @@ Route::resource('datalowongan', LowonganController::class);
 Route::resource('berkas', BerkasController::class);
 Route::resource('user', UserController::class);
 Route::resource('arsip', ArsipController::class);
-Route::resource('bukuaizah', BukuAizahController::class);
+
 //Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
 
 

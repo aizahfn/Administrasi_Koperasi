@@ -14,7 +14,7 @@ class KategoriRizki extends Model
         'NamaKategori'
     ];
 
-    public function buku(){
+    public function BukuRizki(){
         return $this->belongsTo(BukuRizki::class, 'ID_Buku');
     }
 
