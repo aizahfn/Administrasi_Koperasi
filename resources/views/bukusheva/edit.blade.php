@@ -15,11 +15,11 @@
                             </div>
                         </div>
                         <div class="me-3 my-3 text-end">
-                            <a class="btn bg-gradient-dark mb-0" href="{{ route('bukusheva.index') }}">
+                            <a class="btn bg-gradient-dark mb-0" href="{{ route('bukusheva') }}">
                                 <i class="material-icons text-sm"></i>&nbsp;&nbsp;Back
                             </a>
                         </div>
-                        <form action="{{ route('bukusheva.update',$bukusheva->IDBuku) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('updatebukusheva',$bukusheva->IDBuku) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
