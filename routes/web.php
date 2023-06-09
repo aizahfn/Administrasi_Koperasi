@@ -80,6 +80,26 @@ Route::resource('bukuaizah', BukuAizahController::class);
 //KATEGORIAIZAH
 Route::resource('kategoriaizah', KategoriAizahController::class);
 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/index', [BukuController::class, 'index'])->name('index');
+
+//tambah buku
+Route::get('/tambahbuku', [BukuController::class, 'tambahbuku'])->name('tambahbuku');
+Route::post('/insertbuku', [BukuController::class, 'insertbuku'])->name('insertbuku');
+
+//tampilan buku
+Route::get('/tampilkanbuku/{id}', [BukuController::class, 'tampilkanbuku'])->name('tampilkanbuku');
+Route::post('/updatebuku/{id}', [BukuController::class, 'updatebuku'])->name('updatebuku');
+
+//hapus buku
+Route::get('/delete/{id}', [BukuController::class, 'delete'])->name('delete');
 
 //HALAMAN UTAMA
 Route::get('/', function () {return redirect('halaman-utama');})->middleware('guest');
