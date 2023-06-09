@@ -40,7 +40,7 @@ Route::resource('arsip', ArsipController::class);
 Route::resource('bukuaizah', BukuAizahController::class);
 //Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
 
-//
+
 //Route Penjadwalan
 Route::get('/penjadwalan', [PenjadwalanController::class, 'index'])->name('penjadwalans');
 Route::get('/create/jadwal', [PenjadwalanController::class, 'create'])->name('createJadwal');
@@ -62,6 +62,8 @@ Route::post('/updatebukusheva/{IDBuku}', [BukuShevaController::class, 'update'])
 //BUKUAIZAH
 Route::resource('bukuaizah', BukuAizahController::class);
 
+//KATEGORIAIZAH
+Route::resource('kategoriaizah', KategoriAizahController::class);
 
 
 //HALAMAN UTAMA
