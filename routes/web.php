@@ -15,6 +15,7 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\MultipleStepsFormController;
 use App\Http\Livewire\BerkasTable;
 use App\Http\Livewire\UserTable;
+use App\Http\Controllers\BukuAizahController;
 
 use function Termwind\render;
 
@@ -35,7 +36,8 @@ Route::resource('datalowongan', LowonganController::class);
 Route::resource('berkas', BerkasController::class);
 Route::resource('user', UserController::class);
 Route::resource('arsip', ArsipController::class);
-Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
+Route::resource('bukuaizah', BukuAizahController::class);
+//Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
 
 //
 //Route Penjadwalan
@@ -50,6 +52,9 @@ Route::post('/update/{id}', [PenjadwalanController::class, 'update'])->name('upd
 Route::resource('bukusheva',BukuShevaController::class);
 Route::resource('kategorisheva',KategoriShevaController::class);
 Route::get('/bukusheva', [BukuShevaController::class, 'index'])->name('bukusheva');
+//BUKUAIZAH
+Route::resource('bukuaizah', BukuAizahController::class);
+
 
 
 //HALAMAN UTAMA
