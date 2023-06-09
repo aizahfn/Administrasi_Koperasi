@@ -51,6 +51,8 @@ Route::post('/update/{id}', [PenjadwalanController::class, 'update'])->name('upd
 //BUKUAIZAH
 Route::resource('bukuaizah', BukuAizahController::class);
 
+//KATEGORIAIZAH
+Route::resource('kategoriaizah', KategoriAizahController::class);
 
 
 //HALAMAN UTAMA
