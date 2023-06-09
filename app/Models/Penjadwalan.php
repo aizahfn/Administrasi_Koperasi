@@ -9,11 +9,10 @@ class Penjadwalan extends Model
 {
     use HasFactory;
 
-    protected $table = "penjadwalan";
+    protected $table = "penjadwalans";
     protected $fillable = [
-        'agenda',
+        'kategori',
         'tanggal_jadwal',
-        'deskripsi_jadwal',
-        'tujuan_jadwal'
+        'deskripsi_jadwal'
     ];
 }

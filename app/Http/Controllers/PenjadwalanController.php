@@ -10,5 +10,5 @@ use Illuminate\Http\RedirectResponse;
 
 class PenjadwalanController extends Controller
 {
-    
+
 }

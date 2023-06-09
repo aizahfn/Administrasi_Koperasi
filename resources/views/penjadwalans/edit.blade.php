@@ -1,77 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Data</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+<x-layout bodyClass="g-sidenav-show bg-gray-200">
 
-
-
-</head>
-<body style="background: lightgray">
-
-    <div class="container mt-5 mb-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card border-0 shadow-sm rounded">
-                    <div class="card-body">
-
-                        <h1>edit penjadwalans</h1>
-                        <div class="spacer" style="margin-top: 20px"></div>
-                        <form action="{{ route('update', $penjadwalans->id) }} " method="post">
+    <x-navbars.sidebar activePage="penjadwalans"></x-navbars.sidebar>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <!-- Navbar -->
+        <x-navbars.navs.auth titlePage="EDIT PENJADWALAN"></x-navbars.navs.auth>
+        <!-- End Navbar -->
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                <h3 class="text-white mx-3"><strong>EDIT PENJADWALAN</strong></h3>
+                            </div>
+                        </div>
+                        <div class="me-3 my-3 text-end">
+                            <a class="btn bg-gradient-dark mb-0" href="{{ route('penjadwalans') }}">
+                                <i class="material-icons text-sm"></i>&nbsp;&nbsp;Back
+                            </a>
+                        </div>
+                        <form action="{{ route('update',$penjadwalans->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="mb-3">
-                              <label for="exampleInputJadwal_Rapat" class="form-label">Jadwal Rapat</label>
-                              <input type="text" class="form-control" name="jadwal_rapat" value="{{$penjadwalans->jadwal_rapat}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputJadwal_Shift" class="form-label">Jadwal Shift</label>
-                                <input type="text" class="form-control" name="jadwal_shift" value="{{$penjadwalans->jadwal_shift}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputJadwal_Lain" class="form-label">Jadwal Lain</label>
-                                <input type="text" class="form-control" name="jadwal_lain" value="{{$penjadwalans->jadwal_lain}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputAgenda_Jadwal;" class="form-label">Agenda Jadwal</label>
-                                <input type="text" class="form-control" name="agenda_jadwal" value="{{$penjadwalans->agenda_jadwal}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputTanggal_Jadwal" class="form-label">Tanggal Jadwal</label>
-                                <input type="date" class="form-control" name="tanggal_jadwal" value="{{$penjadwalans->tanggal_jadwal}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputDeskripsi_Jadwal" class="form-label">Deskripsi Jadwal</label>
-                                <input type="text" class="form-control" name="deskripsi_jadwal" value="{{$penjadwalans->deskripsi_jadwal}}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputTujuan_Jadwal;" class="form-label">Tujuan_Jadwal</label>
-                                <input type="text" class="form-control" name="tujuan_jadwal" value="{{$penjadwalans->tujuan_jadwal}}">
-                            </div>
-                            <button type="submit" class="btn btn-primary">update</button>
-                          </form>
+                            @method('PUT')
 
+                            <table class="table">
+                                <tr>
+                                    <th>Kategori</th>
+                                    <td>
+                                        <select class="form-select border border-3 p-2" name="kategori">
+                                            <option value="aktivitas" {{ isset($penjadwalan) ? ($penjadwalan->kategori == "aktivitas" ? "selected" : "") : "" }}>Aktivitas</option>
+                                            <option value="shift" {{ isset($penjadwalan) ? ($penjadwalan->kategori == "shift" ? "selected" : "") : "" }}>Shift</option>
+                                        </select>
+                                    </td>
+                                    <th>Tanggal Jadwal</th>
+                                    <td>
+                                    <input type="date" name="tanggal_jadwal" class="form-control border border-2 p-2"
+                                            placeholder="Tanggal Jadwal" value="{{ $penjadwalan->tanggal_jadwal }}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Deskripsi Jadwal:</th>
+                                    <td>
+                                        <input type="string" name="deskripsi_jadwal" class="form-control border border-2 p-2"
+                                            placeholder="Deskripsi Jadwal" value="{{ $penjadwalan->deskripsi_jadwal }}">
+                                    </td>
+                                </tr>
+                            </table>
+                            
 
-
-
-
-
-
-
+                        </form>
+                        <x-footers.auth></x-footers.auth>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+    <x-plugins></x-plugins>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace( 'content' );
-</script>
-</body>
-</html>
+</x-layout>

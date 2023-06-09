@@ -16,6 +16,8 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\MultipleStepsFormController;
 use App\Http\Livewire\BerkasTable;
 use App\Http\Livewire\UserTable;
+use App\Http\Controllers\BukuAizahController;
+use App\Http\Controllers\BukuShevaController;
 use App\Http\Controllers\BukuController;
 
 use function Termwind\render;
@@ -30,6 +32,9 @@ use function Termwind\render;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//UAS RPL
+Route::resource('bukuaizah', BukuAizahController::class);
+route::resource('bukurizki', BukuRizkiController::class);
 
 
 
@@ -39,21 +44,41 @@ Route::resource('datalowongan', LowonganController::class);
 Route::resource('berkas', BerkasController::class);
 Route::resource('user', UserController::class);
 Route::resource('arsip', ArsipController::class);
-Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
 
-//punyaanapp
-Route::resource('bukuanab', BukuAhnafController::class);
-
+//Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
 
 //
 //Route Penjadwalan
-/*Route::get('/penjadwalan', [PenjadwalanController::class, 'index'])->name('penjadwalans');
-Route::get('/create', [PenjadwalanController::class, 'create'])->name('createJadwal');
-Route::post('/saveJadwal', [PenjadwalanController::class, 'saveJadwal'])->name('saveJadwal');
-Route::get('/Delete/{id}', [PenjadwalanController::class, 'Delete'])->name('Delete');
+Route::get('/penjadwalan', [PenjadwalanController::class, 'index'])->name('penjadwalans');
+Route::get('/create/jadwal', [PenjadwalanController::class, 'create'])->name('createJadwal');
+Route::post('/saveJadwal', [PenjadwalanController::class, 'store'])->name('saveJadwal');
+Route::get('/delete/{id}', [PenjadwalanController::class, 'delete'])->name('delete');
 Route::get('/edit/{id}', [PenjadwalanController::class, 'edit'])->name('edit');
 Route::post('/update/{id}', [PenjadwalanController::class, 'update'])->name('update');
-*/
+
+// ROUTE BUKUSHEVA
+Route::resource('bukusheva',BukuShevaController::class);
+Route::get('/bukusheva', [BukuShevaController::class, 'index'])->name('bukusheva');
+Route::get('/createbukusheva', [BukuShevaController::class, 'create'])->name('createbukusheva');
+Route::post('/storebukusheva', [BukuShevaController::class, 'store'])->name('storebukusheva');
+Route::delete('/deletebukusheva/{IDBuku}', [BukuShevaController::class, 'delete'])->name('deletebukusheva');
+Route::get('/editbukusheva', [BukuShevaController::class, 'edit'])->name('editbukusheva');
+Route::post('/updatebukusheva', [BukuShevaController::class, 'update'])->name('updatebukusheva');
+
+// ROUTE KATEGORISHEVA
+Route::resource('kategorisheva',KategoriShevaController::class);
+Route::get('/kategorisheva', [KategoriShevaController::class, 'index'])->name('kategorisheva');
+Route::get('/createkategorisheva', [KategoriShevaController::class, 'create'])->name('createkategorisheva');
+Route::post('/storekategorisheva', [KategoriShevaController::class, 'store'])->name('storekategorisheva');
+Route::get('/deletekategorisheva/{IDKategori}', [KategoriShevaController::class, 'delete'])->name('deletekategorisheva');
+Route::get('/editkategorisheva/{IDKategori}', [KategoriShevaController::class, 'edit'])->name('editkategorisheva');
+Route::post('/updatekategorisheva/{IDKategori}', [KategoriShevaController::class, 'update'])->name('updatekategorisheva');
+
+//BUKUAIZAH
+Route::resource('bukuaizah', BukuAizahController::class);
+
+//KATEGORIAIZAH
+Route::resource('kategoriaizah', KategoriAizahController::class);
 
 
 //HALAMAN UTAMA
@@ -86,7 +111,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('gue
 Route::get('sign-up', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('sign-up', [RegisterController::class, 'store'])->middleware('guest');
 Route::get('sign-in', [SessionsController::class, 'create'])->middleware('guest')->name('login');
-Route::post('sign-in', [SessionsController::class, 'store'])->middleware('guest');
+Route::post('sign-in', [SessionsController::class, 'store'])->middleware('guest')->name('logon');
 Route::post('verify', [SessionsController::class, 'show'])->middleware('guest');
 Route::post('reset-password', [SessionsController::class, 'update'])->middleware('guest')->name('password.update');
 Route::get('verify', function () {
@@ -127,6 +152,7 @@ Route::group(['middleware' => 'guest'], function () {
 	Route::get('informasi-pendaftar', [UserController::class, 'index'])->name('informasi-pendaftar');
     Route::get('data-lowongan', [LowonganController::class, 'index'])->name('data-lowongan');
     Route::get('berkas',[BerkasController::class, 'index'])->name('berkas-pendaftar');
+	Route::get('penjadwalans',[PenjadwalanController::class, 'index'])->name('penjadwalans');
 
 
 

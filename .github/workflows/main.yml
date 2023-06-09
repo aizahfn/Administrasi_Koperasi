@@ -34,7 +34,7 @@ jobs:
             export COMPOSER_ALLOW_SUPERUSER=1 ;
             composer update ;
             composer install ;
-            php artisan migrate ;
+            # php artisan migrate ;
             php artisan key:generate ;
             chmod -R 777 storage ;
             # systemctl restart nginx ;
