@@ -15,7 +15,7 @@ class KategoriShevaController extends Controller
      */
     public function index(): View
     {
-        $kategoriSheva = KategoriSheva::latest()->paginate(5);
+        $kategorisheva = KategoriSheva::latest()->paginate(5);
         return view('kategorisheva.index',compact('kategorisheva'));
     }
 
@@ -40,14 +40,14 @@ class KategoriShevaController extends Controller
 
         KategoriSheva::create($input);
 
-        return redirect()->route('kategorisheva.index')
+        return redirect()->route('kategorisheva')
                         ->with('Success!','Kategori Created Successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(KategoriSheva $kategoriSheva): View
+    public function show(KategoriSheva $kategorisheva): View
     {
         return view('kategorisheva.show',compact('kategorisheva'));
     }
@@ -55,7 +55,7 @@ class KategoriShevaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(KategoriSheva $kategoriSheva): View
+    public function edit(KategoriSheva $kategorisheva): View
     {
         return view('kategorisheva.edit',compact('kategorisheva'));
     }
@@ -63,7 +63,7 @@ class KategoriShevaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, KategoriSheva $kategoriSheva): RedirectResponse
+    public function update(Request $request, KategoriSheva $kategorisheva): RedirectResponse
     {
         $request->validate([
             'NamaKategori' => 'required',
@@ -71,20 +71,20 @@ class KategoriShevaController extends Controller
 
         $input = $request->all();
 
-        $kategoriSheva->update($input);
+        $kategorisheva->update($input);
 
-        return redirect()->route('kategorisheva.index')
+        return redirect()->route('kategorisheva')
                         ->with('Success!','Kategori Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(KategoriSheva $kategoriSheva): RedirectResponse
+    public function destroy(KategoriSheva $kategorisheva): RedirectResponse
     {
-        $kategoriSheva->delete();
+        $kategorisheva->delete();
 
-        return redirect()->route('kategorisheva.index')
+        return redirect()->route('kategorisheva')
                         ->with('Success!','Kategori Deleted Successfully');
     }
 }
