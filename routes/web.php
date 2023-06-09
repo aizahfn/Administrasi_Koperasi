@@ -37,15 +37,15 @@ Route::resource('user', UserController::class);
 Route::resource('arsip', ArsipController::class);
 Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
 
-//
+
 //Route Penjadwalan
-/*Route::get('/penjadwalan', [PenjadwalanController::class, 'index'])->name('penjadwalans');
+Route::get('/penjadwalan', [PenjadwalanController::class, 'index'])->name('penjadwalans');
 Route::get('/create', [PenjadwalanController::class, 'create'])->name('createJadwal');
 Route::post('/saveJadwal', [PenjadwalanController::class, 'saveJadwal'])->name('saveJadwal');
 Route::get('/Delete/{id}', [PenjadwalanController::class, 'Delete'])->name('Delete');
 Route::get('/edit/{id}', [PenjadwalanController::class, 'edit'])->name('edit');
 Route::post('/update/{id}', [PenjadwalanController::class, 'update'])->name('update');
-*/
+
 
 
 //HALAMAN UTAMA

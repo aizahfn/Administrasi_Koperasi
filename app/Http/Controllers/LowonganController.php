@@ -57,7 +57,7 @@ class LowonganController extends Controller
     ]);
 
     return redirect()->route('datalowongan.index')->with(['success' => 'Pendaftaran Berhasil, Mohon Menunggu Proses Verifikasi!']);
-}
+    }
 
 
 
