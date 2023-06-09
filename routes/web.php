@@ -46,6 +46,10 @@ Route::get('/delete/{id}', [PenjadwalanController::class, 'delete'])->name('dele
 Route::get('/edit/{id}', [PenjadwalanController::class, 'edit'])->name('edit');
 Route::post('/update/{id}', [PenjadwalanController::class, 'update'])->name('update');
 
+// ROUTE BUKUSHEVA
+Route::resource('bukusheva',BukuShevaController::class);
+Route::resource('kategorisheva',KategoriShevaController::class);
+Route::get('/bukusheva', [BukuShevaController::class, 'index'])->name('bukusheva');
 
 
 //HALAMAN UTAMA
