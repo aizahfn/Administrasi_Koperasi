@@ -57,9 +57,9 @@ Route::resource('bukusheva',BukuShevaController::class);
 Route::get('/bukusheva', [BukuShevaController::class, 'index'])->name('bukusheva');
 Route::get('/createbukusheva', [BukuShevaController::class, 'create'])->name('createbukusheva');
 Route::post('/storebukusheva', [BukuShevaController::class, 'store'])->name('storebukusheva');
-Route::get('/deletebukusheva/{IDBuku}', [BukuShevaController::class, 'delete'])->name('deletebukusheva');
-Route::get('/editbukusheva/{IDBuku}', [BukuShevaController::class, 'edit'])->name('editbukusheva');
-Route::post('/updatebukusheva/{IDBuku}', [BukuShevaController::class, 'update'])->name('updatebukusheva');
+Route::delete('/deletebukusheva/{IDBuku}', [BukuShevaController::class, 'delete'])->name('deletebukusheva');
+Route::get('/editbukusheva', [BukuShevaController::class, 'edit'])->name('editbukusheva');
+Route::post('/updatebukusheva', [BukuShevaController::class, 'update'])->name('updatebukusheva');
 
 // ROUTE KATEGORISHEVA
 Route::resource('kategorisheva',KategoriShevaController::class);
