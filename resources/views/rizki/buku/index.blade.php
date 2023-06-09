@@ -60,7 +60,7 @@
                                                 $kategori[] = $bukus->NamaKategori;
                                                 $raw_kategori = implode(", ", $kategori);
                                             @endphp
-                                            @if($temp != $bukus->id_buku)
+                                            {{-- @if($temp != $bukus->id_buku) --}}
                                             <tr>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
@@ -122,10 +122,10 @@
                                                     </form>
                                                 </td>
                                             </tr>
-                                            @php
+                                            {{-- @php
                                                 $temp = $bukus->id_buku;
                                             @endphp
-                                            @endif
+                                            @endif --}}
                                         @empty
                                             <tr>
                                                 <td colspan="11">
