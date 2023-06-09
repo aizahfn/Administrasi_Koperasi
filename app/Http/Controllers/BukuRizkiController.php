@@ -6,7 +6,7 @@ use App\Models\BukuRizki;
 use App\Models\RelasiBukuPenulisRizki;
 use Illuminate\Http\Request;
 
-class BukuController extends Controller
+class BukuRizkiController extends Controller
 {
     /**
      * Display a listing of the resource.
