@@ -23,4 +23,8 @@ class BukuSheva extends Model
     public function kategori(){
         return $this->hasMany(KategoriSheva::class);
     }
+
+    public function penulis(){
+        return $this->hasMany(KategoriSheva::class);
+    }
 }

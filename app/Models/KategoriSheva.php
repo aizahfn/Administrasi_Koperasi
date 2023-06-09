@@ -11,11 +11,10 @@ class KategoriSheva extends Model
 
     protected $table ='kategorisheva';
     protected $fillable = [
-
         'NamaKategori',
     ];
 
     public function buku(){
-        return $this->belongsTo(BukuSheva::class, 'ID_Buku');
+        return $this->belongsTo(BukuSheva::class, 'IDKategoriBuku');
     }
 }

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('kategorisheva', function (Blueprint $table) {
             $table->bigIncrements('IDKategori')->unique();
-            $table->unsignedBigInteger('ID_Buku')->index()->nullable();
+            $table->unsignedBigInteger('IDKategoriBuku')->index()->nullable();
             $table->string('NamaKategori');
             $table->timestamps();
 
-            $table->foreign('ID_Buku')->references('IDBuku')->on('bukusheva')->onDelete('cascade');
+            $table->foreign('IDKategoriBuku')->references('IDBuku')->on('bukusheva')->onDelete('cascade');
         });
     }
 
