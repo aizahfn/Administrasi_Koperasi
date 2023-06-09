@@ -35,7 +35,7 @@ use function Termwind\render;
 //UAS RPL
 Route::resource('bukuaizah', BukuAizahController::class);
 route::resource('bukurizki', BukuRizkiController::class);
-
+Route::resource('bukuanab', BukuAhnafController::class);
 
 
 //UNTUK TABEL-TABEL DULU YANG DIBUAT
@@ -45,7 +45,7 @@ Route::resource('berkas', BerkasController::class);
 Route::resource('user', UserController::class);
 Route::resource('arsip', ArsipController::class);
 
-//Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
+Route::get('arsips/create', [ArsipController::class, 'create'])->name('arsips.create');
 
 //
 //Route Penjadwalan
