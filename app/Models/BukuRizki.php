@@ -16,8 +16,13 @@ class BukuRizki extends Model
         'thn_terbit'
     ];
 
+    public function penulis()
+    {
+        return $this->belongsToMany(PenulisRizki::class, 'relasi_buku_penulis', 'id_buku', 'id_penulis');
+    }
+
     public function kategori()
     {
-        return $this->hasMany(KategoriRizki::class);
+        return $this->belongsToMany(KategoriRizki::class, 'relasi_buku_kategori_rizki', 'id_buku', 'id_kategori');
     }
 }
