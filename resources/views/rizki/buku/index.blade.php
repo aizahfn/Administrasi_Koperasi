@@ -54,10 +54,10 @@
                                         @forelse ($buku as $bukus)
                                             @php
                                                 $penulis = array();
-                                                $penulis[] = $bukus->nama_penulis;
+                                                $penulis[] = $bukus->nama;
                                                 $raw_penulis = implode(", ", $penulis);
                                                 $kategori = array();
-                                                $kategori[] = $bukus->nama_kategori;
+                                                $kategori[] = $bukus->NamaKategori;
                                                 $raw_kategori = implode(", ", $kategori);
                                             @endphp
                                             @if($temp != $bukus->id_buku)
@@ -79,53 +79,40 @@
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->no_telp }}</p>
+                                                            <p class="mb-0 text-sm">{{ $raw_penulis }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->nama_lowongan }}</p>
+                                                            <p class="mb-0 text-sm">{{ $bukus->penerbit }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->email }}</p>
+                                                            <p class="mb-0 text-sm">{{ $bukus->thn_terbit }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->alamat }}</p>
+                                                            <p class="mb-0 text-sm">{{ $raw_kategori }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->jenis_kelamin }}</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <p class="mb-0 text-sm">{{ $user->tanggal_lahir }}</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
+
                                                 <td class="align-middle">
                                                     <a rel="tooltip" class="btn btn-success btn-link"
-                                                        href="{{ route('user.edit', $user->id) }}" data-original-title=""
+                                                        href="{{ route('bukurizki.edit', $bukus->id_buku) }}" data-original-title=""
                                                         title="">
                                                         <i class="material-icons">edit</i>
                                                         <div class="ripple-container"></div>
                                                     </a>
-                                                    <form id="delete-form" action="{{ route('user.destroy', $user->id) }}" method="POST">
+                                                    <form id="delete-form" action="{{ route('bukurizki.destroy', $bukus->id_buku) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-link" data-original-title="" title="">
@@ -136,7 +123,7 @@
                                                 </td>
                                             </tr>
                                             @php
-                                                $temp = $user->id;
+                                                $temp = $bukus->id_buku;
                                             @endphp
                                             @endif
                                         @empty
@@ -150,7 +137,7 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-                                {{ $users->links() }}
+                                {{ $buku->links() }}
                             </div>
                         </div>
                     </div>
