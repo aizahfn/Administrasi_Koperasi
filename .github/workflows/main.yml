@@ -20,18 +20,17 @@ jobs:
 
     - name: Deploy to VPS
       run: |
-          ssh -o StrictHostKeyChecking=no root@${{ secrets.IP_VPS }} "
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USER_VPS }}@${{ secrets.IP_VPS }} "
             git config --global safe.directory '*' ;
-            cd /www/wwwroot/administrasi.hoaks.my.id ;
+            cd ${{ secrets.USER_VPS }} ;
             if [ ! -d .git ]; then echo 'Project belum ada' && git clone https://oauth2:'${{ secrets.CLONE_TOKEN }}'@github.com/aizahfn/Administrasi_Koperasi.git .; fi
             git checkout . ;
             git pull origin master ;
             if [ -f .htaccess ]; then rm .htaccess; fi ;
             echo '${{ secrets.FILE_HTACCESS }}' >> .htaccess ;
             if [ -f .env ]; then rm .env; fi ;
-            echo '${{ secrets.FILE_ENV }}' >> .env ;
+            echo '${{ vars.ENV }}' >> .env ;
             echo 'Run Composer...' ;
-            export COMPOSER_ALLOW_SUPERUSER=1 ;
             composer update ;
             composer install ;
             # php artisan migrate ;
