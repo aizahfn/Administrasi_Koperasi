@@ -31,8 +31,8 @@ jobs:
             if [ -f .env ]; then rm .env; fi ;
             echo '${{ vars.ENV }}' >> .env ;
             echo 'Run Composer...' ;
-            composer update ;
-            composer install ;
+            # composer update ;
+            # composer install ;
             # php artisan migrate ;
             php artisan key:generate ;
             chmod -R 777 storage ;
