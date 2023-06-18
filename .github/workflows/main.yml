@@ -22,7 +22,7 @@ jobs:
       run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.USER_VPS }}@${{ secrets.IP_VPS }} "
             git config --global safe.directory '*' ;
-            cd ${{ secrets.USER_VPS }} ;
+            cd ${{ secrets.DIR }} ;
             if [ ! -d .git ]; then echo 'Project belum ada' && git clone https://oauth2:'${{ secrets.CLONE_TOKEN }}'@github.com/aizahfn/Administrasi_Koperasi.git .; fi
             git checkout . ;
             git pull origin master ;
